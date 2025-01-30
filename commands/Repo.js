@@ -59,7 +59,7 @@ keith({
 
             const releaseDate = new Date(repoData.created_at).toLocaleDateString('en-GB');
             const message = `
-*Hello 👋 ${nomAuteurMessage}
+*Hello 👋 ${nomAuteurMessage}* 
 ╭───────────────━⊷
 ║ 👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐑𝐄𝐏𝐎 👻
 ╰───────────────━⊷
@@ -85,7 +85,7 @@ _________________________________
                     mentionedJid: [auteurMessage],
                     externalAdReply: {
                         title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-                        body: conf.OWNER_NAME,
+                        body: "Star 🌟 and fork repo to deploy" ,
                         thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
                         sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Fixed typo from 'cof.GURL' to 'conf.GURL'
                         mediaType: 1,
@@ -126,7 +126,7 @@ _________________________________
 
             const releaseDate = new Date(repoData.created_at).toLocaleDateString('en-GB');
             const message = `
-*Hello 👋 ${nomAuteurMessage}
+*Hello 👋 ${nomAuteurMessage}*
 ╭───────────────━⊷
 ║ 👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐑𝐄𝐏𝐎 👻
 ╰───────────────━⊷
@@ -152,7 +152,7 @@ _________________________________
                     mentionedJid: [auteurMessage],
                     externalAdReply: {
                         title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-                        body: conf.OWNER_NAME,
+                        body: "Star 🌟 and fork repo to deploy" ,
                         thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
                         sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Fixed typo from 'cof.GURL' to 'conf.GURL'
                         mediaType: 1,
@@ -194,7 +194,7 @@ keith({
 
             const releaseDate = new Date(repoData.created_at).toLocaleDateString('en-GB');
             const message = `
-*Hello 👋 ${nomAuteurMessage}
+*Hello 👋 ${nomAuteurMessage}*
 ╭───────────────━⊷
 ║ 👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐑𝐄𝐏𝐎 👻
 ╰───────────────━⊷
@@ -220,7 +220,7 @@ _________________________________
                     mentionedJid: [auteurMessage],
                     externalAdReply: {
                         title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-                        body: conf.OWNER_NAME,
+                        body: "Star 🌟 and fork repo to deploy",
                         thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
                         sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Fixed typo from 'cof.GURL' to 'conf.GURL'
                         mediaType: 1,
