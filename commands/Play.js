@@ -8,7 +8,7 @@ keith({
   nomCom: "play",
   aliases: ["song", "playdoc", "audio", "mp3"],
   categorie: "Search",
-  reaction: "🎥"
+  reaction: "🗿"
 }, async (dest, zk, commandOptions) => {
   const { arg, ms, repondre } = commandOptions;
 
@@ -72,7 +72,7 @@ keith({
         mimetype: 'audio/mp4',
         contextInfo: {
           externalAdReply: {
-            title: videoDetails.title,
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -87,7 +87,7 @@ keith({
         mimetype: 'audio/mpeg',
         contextInfo: {
           externalAdReply: {
-            title: videoDetails.title,
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -103,7 +103,7 @@ keith({
         contextInfo: {
           externalAdReply: {
             title: videoDetails.title,
-            body: videoDetails.title,
+            body: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
             mediaType: 1,
             sourceUrl: conf.GURL,
             thumbnailUrl: firstVideo.thumbnail,
@@ -194,7 +194,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: videoDetails.title,
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -209,7 +209,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: videoDetails.title,
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
