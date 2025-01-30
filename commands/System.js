@@ -266,7 +266,7 @@ keith(
     const loadingPromise = loading(dest, zk);
 
     // Generate 3 ping results with large random numbers for a more noticeable effect
-    const pingResults = Array.from({ length: 3 }, () => Math.floor(Math.random() * 10000 + 1000));
+    const pingResults = Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000 + 1000));
 
     // Create larger font for ping results (using special characters for a bigger look)
     const formattedResults = pingResults.map(ping => `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃::::::> ${ping} 𝐌/𝐒  `);
@@ -313,7 +313,7 @@ keith({
 
   // Send uptime information to the user
   await zk.sendMessage(dest, {
-    text: `*${conf.OWNER_NAME} UPTIME IS ${runtime(botUptime)}*`,
+    text: `*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 UPTIME IS ${runtime(botUptime)}*`,
     contextInfo: {
       externalAdReply: {
         title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 UPTIME",
@@ -379,7 +379,7 @@ keith({
       );
 
       // Notify the user about the update and redeployment
-      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish! This will install the latest version of BELTAH-MD.*");
+      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish! This will install the latest version of 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃.*");
       console.log("Build details:", response.data);
     } catch (error) {
       // Handle any errors during the redeployment process
