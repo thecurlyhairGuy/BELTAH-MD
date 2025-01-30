@@ -46,7 +46,7 @@ const alea = (ext) => {
     }
 
     sticker = new Sticker(buffer, {
-      pack:"ALPHA-MD",
+      pack:"𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
       author: nomAuteurMessage,
       type:
         arg.includes("crop") || arg.includes("c")
@@ -70,7 +70,7 @@ const alea = (ext) => {
     }
 
     sticker = new Sticker(buffer, {
-      pack:"ALPHA-MD", // pack stick
+      pack:"𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃", // pack stick
       author:  nomAuteurMessage, // name of the author of the stick
       type:
         arg.includes("-r") || arg.includes("-c")
@@ -126,7 +126,7 @@ mediamsg = msgRepondu.videoMessage
   var stick = await zk.downloadAndSaveMediaMessage(mediamsg)
 
      let stickerMess = new Sticker(stick, {
-            pack: Alpha-Md,
+            pack: Beltah-Md,
             
             type: StickerTypes.CROPPED,
             categories: ["🤩", "🎉"],
@@ -162,7 +162,7 @@ mediamsg = msgRepondu.videoMessage
   var stick = await zk.downloadAndSaveMediaMessage(mediamsg)
 
      let stickerMess = new Sticker(stick, {
-            pack: ALPHA-MD,
+            pack: 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃,
             
             type: StickerTypes.FULL,
             categories: ["🤩", "🎉"],
@@ -228,7 +228,7 @@ keith({ nomCom: "write", categorie: "Conversion", reaction: "👨🏿‍💻" },
     // Create the sticker
     const stickerMess = new Sticker(meme, {
       pack: nomAuteurMessage,
-      author: 'ALPHA-MD',
+      author: '𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃',
       type: StickerTypes.FULL,
       categories: ["🤩", "🎉"],
       id: "12345",
