@@ -33,7 +33,7 @@ keith({
 
   // If no message (image/video/audio) is mentioned, prompt user
   if (!msgRepondu) {
-    return repondre("Please mention an image, video, or audio.");
+    return repondre("Please mention an image, video, or audio for Beltah Md to convert.");
   }
 
   let mediaPath;
@@ -60,7 +60,7 @@ else if (msgRepondu.documentMessage) {
     mediaPath = await client.downloadAndSaveMediaMessage(msgRepondu.audioMessage);
   } else {
     // If no media (image, video, or audio) is found, prompt user
-    return repondre("Please mention an image, video, or audio.");
+    return repondre("Please mention an image, video, or audio for Beltah Md to convert.");
   }
 
   try {
