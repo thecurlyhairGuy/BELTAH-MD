@@ -30,15 +30,14 @@ keith({ nomCom: "tagall", categorie: 'Group', reaction: "📣" }, async (dest, z
   } ;
   let membresGroupe = verifGroupe ? await infosGroupe.participants : ""
   var tag = ""; 
-  tag += ` 
-   👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 👻
-========================\n
-👥 Group : ${nomGroupe} 🚀 
-👤 Author : *${nomAuteurMessage}* 
-📜 Message : *${mess}* 📝
-========================\n
-\n
-
+  tag += `
+╭━━━〔  𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃  〕━━━┈⊷ 
+┊✣╭──────────────
+┊✣┊👥 Group : ${nomGroupe} 🚀 
+┊✣┊👤 Author : *${nomAuteurMessage}* 👋 
+┊✣┊📜 Message : *${mess}* 📝
+┊✣╰──────────────
+╰═════════════════⊷
 ` ;
 
 
@@ -49,7 +48,7 @@ keith({ nomCom: "tagall", categorie: 'Group', reaction: "📣" }, async (dest, z
 
 
   for (const membre of membresGroupe) {
-    tag += `> ${emoji[random]}  @${membre.id.split("@")[0]}\n`
+    tag += ` ${emoji[random]} @${membre.id.split("@")[0]}\n`
   }
 
  
@@ -70,9 +69,9 @@ keith({ nomCom: "invite", categorie: 'Group', reaction: "🙋" }, async (dest, z
   var link = await zk.groupInviteCode(dest)
   var lien = `https://chat.whatsapp.com/${link}`;
 
-  let mess = `Hello ${nomAuteurMessage} , here is the group link of ${nomGroupe} \n
+  let mess = `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\nHello ${nomAuteurMessage} , here is the group link of ${nomGroupe} \n
 
-Click Here To Join :${lien}\n\n> 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃`
+Click Here To Join :${lien}`
   repondre(mess)
 
 
@@ -250,7 +249,7 @@ keith({ nomCom: "remove", categorie: 'Group', reaction: "👨🏿‍💼" }, asy
             if (admin == false) {
               const gifLink = "https://raw.githubusercontent.com/djalega8000/Zokou-MD/main/media/remover.gif"
               var sticker = new Sticker(gifLink, {
-                pack: '𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃', // The pack name
+                pack: 'BELTAH-MD', // The pack name
                 author: nomAuteurMessage, // The author name
                 type: StickerTypes.FULL, // The sticker type
                 categories: ['🤩', '🎉'], // The sticker category
@@ -381,7 +380,7 @@ keith({ nomCom: "info", categorie: 'Group' }, async (dest, zk, commandeOptions) 
 
     let mess = {
       image: { url: ppgroup },
-      caption:  `*━━━━『GROUP INFO』━━━━*\n\n*🎐Name:* ${info.subject}\n\n*🔩Group's ID:* ${dest}\n\n*🔍Desc:* \n\n${info.desc}`
+      caption:  `*━━━━『GROUP INFO』━━━━*\n\n*🎐Name:* ${info.subject}\n\n*🔩Group's ID:* ${dest}\n\n*🔍Desc:* \n\n${info.desc}\n\n> 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃`
     }
 
 
@@ -406,7 +405,7 @@ keith({ nomCom: "info", categorie: 'Group' }, async (dest, zk, commandeOptions) 
   if( superUser || verifAdmin) {
     const enetatoui = await verifierEtatJid(dest)
     try {
-      if (!arg || !arg[0] || arg === ' ') { repondre("antilink on to activate the anti-link feature\nantilink off to deactivate the anti-link feature\nantilink action/remove to directly remove the link without notice\nantilink action/warn to give warnings\nantilink action/delete to remove the link without any sanctions\n\nPlease note that by default, the anti-link feature is set to delete.") ; return};
+      if (!arg || !arg[0] || arg === ' ') { repondre("𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\nantilink on to activate the anti-link feature\nantilink off to deactivate the anti-link feature\nantilink action/remove to directly remove the link without notice\nantilink action/warn to give warnings\nantilink action/delete to remove the link without any sanctions\n\nPlease note that by default, the anti-link feature is set to delete.") ; return};
      
       if(arg[0] === 'on') {
 
@@ -474,7 +473,7 @@ keith({ nomCom: "info", categorie: 'Group' }, async (dest, zk, commandeOptions) 
   if( superUser || verifAdmin) {
     const enetatoui = await atbverifierEtatJid(dest)
     try {
-      if (!arg || !arg[0] || arg === ' ') { repondre('antibot on to activate the anti-bot feature\nantibot off to deactivate the antibot feature\nantibot action/remove to directly remove the bot without notice\nantibot action/warn to give warnings\nantilink action/delete to remove the bot message without any sanctions\n\nPlease note that by default, the anti-bot feature is set to delete.') ; return};
+      if (!arg || !arg[0] || arg === ' ') { repondre('𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\nantibot on to activate the anti-bot feature\nantibot off to deactivate the antibot feature\nantibot action/remove to directly remove the bot without notice\nantibot action/warn to give warnings\nantilink action/delete to remove the bot message without any sanctions\n\nPlease note that by default, the anti-bot feature is set to delete.') ; return};
      
       if(arg[0] === 'on') {
 
@@ -633,7 +632,7 @@ keith({ nomCom: "gpp", categorie: 'Group' }, async (dest, zk, commandeOptions) =
 });
 
 /////////////
-keith({nomCom:"hidetag",categorie:'Group',reaction:"🎤"},async(dest,zk,commandeOptions)=>{
+keith({nomCom:"tag",categorie:'Group',reaction:"🎤"},async(dest,zk,commandeOptions)=>{
 
   const {repondre,msgRepondu,verifGroupe,arg ,verifAdmin , superUser}=commandeOptions;
 
@@ -774,7 +773,7 @@ keith({
         let msg = `* *State:* ${state}
         * *Instructions:* To activate automatic mute, add the minute and hour after the command separated by ':'
         Example automute 9:30
-        * To delete the automatic mute, use the command *automute del*\n\n𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃`
+        * To delete the automatic mute, use the command *automute del*`
         
 
           repondre(msg) ;
@@ -847,7 +846,7 @@ keith({
       let msg = `* *State:* ${state}
       * *Instructions:* To activate autounmute, add the minute and hour after the command separated by ':'
       Example autounmute 7:30
-      * To delete autounmute, use the command *autounmute del*\n\n𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃`
+      * To delete autounmute, use the command *autounmute del*`
 
         repondre(msg) ;
         return ;
