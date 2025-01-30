@@ -9,7 +9,7 @@ keith({
   nomCom: 'broadcast',
   aliase: 'spread',
   categorie: "Group",
-  reaction: '⚪'
+  reaction: '📢'
 }, async (bot, client, context) => {
   const { arg, repondre, superUser, nomAuteurMessage } = context;
 
@@ -23,12 +23,12 @@ keith({
 
   const groups = await client.groupFetchAllParticipating();
   const groupIds = Object.values(groups).map(group => group.id);
-  await repondre("*ALPHA-MD is sending your message to all groups ,,,💀*...");
+  await repondre("*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is sending your message to all groups ,,,💀*...");
 
-  const broadcastMessage = `*🌟𝐀𝐋𝐏𝐇𝐀-𝐌𝐃 𝐁𝐑𝐎𝐀𝐃𝐂𝐀𝐒𝐓🌟*\n\n🀄 Message: ${arg.join(" ")}\n\n🗣️ Author: ${nomAuteurMessage}`;
+  const broadcastMessage = `*🌟𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐁𝐑𝐎𝐀𝐃𝐂𝐀𝐒𝐓🌟*\n\n🀄 Message: ${arg.join(" ")}\n\n🗣️ Author: ${nomAuteurMessage}`;
   for (let groupId of groupIds) {
     await client.sendMessage(groupId, {
-      image: { url: 'https://i.imgur.com/HDLN3If.jpeg' },
+      image: { url: 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg' },
       caption: broadcastMessage
     });
   }
