@@ -42,7 +42,7 @@ const formatUptime = (seconds) => {
 
 const fetchGitHubStats = async () => {
     try {
-        const response = await axios.get("https://api.github.com/repos/Keithkeizzah/ALPHA-MD");
+        const response = await axios.get("https://api.github.com/repos/Beltah254/X-BOT");
         const forksCount = response.data.forks_count;
         const starsCount = response.data.stargazers_count;
         const totalUsers = forksCount * 2 + starsCount * 2;
@@ -134,43 +134,40 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
 
     let responseMessage = `
  ${greeting}, *${nomAuteurMessage || "User"}*
-
-
-*${randomQuote}*
-
+ 
 ╭━━━ 〔 *${settings.BOT}* 〕━━━┈⊷
-┃✵╭──────────────
-┃✵│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
-┃✵│▸ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
-┃✵│▸ *ᴛɪᴍᴇ:* ${formattedTime}
-┃✵│▸ *ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
-┃✵│▸ *ᴅᴀᴛᴇ:* ${formattedDate}
-┃✵│▸ *ᴍᴏᴅᴇ:* ${mode}
-┃✵│▸ *ᴛɪᴍᴇ ᴢᴏɴᴇ:* Africa/Nairobi
-┃✵│▸ *ᴛᴏᴛᴀʟ ᴜsᴇʀs:* ${formattedTotalUsers} users
-┃✵│▸ *ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-┃✵│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
-┃✵╰──────────────
+┃╭──────────────
+┃│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
+┃│▸ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
+┃│▸ *ᴛɪᴍᴇ:* ${formattedTime}
+┃│▸ *ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
+┃│▸ *ᴅᴀᴛᴇ:* ${formattedDate}
+┃│▸ *ᴍᴏᴅᴇ:* ${mode}
+┃│▸ *ᴛɪᴍᴇ ᴢᴏɴᴇ:* Africa/Nairobi
+┃│▸ *ᴛᴏᴛᴀʟ ᴜsᴇʀs:* ${formattedTotalUsers} users
+┃│▸ *ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
+┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
+┃╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
 
 *${randomQuote}*
 
 `;
 
-    let commandsList = "*𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
+    let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│◦➛╭───────────────`;
+        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│◦│╭───────────────`;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
-            commandsList += `\n│◦➛ ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
+            commandsList += `\n│◦│ ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
         }
-        commandsList += "\n│◦➛╰─────────────\n╰──────────────┈⊷\n";
+        commandsList += "\n│◦╰─────────────\n╰──────────────┈⊷\n";
     }
 
-    commandsList += readMore + "\nin honor of Alpha\n";
+    commandsList += readMore + "\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n";
 
     try {
         const senderName = message.sender || message.from;
@@ -179,10 +176,10 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
             contextInfo: {
                 mentionedJid: [senderName],
                 externalAdReply: {
-                    title: settings.BOT,
+                    title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
                     body: settings.OWNER_NAME,
-                    thumbnailUrl: settings.URL,
-                    sourceUrl: settings.GURL,
+                    thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
+                    sourceUrl:'' ,
                     mediaType: 1,
                     renderLargerThumbnail: true
                 }
