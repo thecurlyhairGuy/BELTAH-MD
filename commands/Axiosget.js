@@ -21,10 +21,10 @@ keith({
       text: news,
       contextInfo: {
         externalAdReply: {
-          title: "ALPHA-MD TECH NEWS",
-          body: "keep learning", 
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 TECH NEWS",
+          body: "keep Exploring The internet", 
           thumbnailUrl: thumbnail, 
-          sourceUrl: conf.GURL, 
+          sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F', 
           mediaType: 1,
           showAdAttribution: true, 
         },
@@ -52,8 +52,8 @@ keith({
         externalAdReply: {
           title: "Bible Reference Required",
           body: "Please provide a book, chapter, and verse.",
-          thumbnailUrl: "https://files.catbox.moe/zt9ie6.jpg", // Replace with a suitable thumbnail URL
-          sourceUrl: conf.GURL,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", // Replace with a suitable thumbnail URL
+          sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F',
           mediaType: 1,
           showAdAttribution: true,
         },
@@ -69,9 +69,9 @@ keith({
         contextInfo: {
           externalAdReply: {
             title: "Invalid Bible Reference",
-            body: "Please provide a valid book, chapter, and verse.",
-            thumbnailUrl: "https://files.catbox.moe/zt9ie6.jpg", // Replace with a suitable thumbnail URL
-            sourceUrl: conf.GURL,
+            body: "ʙᴇʟᴛᴀʜ ᴍᴅ needs a valid book, chapter, and verse.",
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", // Replace with a suitable thumbnail URL
+            sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F',
             mediaType: 1,
             showAdAttribution: true,
           },
@@ -81,7 +81,7 @@ keith({
     
     const data = response.data;
     const messageText = `
-ᬑ *ALPHA HOLY BIBLE* ᬒ
+ᬑ *𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 HOLY SCRIPT* ᬒ
 
 ⧭ *_WE'RE READING:_* ${data.reference}
 
@@ -91,18 +91,18 @@ keith({
 
 ⧭ *_LANGUAGE:_* ${data.translation_name}
 ╭────────────────◆
-│ *_Powered by ${conf.OWNER_NAME}*
+> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ
 ╰─────────────────◆ `;
     
     await zk.sendMessage(dest, {
       text: messageText,
       contextInfo: {
         externalAdReply: {
-          title: "ALPHA-MD HOLY BIBLE",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 HOLY BIBLE",
           body: `We're reading: ${data.reference}`,
           mediaType: 1,
-          thumbnailUrl: "https://files.catbox.moe/zt9ie6.jpg", 
-          sourceUrl: conf.GURL,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", 
+          sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
           showAdAttribution: true, 
         },
       },
@@ -115,8 +115,8 @@ keith({
         externalAdReply: {
           title: "Error Fetching Bible Passage",
           body: "Please try again later.",
-          thumbnailUrl: "https://files.catbox.moe/zt9ie6.jpg", // Replace with a suitable thumbnail URL
-          sourceUrl: conf.GURL,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", // Replace with a suitable thumbnail URL
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F',
           mediaType: 1,
           showAdAttribution: true,
         },
@@ -135,7 +135,7 @@ keith({
   const term = arg.join(" ");
 
   if (!term) {
-    return repondre("Please provide a term to define.");
+    return repondre("𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 requires a term to define.");
   }
 
   try {
@@ -153,11 +153,11 @@ keith({
         text: definitionMessage,
         contextInfo: {
           externalAdReply: {
-            title: "ALPHA-MD DICTIONARY",
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 DICTIONARY",
             body: `Definition of ${term}`,
             mediaType: 1,
-            thumbnailUrl: "https://files.catbox.moe/28j7yx.jpg", 
-            sourceUrl: conf.GURL,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", 
+            sourceUrl: 'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F', 
             showAdAttribution: true, 
           },
         },
@@ -173,9 +173,9 @@ keith({
 });
 
 keith({
-  nomCom: "code",
-  aliases: ["session", "pair", "paircode", "qrcode"],
-  reaction: '🚀',
+  nomCom: "pair",
+  aliases: ["session", "code", "paircode", "qrcode"],
+  reaction: '🖇️',
   categorie: 'system'
 }, async (dest, zk, commandeOptions) => {
   const { repondre, arg, ms } = commandeOptions;
@@ -187,12 +187,12 @@ keith({
 
   try {
     // Notify user that pairing is in progress
-    const replyText = "*Wait Alpha Md is getting your pair code 💧✅...*";
+    const replyText = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is generating your pairing code ✅...*";
     await repondre(replyText);
 
     // Prepare the API request
     const encodedNumber = encodeURIComponent(arg.join(" "));
-    const apiUrl = `https://keith-sessions-pi5z.onrender.com/code?number=${encodedNumber}`;
+    const apiUrl = `https://bel-tah-codes-7huy.onrender.com/code?number=${encodedNumber}`;
 
     // Fetch the pairing code from the API
     const response = await axios.get(apiUrl);
@@ -204,11 +204,11 @@ keith({
         text: pairingCode,
         contextInfo: {
           externalAdReply: {
-            title: "ALPHA-MD PAIR CODE",
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 PAIR CODE",
             body: "Here is your pairing code:",
             mediaType: 1,
-            thumbnailUrl: conf.URL, 
-            sourceUrl: conf.GURL,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", 
+            sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F',
             showAdAttribution: true, 
           },
         },
@@ -249,7 +249,7 @@ keith({
     const thumb = data.image; // Assuming the API returns an 'image' property for the element thumbnail
 
     const formattedMessage = `
-*Alpha Md Element Information:*
+*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 Element Information:*
 🚀 *Name:* ${data.name}
 🚀 *Symbol:* ${data.symbol}
 🚀 *Atomic Number:* ${data.atomic_number}
@@ -265,11 +265,11 @@ Regards ${conf.BOT} `;
       text: formattedMessage,
       contextInfo: {
         externalAdReply: {
-          title: "ALPHA-MD ELEMENT INFORMATION",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 ELEMENT INFORMATION",
           body: "Here is the information you requested:",
           mediaType: 1,
           thumbnailUrl: thumb,
-          sourceUrl: conf.GURL,
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
           showAdAttribution: true, 
         },
       },
@@ -318,17 +318,18 @@ keith({
 🔐 Public Gists: ${data.public_gists}
 👪 Followers: ${data.followers}
 🫶 Following: ${data.following}
-`;
+
+> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ`;
 
     await zk.sendMessage(dest, {
       text: githubMessage,
       contextInfo: {
         externalAdReply: {
-          title: "ALPHA-MD GITHUB USER INFO",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 GITHUB USER INFO",
           body: `Information about ${data.login}`,
           mediaType: 1,
           thumbnailUrl: thumb,
-          sourceUrl: conf.GURL,
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
           showAdAttribution: true,
         },
       },
@@ -359,8 +360,8 @@ You can use this email for temporary purposes. I will notify you if you receive 
         externalAdReply: {
           title: "Temporary Email Service",
           body: "Create temporary emails quickly and easily for privacy and security.",
-          thumbnailUrl: conf.URL,
-          sourceUrl: conf.GURL,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
           mediaType: 1,
           showAdAttribution: true
         }
@@ -386,8 +387,8 @@ You can use this email for temporary purposes. I will notify you if you receive 
                 externalAdReply: {
                   title: "Temporary Email Notification",
                   body: "You received a new email on your temporary inbox. Check it out now!",
-                  thumbnailUrl: conf.URL,
-                  sourceUrl: conf.GURL,
+                  thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+                  sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                   mediaType: 1,
                   showAdAttribution: true
                 }
@@ -441,7 +442,7 @@ You can use this email for temporary purposes. I will notify you if you receive 
 keith({
   nomCom: "wiki",
   aliases: ["wikipedia", "wikipeda"],
-  reaction: '⚔️',
+  reaction: '👻',
   categorie: "search"
 }, async (zk, dest, context) => {
   const { repondre, arg, ms } = context;
@@ -467,7 +468,7 @@ keith({
 
 🔗 *URL*: ${con.content_urls.mobile.page}
 
-> Powered by Alpha Md
+> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ
     `;
     repondre(texa);
   } catch (err) {
