@@ -179,7 +179,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
                     title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
                     body: settings.OWNER_NAME,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
-                    sourceUrl:'' ,
+                    sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                     mediaType: 1,
                     renderLargerThumbnail: true
                 }
