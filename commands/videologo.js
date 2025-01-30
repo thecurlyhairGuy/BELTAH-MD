@@ -23,15 +23,15 @@ keith({ nomCom: "videologo", categorie: "modern-logo", reaction: "✋" }, async 
 3 ➠ intro video 📷
 4 ➠ tiger 🐯 video logo
 
-*Enjoy 😂*`;
+> 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃`;
 
     const contextInfo = {
       mentionedJid: [ms.sender], // Mention the sender
       externalAdReply: {
-        title: "𝗔𝗟𝗣𝗛𝗔 𝗠𝗗",
-        body: "Regards, Keithkeizzah",
-        thumbnailUrl: "https://files.catbox.moe/09c9r1.jpg",
-        sourceUrl: "https://whatsapp.com/channel/0029Vaan9TF9Bb62l8wpoD47",
+        title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
+        body: "Powered by Beltah Hacking Team 👻",
+        thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+        sourceUrl: "https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F",
         mediaType: 1,
         renderLargerThumbnail: true,
       },
@@ -80,7 +80,7 @@ keith({ nomCom: "videologo", categorie: "modern-logo", reaction: "✋" }, async 
           await zk.sendMessage(dest, {
             video: { url: logoUrl },
             mimetype: "video/mp4",
-            caption: `*Downloaded by Alpha Md*`,
+            caption: `*Downloaded by BELTAH MD*`,
           }, { quoted: ms });
         }
       }
