@@ -8,7 +8,7 @@ keith({ nomCom: "fancy", categorie: "Fun", reaction: "☑️" }, async (dest, zk
 
     try {
         if (id === undefined || text === undefined) {
-            return await repondre(`\nExample : ${prefixe}fancy 10 Alpha-Md\n` + String.fromCharCode(8206).repeat(4001) + fancy.list('ALPHA-MD', fancy));
+            return await repondre(`\nExample : ${prefixe}fancy 10 Beltah-Md\n` + String.fromCharCode(8206).repeat(4001) + fancy.list('BELTAH-MD', fancy));
         }
 
         const selectedStyle = fancy[parseInt(id) - 1];
