@@ -20,7 +20,7 @@ keith({
       text: `Here is your advice: ${advice} 😊`,
       contextInfo: {
         externalAdReply: {
-          title: "Daily Dose of Advice",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
           body: "Here’s a little nugget of wisdom to brighten your day!",
           thumbnailUrl: conf.URL,
           sourceUrl: conf.GURL,
@@ -61,7 +61,7 @@ keith({
       text: `Here's a trivia question for you: \n\n${question}\n\n${answerChoices}\n\nI will send the correct answer in 10 seconds...`,
       contextInfo: {
         externalAdReply: {
-          title: "Trivia Time!",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
           body: "Challenge yourself with this fun trivia question!",
           thumbnailUrl: conf.URL,
           sourceUrl: conf.GURL,
@@ -147,7 +147,7 @@ keith({
       text: truth(),
       contextInfo: {
         externalAdReply: {
-          title: "Truth Question",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
           body: "Here's a truth question to test your honesty!",
           thumbnailUrl: conf.URL,
           sourceUrl: conf.GURL,
@@ -204,7 +204,7 @@ keith({
       text: `${totalQuestions}`,
       contextInfo: {
         externalAdReply: {
-          title: "Question Count",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
           body: "Here's the total number of questions available!",
           thumbnailUrl: conf.URL,
           sourceUrl: conf.GURL,
@@ -230,14 +230,14 @@ keith({
     const response = await axios.get("https://nekos.life/api/v2/fact");
     const data = response.data;
     const factMessage = `
-┏━━━━ *ALPHA-FACT* ━━━━━◆                     
+┏━━━━ *𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃-FACT* ━━━━━◆                     
 ┃
 ┃   *◇* ${data.fact} 
 ┃
-┃   *◇* Regards *ALPHA MD*
+┃   *◇* Regards 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃
 ┃      
  ╭────────────────◆
- │ *_Powered by keithkeizzah._*
+ │ *_Powered by ʙᴇʟᴛᴀʜ ᴍᴅ._*
  ╰─────────────────◆
     `;
 
@@ -271,15 +271,15 @@ keith({
     const response = await axios.get("https://favqs.com/api/qotd");
     const data = response.data;
     const quoteMessage = `
-┏━━━━━QUOTE━━━━━━◆
+┏━━━━━𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃-QUOTE━━━━━━◆
 ┃   *◇* _${data.quote.body}_
 ┃  
 ┃   *◇* *AUTHOR:* ${data.quote.author}
 ┃      
-┃    *◇*  *regards ALPHA MD*
+┃    *◇*  *regards 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃*
 ┃    
 ╭────────────────◆
-│ *_Powered by keithkeizzah._*
+│ *_Powered by ʙᴇʟᴛᴀʜ ᴍᴅ._*
 ╰─────────────────◆
     `;
 
@@ -333,7 +333,7 @@ keith({
       "```SENDING LOG DOCUMENTS...```",
       "```SUCCESSFULLY SENT DATA AND Connection disconnected```",
       "```BACKLOGS CLEARED```",
-      "```POWERED BY ${conf.BOT}```",
+      "```POWERED BY 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃```",
       "```paralyzed by the mighty ${conf.OWNER_NAME}```"
     ];
 
