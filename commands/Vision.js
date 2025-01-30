@@ -7,7 +7,7 @@ const axios = require("axios");
 keith({
   nomCom: "vision",
   aliases: ["analize", "generate"],
-  reaction: '⚔️',
+  reaction: '👻',
   categorie: "search"
 }, async (dest, zk, commandeOptions) => {
   const { repondre, msgRepondu, auteurMessage, arg } = commandeOptions;
@@ -25,7 +25,7 @@ keith({
         }
 
         // Acknowledge image receipt and instruction
-        await repondre("_A moment, alpha md is analyzing contents of the image..._");
+        await repondre("_A moment, Beltah md is analyzing contents of the image..._");
 
         // Download and save the image
         const fdr = await zk.downloadAndSaveMediaMessage(msgRepondu.imageMessage);
