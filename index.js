@@ -209,7 +209,7 @@ if (conf.AUTOBIO === 'yes') {
     setInterval(() => {
       const date = new Date();
       zk.updateProfileStatus(
-        `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is active 24/7 ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        `👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 👻 is active: ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
   }
@@ -259,8 +259,8 @@ zk.ev.on("messages.upsert", async (m) => {
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
   let notification = `*👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 ANTIDELETE👻*\n\n`;
-  notification += `*Time deleted🥀:* ${new Date().toLocaleString()}\n`;
-  notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}`;
+  notification += `*Time deleted:* ${new Date().toLocaleString()}\n`;
+  notification += `*Deleted by:* @${deletedBy.split('@')[0]}`;
   return notification;
 }
 
@@ -800,7 +800,7 @@ zk.ev.on("messages.upsert", async (m) => {
 
       if (texte && texte.startsWith('<')) {
   if (!superUser) {
-    return repondre("Only for my owner or Keithkeizzah to execute this command 🚫");
+    return repondre("Only for my owner or Beltah Tech to execute this command 🚫");
   }
   
   try { 
@@ -817,7 +817,7 @@ zk.ev.on("messages.upsert", async (m) => {
 if (texte && texte.startsWith('>')) {
   // If the sender is not the owner
   if (!superUser) {
-    const menuText = `This command is only for the owner or Sir Keith to execute 🚫`;
+    const menuText = `This command is only for the owner or Beltah to execute 🚫`;
 
     await zk.sendMessage(origineMessage, {
       text: menuText,
@@ -994,7 +994,7 @@ if (texte && texte.startsWith('>')) {
                                    // txt += `message supprimé \n @${auteurMessage.split("@")[0]} rétiré du groupe.`;
                                     const gifLink = "https://raw.githubusercontent.com/djalega8000/Zokou-MD/main/media/remover.gif";
                                     var sticker = new Sticker(gifLink, {
-                                        pack: 'KEITH-TECH',
+                                        pack: '',
                                         author: conf.OWNER_NAME,
                                         type: StickerTypes.FULL,
                                         categories: ['🤩', '🎉'],
@@ -1236,7 +1236,7 @@ if (texte && texte.startsWith('>')) {
       try {
         const metadata = await zk.groupMetadata(group.id);
         if (group.action == 'add' && (await recupevents(group.id, "welcome")) == 'on') {
-          let msg = `👋 Hello
+          let msg = `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\n👋 Hello
 `;
           let membres = group.participants;
           for (let membre of membres) {
@@ -1364,8 +1364,7 @@ if (texte && texte.startsWith('>')) {
       if (connection === "connecting") {
         console.log("ℹ️ Beltah md connecting in your account...");
       } else if (connection === 'open') {
-        await zk.groupAcceptInvite("KDDCS0xdlz6hiTxVFLvXg");
-        console.log("✅ Beltah Md connected successfully✔");
+         console.log("✅ Beltah Md connected successfully✔");
         console.log("--");
         0;
         await baileys_1.delay(200);
@@ -1399,7 +1398,7 @@ if (texte && texte.startsWith('>')) {
         } else {
           md = "undefined";
         }
-        console.log("Alpha md successfully connected✅");
+        console.log("Beltah md successfully connected✅");
         await activateCrons();
 const getGreeting = () => {
         const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
@@ -1425,7 +1424,7 @@ const getGreeting = () => {
             text: `*Hello👋, ${getGreeting()},*
 ╭════⊷
 ║ *『𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║   
+║   Developer : *Beltah Tech*
 ║    Prefix : [  ${prefixe} ]
 ║    Mode : ${md} mode
 ║    Total Commands : ${evt.cm.length}
