@@ -31,7 +31,7 @@ keith({
     }
 
     // Construct TikTok search message
-    let searchMessage = `${conf.BOT} 𝐓𝐈𝐊𝐓𝐎𝐊 𝐒𝐄𝐀𝐑𝐂𝐇\n\n`;
+    let searchMessage = `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐓𝐈𝐊𝐓𝐎𝐊 𝐒𝐄𝐀𝐑𝐂𝐇\n\n`;
 
     // Loop through search results and construct track info with numbers
     searchData.forEach((track, index) => {
@@ -61,7 +61,7 @@ keith({
           mentionedJid: [dest],
           externalAdReply: {
             showAdAttribution: true,
-            title: conf.BOT,
+            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
             body: conf.OWNER_NAME,
             thumbnailUrl: thumbnailUrl,
             sourceUrl: conf.GURL,
