@@ -149,9 +149,9 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
 ┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ┃╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
-*${randomQuote}*
 
-> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n${readmore}`;
+*${randomQuote}*
+`;
 
     let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
     const sortedCategories = Object.keys(categorizedCommands).sort();
@@ -236,9 +236,9 @@ keith({ nomCom: "list", aliases: ["liste", "helplist", "commandlist"], categorie
 ┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ┃╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
-*${randomQuote}*
 
-> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n${readmore}`;
+*${randomQuote}*
+`;
 
     let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
     const sortedCategories = Object.keys(categorizedCommands).sort();
@@ -323,9 +323,9 @@ keith({ nomCom: "allcmd", aliases: ["liste", "helplist", "commandlist"], categor
 ┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ┃╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷
-*${randomQuote}*
 
-> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n${readmore}`;
+*${randomQuote}*
+`;
 
     let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
     const sortedCategories = Object.keys(categorizedCommands).sort();
