@@ -1,14 +1,14 @@
 {
-  "name": "ALPHA-MD",
-  "description": "Alpha is a multidevice WhatsApp bot built to make your WhatsApp enjoyable...",
+  "name": "BELTAH-MD",
+  "description": "BELTAH-MD is a multidevice WhatsApp bot built to make your WhatsApp enjoyable...",
   "keywords": [
     "bot",
     "node",
     "baileys",
     "whatsapp"
   ],
-  "logo": "https://telegra.ph/file/b148f6ed21fa02ac5325b.jpg",
-  "repository": "https://github.com/Keithkeizzah/ALPHA-MD",
+  "logo": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+  "repository": "https://github.com/Beltahtechinfo/BELTAH-MD",
   "succes_url": "/",
   "stack": "container",
   "env": {
