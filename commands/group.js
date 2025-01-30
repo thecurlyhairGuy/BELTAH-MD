@@ -9,7 +9,7 @@ keith({
   nomCom: 'broadcast',
   aliase: 'spread',
   categorie: "Group",
-  reaction: '📢'
+  reaction: '⚪'
 }, async (bot, client, context) => {
   const { arg, repondre, superUser, nomAuteurMessage } = context;
 
@@ -23,7 +23,7 @@ keith({
 
   const groups = await client.groupFetchAllParticipating();
   const groupIds = Object.values(groups).map(group => group.id);
-  await repondre("*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is sending your message to all groups ,,,💀*...");
+  await repondre("*BELTAH-MD is sending your message to all groups ,,,💀*...");
 
   const broadcastMessage = `*🌟𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐁𝐑𝐎𝐀𝐃𝐂𝐀𝐒𝐓🌟*\n\n🀄 Message: ${arg.join(" ")}\n\n🗣️ Author: ${nomAuteurMessage}`;
   for (let groupId of groupIds) {
