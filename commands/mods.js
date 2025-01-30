@@ -292,7 +292,7 @@ Link: ${url}
 *Instructions:*
 To activate or modify the mention, follow this syntax: mention link type message
 The different types are audio, video, image, and sticker.
-Example: mention https://static.animecorner.me/2023/08/op2.jpg image Hi, my name is Luffy
+Example: mention https://static.animecorner.me/2023/08/op2.jpg image Hi, my name is Beltah Tech 
 
 To stop the mention, use mention stop`;
 
@@ -337,7 +337,7 @@ keith({ nomCom: "save", aliases: ["send", "keep"], categorie: "Mods" }, async (d
       } else if (msgRepondu.stickerMessage) {
         const media = await zk.downloadAndSaveMediaMessage(msgRepondu.stickerMessage);
         const stickerMess = new Sticker(media, {
-          pack: 'ALPHA-MD',
+          pack: 'BELTAH-MD',
           type: StickerTypes.CROPPED,
           categories: ["🤩", "🎉"],
           id: "12345",
@@ -362,7 +362,7 @@ keith({ nomCom: "save", aliases: ["send", "keep"], categorie: "Mods" }, async (d
     repondre('Mention the message that you want to save');
   }
 });
-keith({ nomCom: "save2", aliases: ["send2", "keep2"], categorie: "Mods" }, async (dest, zk, commandeOptions) => {
+keith({ nomCom: "#", aliases: ["send2", "keep2"], categorie: "Mods" }, async (dest, zk, commandeOptions) => {
 
   const { repondre , msgRepondu , superUser, auteurMessage } = commandeOptions;
   
@@ -415,7 +415,7 @@ keith({ nomCom: "save2", aliases: ["send2", "keep2"], categorie: "Mods" }, async
           let media  = await zk.downloadAndSaveMediaMessage(msgRepondu.stickerMessage)
   
           let stickerMess = new Sticker(media, {
-            pack: 'ALPHA-MD',
+            pack: 'BELTAH-MD',
             type: StickerTypes.CROPPED,
             categories: ["🤩", "🎉"],
             id: "12345",
