@@ -1,5 +1,5 @@
 {
-  "name": "BELTAH-MD",
+  "name": "👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃👻",
   "description": "BELTAH-MD is a multidevice WhatsApp bot built to make your WhatsApp enjoyable...",
   "keywords": [
     "bot",
@@ -94,12 +94,12 @@
     },
     "OWNER_NAME": {
       "description": "don't you have a name bro.Insert your name here!!",
-      "value": "",
+      "value": "Beltah Tech 👻",
       "required": true
     },
     "URL": {
       "description": "you must add your bot image url.Get your image url now and fill it here",
-      "value": "",
+      "value": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
       "required": true
     },
     "AUTO_READ_MESSAGES": {
@@ -109,7 +109,7 @@
     },
     "NUMERO_OWNER": {
       "description": "Your phone number (exclude '+' and area code, e.g., '254796299159')",
-      "value": "254796299159",
+      "value": "254114141192",
       "required": false
     },
     "WARN_COUNT": {
