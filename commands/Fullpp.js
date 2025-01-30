@@ -6,7 +6,7 @@ const fs = require("fs");
 keith({
   nomCom: "fullpp",
   aliases: ["updatepp", "ppfull"],
-  reaction: '⚔️',
+  reaction: '👻',
   categorie: "search"
 }, async (dest, zk, commandeOptions) => {
   const { repondre, msgRepondu, auteurMessage } = commandeOptions;
