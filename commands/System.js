@@ -23,12 +23,12 @@ function runtime(seconds) {
 // New loading animation with different symbols and larger progress bar
 async function loading(dest, zk) {
   const lod = [
-    "⬛⬛⬜⬜⬜⬜⬛⬛꧁20%꧂",
-    "⬛⬛⬛⬛⬜⬜⬜⬜꧁40%꧂",
-    "⬜⬜⬛⬛⬛⬛⬜⬜꧁60%꧂",
-    "⬜⬜⬜⬜⬛⬛⬛⬛꧁80%꧂",
-    "⬛⬛⬜⬜⬜⬜⬛⬛꧁100%꧂",
-    "*L҉O҉A҉D҉I҉N҉G҉ D҉O҉N҉E҉ ᵗʱᵃᵑᵏᵧₒᵤ ⚔️🗡️*"
+    "⬛⬛⬜⬜⬜⬜⬛⬛20%",
+    "⬛⬛⬛⬛⬜⬜⬜⬜40%",
+    "⬜⬜⬛⬛⬛⬛⬜⬜60%",
+    "⬜⬜⬜⬜⬛⬛⬛⬛80%",
+    "⬛⬛⬜⬜⬜⬜⬛⬛100%",
+    "*LOADING SUCCESSFULLY*"
   ];
 
   let { key } = await zk.sendMessage(dest, { text: 'Loading Please Wait' });
@@ -43,7 +43,7 @@ keith({
   nomCom: "test",
   aliases: ["alive", "testing"],
   categorie: "system",
-  reaction: "⚔️"
+  reaction: "👻"
 }, async (dest, zk, commandeOptions) => {
   const { ms } = commandeOptions;
 
@@ -81,10 +81,10 @@ keith({
     fileName: 'shizo',
     contextInfo: {
       externalAdReply: {
-        title: '𝗜 𝗔𝗠 𝗔𝗟𝗜𝗩𝗘 𝗠𝗢𝗧𝗛𝗘𝗥𝗙𝗨𝗖𝗞𝗘𝗥',
-        body: conf.OWNER_NAME,
-        thumbnailUrl: conf.URL,
-        sourceUrl: conf.GURL, // Corrected variable name
+        title: '𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃',
+        body: "𝗜 𝗔𝗠 𝗔𝗟𝗜𝗩𝗘" ,
+        thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
+        sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Corrected variable name
         mediaType: 1,
         renderLargerThumbnail: true,
       },
@@ -179,7 +179,7 @@ keith({
 
   // Check if the command is issued by the owner
   if (!superUser) {
-    return repondre("*This command is restricted to the bot owner or Alpha owner 💀*");
+    return repondre("*This command is restricted to the bot owner or Beltah Tech*");
   }
 
   const appname = s.HEROKU_APP_NAME;
@@ -216,7 +216,7 @@ keith({
 keith({
   nomCom: "shell",
   aliases: ["getcmd", "cmd"],
-  reaction: '⚔️',
+  reaction: '🗿',
   categorie: "system"
 }, async (context, message, params) => {
   const { repondre: sendResponse, arg: commandArgs, superUser: Owner, auteurMessage } = params;
@@ -258,7 +258,7 @@ keith(
     aliases: ['speed', 'latency'],
     desc: 'To check bot response time',
     categorie: 'system', // Fixed the typo here (Categorie -> categorie)
-    reaction: '⚡',
+    reaction: '👻',
     fromMe: true, // Removed quotes to make it a boolean
   },
   async (dest, zk) => {
@@ -276,10 +276,10 @@ keith(
       text: `${formattedResults.join(', ')}`,
       contextInfo: {
         externalAdReply: {
-          title: conf.BOT,
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
           body: `${formattedResults.join(" | ")}`,
-          thumbnailUrl: conf.URL, // Replace with your bot profile photo URL
-          sourceUrl: conf.GURL, // Your channel URL
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" , // Replace with your bot profile photo URL
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Your channel URL
           mediaType: 1,
           showAdAttribution: true, // Verified badge
         },
@@ -303,7 +303,7 @@ keith({
   aliases: ['runtime', 'running'],
   desc: 'To check runtime',
   categorie: 'system', // Fixed the typo here (Categorie -> categorie)
-  reaction: '⚔️',
+  reaction: '👻',
   fromMe: true, // Removed quotes to make it a boolean
 }, async (dest, zk, commandeOptions) => {
   const { ms, arg, repondre } = commandeOptions;
@@ -316,7 +316,7 @@ keith({
     text: `*${conf.OWNER_NAME} UPTIME IS ${runtime(botUptime)}*`,
     contextInfo: {
       externalAdReply: {
-        title: `${conf.BOT} UPTIME`,
+        title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 UPTIME",
         body: `Bot Uptime: ${runtime(botUptime)}`, // Format the uptime before sending
         thumbnailUrl: conf.URL, // Replace with your bot profile photo URL
         sourceUrl: conf.GURL, // Your channel URL
@@ -347,7 +347,7 @@ keith({
 
   // Check if the command is issued by the owner
   if (!superUser) {
-    return repondre("*This command is restricted to the bot owner or Alpha owner 💀*");
+    return repondre("*This command is restricted to the bot owner or Beltah Tech*");
   }
 
   // Ensure Heroku app name and API key are set
@@ -367,7 +367,7 @@ keith({
         `https://api.heroku.com/apps/${herokuAppName}/builds`,
         {
           source_blob: {
-            url: "https://github.com/Keithkeizzah/ALPHA-MD/tarball/main",
+            url: "https://github.com/Beltahtechinfo/BELTAH-MD/tarball/main",
           },
         },
         {
@@ -379,7 +379,7 @@ keith({
       );
 
       // Notify the user about the update and redeployment
-      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish! This will install the latest version of ALPHA-MD.*");
+      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish! This will install the latest version of BELTAH-MD.*");
       console.log("Build details:", response.data);
     } catch (error) {
       // Handle any errors during the redeployment process
