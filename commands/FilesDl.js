@@ -52,9 +52,9 @@ keith({
           mediaUrl: thumb,
           mediaType: 1,
           thumbnailUrl: thumb,
-          title: "Alpha APK Download",
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 APK Download",
           body: appDetails.BK9.name,
-          sourceUrl: conf.GURL, // Using configured source URL
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Using configured source URL
           showAdAttribution: true
         }
       }
@@ -113,9 +113,9 @@ keith({
       contextInfo: {
         externalAdReply: {
           title: `${conf.BOT} GIT CLONE`,
-          body: conf.OWNER_NAME,
-          thumbnailUrl: conf.URL,
-          sourceUrl: conf.GURL,
+          body: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
+          sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
           mediaType: 1,
           showAdAttribution: true
         }
