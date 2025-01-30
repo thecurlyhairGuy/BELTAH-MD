@@ -48,7 +48,7 @@ keith({
   const { title, artist, thumb, lyrics } = lyricsData.result;
   const imageUrl = thumb || "https://i.imgur.com/Cgte666.jpeg";
 
-  const caption = `**Title**: ${title}\n**Artist**: ${artist}\n\n${lyrics}`;
+  const caption = `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\n**Title**: ${title}\n**Artist**: ${artist}\n\n${lyrics}`;
 
   try {
     // Fetch the image
