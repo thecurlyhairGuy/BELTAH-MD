@@ -28,7 +28,7 @@ async function loading(dest, zk) {
     "⬜⬜⬛⬛⬛⬛⬜⬜60%",
     "⬜⬜⬜⬜⬛⬛⬛⬛80%",
     "⬛⬛⬜⬜⬜⬜⬛⬛100%",
-    "*LOADING SUCCESSFULLY*"
+    "*BELTAH-MD LOADED SUCCESSFULLY*"
   ];
 
   let { key } = await zk.sendMessage(dest, { text: 'Loading Please Wait' });
@@ -110,7 +110,7 @@ keith({
 
   try {
     // Inform the user that the bot is restarting
-    await repondre("*Restarting...*");
+    await repondre("*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is Restarting from the server...*");
 
     // Function to create a delay
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -136,7 +136,7 @@ keith({
 
   // Check if the command is issued by the owner
   if (!superUser) {
-    return repondre("*This command is restricted to the bot owner or Alpha owner 💀*");
+    return repondre("*This command is restricted to the bot owner or Beltah Tech owner 💀*");
   }
 
   const appname = s.HEROKU_APP_NAME;
@@ -152,7 +152,7 @@ keith({
     // Fetch config vars from Heroku API
     const configVars = await heroku.get(baseURI);
 
-    let str = '*╭───༺All my Heroku vars༻────╮*\n\n';
+    let str = '*╭───༺BELTAH-MD Heroku vars༻────╮*\n\n';
     
     // Loop through the returned config vars and format them
     for (let key in configVars) {
@@ -269,15 +269,15 @@ keith(
     const pingResults = Array.from({ length: 3 }, () => Math.floor(Math.random() * 10000 + 1000));
 
     // Create larger font for ping results (using special characters for a bigger look)
-    const formattedResults = pingResults.map(ping => `${conf.OWNER_NAME} 𝖘𝖕𝖊𝖊𝖉 ${ping} 𝐌/𝐒  `);
+    const formattedResults = pingResults.map(ping => `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃::::::> ${ping} 𝐌/𝐒  `);
 
     // Send the ping results with the updated text and format
     await zk.sendMessage(dest, {
-      text: `${formattedResults.join(', ')}`,
+      text: `${formattedResults}`,
       contextInfo: {
         externalAdReply: {
-          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
-          body: `${formattedResults.join(" | ")}`,
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 PING RESULTS " ,
+          body: "THIS BOT IS INCREDIBLE" ,
           thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" , // Replace with your bot profile photo URL
           sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Your channel URL
           mediaType: 1,
