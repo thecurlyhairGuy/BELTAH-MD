@@ -645,14 +645,6 @@ zk.ev.on("messages.upsert", async (m) => {
     }
 });*/
 
-    // Array of love emojis to react with
-const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "😎", "🔥", "💥", "💯", "✨", "🌟", "🌈", "⚡", "💎", "🌀", "👑", "🎉", "🎊", "🦄", "👽", "🛸", 
-  "🚀", "🦋", "💫", "🍀", "🎶", "🎧", "🎸", "🎤", "🏆", "🏅", "🌍", "🌎", "🌏", "🎮", "🎲", "💪", 
-  "🏋️", "🥇", "👟", "🏃", "🚴", "🚶", "🏄", "⛷️", "🕶️", "🧳", "🍿", "🍿", "🥂", "🍻", "🍷", "🍸", 
-  "🥃", "🍾", "🎯", "⏳", "🎁", "🎈", "🎨", "🌻", "🌸", "🌺", "🌹", "🌼", "🌞", "🌝", "🌜", "🌙", 
-  "🌚", "🍀", "🌱", "🍃", "🍂", "🌾", "🐉", "🐍", "🦓", "🦄", "🦋", "🦧", "🦘", "🦨", "🦡", "🐉", 
-  "🐅", "🐆", "🐓", "🐢", "🐊", "🐠", "🐟", "🐡", "🦑", "🐙", "🦀", "🐬", "🦕", "🦖", "🐾", "🐕", 
-  "🐈", "🐇", "🐾"];
 
 // AUTO_REACT: React to messages with random emoji if enabled.
 if (conf.AUTO_REACT === "yes") {
@@ -720,7 +712,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
         }
     });
   
-/*// Track the last reaction time to prevent overflow
+// Track the last reaction time to prevent overflow
 let lastReactionTime = 0;
 
 // Array of love emojis to react with
@@ -732,8 +724,8 @@ const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "�
   "🐅", "🐆", "🐓", "🐢", "🐊", "🐠", "🐟", "🐡", "🦑", "🐙", "🦀", "🐬", "🦕", "🦖", "🐾", "🐕", 
   "🐈", "🐇", "🐾"];
 
-if (conf.AUTO_LIKE_STATUS === "yes") {
-    console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
+if (conf.AUTO_DIE_HARD=== "yes") {
+    console.log("AUTO_REACT_BELTAH is enabled. Listening for status updates...");
 
     zk.ev.on("messages.upsert", async (m) => {
         const { messages } = m;
@@ -778,7 +770,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
                 await delay(2000); // 2-second delay between reactions
             }
         }
-    });*/
+    });
 }
 
     zk.ev.on("messages.upsert", async m => {
@@ -941,57 +933,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
         await zk.updateBlockStatus(auteurMessage, 'block');
       }
 
-      
-const forbiddenWords = [
-  'bitch',
-  'fuck',
-  'ass'
-];
-
-zk.ev.on("messages.upsert", async (m) => {
-  const { messages } = m;
-  const ms = messages[0];
-  if (!ms.message) {
-    return;
-  }
-
-  const texte = ms.message.conversation || ms.message.extendedTextMessage?.text || "";
-  const origineMessage = ms.key.remoteJid;
-  const auteurMessage = ms.key.participant || origineMessage;
-  const idBot = zk.user.jid;
-  
-  if (forbiddenWords.some(word => texte.includes(word)) && verifGroupe && conf.GCF === 'yes') {
-    console.log("bad word detected");
-    const verifZokAdmin = verifGroupe ? admins.includes(idBot) : false;
     
-    if (superUser || verifAdmin || !verifZokAdmin) {
-      console.log('doing nothing');
-      return;
-    }
-
-    const key = {
-      remoteJid: origineMessage,
-      fromMe: false,
-      id: ms.key.id,
-      participant: auteurMessage
-    };
-
-    const txt = `bad word detected, message deleted, \n @${auteurMessage.split("@")[0]} removed from group.`;
-    
-    await zk.sendMessage(origineMessage, { text: txt, mentions: [auteurMessage] }, { quoted: ms });
-    try {
-      await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
-    } catch (e) {
-      console.log("Error removing participant: " + e);
-    }
-    await zk.sendMessage(origineMessage, { delete: key });
-  }
-});
-
-      
-
-      
-
       if (texte && texte.startsWith('<')) {
   if (!superUser) {
     return repondre("Only for my owner or Beltah Tech to execute this command 🚫");
@@ -1615,33 +1557,6 @@ const getGreeting = () => {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
-      text: `*Hello👋, ${getGreeting()},*
-╭════⊷
-║    Owner : ${conf.OWNER_NAME}
-║    Prefix : [  ${prefixe} ]
-║    Mode : ${md} mode
-║    Total Commands : ${evt.cm.length}
-╰═════════════════⊷
-
-╭───◇
-┃
-┃ *Thank you for choosing*                      
-┃  ${conf.BOT}
-> Regards Beltah Tech 
-╰═════════════════⊷ `,
-      contextInfo: {
-        externalAdReply: {
-          title: ${conf.BOT} ,
-          body: "POWERED BY BELTAH HACKING TEAM",
-          sourceUrl: conf.GURL,
-          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" || conf.BOT_MENU_LINK,
-          mediaType: 1,
-          showAdAttribution: true,
-          renderLargerThumbnail: false
-        }
-      }
-    });
-          /*await zk.sendMessage(zk.user.id, {
             text: `*Hello👋, ${getGreeting()},*
 ╭════⊷
 ║ *『${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
@@ -1657,7 +1572,7 @@ const getGreeting = () => {
 ┃  ${conf.BOT}
 > Regards Beltah Tech 
 ╰═════════════════⊷ `
-          });*/
+          });
         }
       } else if (connection == "close") {
         let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
