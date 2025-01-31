@@ -59,14 +59,14 @@ keith({
       document: fs.readFileSync(cont),
       mimetype: 'text/vcard',
       fileName: `${metadat.subject}.Vcf`,
-      caption: `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\nVCF for ${metadat.subject}\nTotal Contacts: ${partic.length}\n*KEEP USING BELTAH-MD*`, 
+      caption: `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃\n\nᴛᴏᴛᴀʟ ᴄᴏɴᴛᴀᴄᴛs : ${partic.length} \n\nᴠᴄғ ғᴏʀ : ${metadat.subject}\n\n> *ᴋᴇᴇᴘ ᴜsɪɴɢ ʙᴇʟᴛᴀʜ-ᴍᴅ*`, 
       contextInfo: {
         externalAdReply: {
           mediaUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
           mediaType: 1,
           thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
           title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-          body: "FEEL FREE TO IMPORT THE CONTACT",
+          body: "ʏᴏᴜ ᴄᴀɴ ɴᴏᴡ ɪᴍᴘᴏʀᴛ ᴛᴏ ʏᴏᴜʀ ᴅᴇᴠɪᴄᴇ",
           sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Using configured source URL
           showAdAttribution: true
         }
