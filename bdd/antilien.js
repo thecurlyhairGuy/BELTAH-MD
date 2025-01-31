@@ -143,10 +143,3 @@ module.exports = {
   verifierEtatJid,
   recupererActionJid,
 };
-
-
-
-
-
-
-
