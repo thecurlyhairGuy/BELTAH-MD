@@ -64,7 +64,7 @@
     },
     "BOT_NAME": {
       "description": "you must give a name for you bot uhh??!!",
-      "value": "",
+      "value": "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
       "required": true
     },
     "GROUP_CONTROL": {
@@ -127,7 +127,12 @@
       "value": "",
       "required": false
     },
-    "ANTI_DELETE_MESSAGE": {
+    "ANTI_DELETE_DM": {
+      "description": "Enable anti-delete message (set 'yes' to activate or 'no' to deactivate)",
+      "value": "yes",
+      "required": false
+    },
+    "ADM_GROUP": {
       "description": "Enable anti-delete message (set 'yes' to activate or 'no' to deactivate)",
       "value": "yes",
       "required": false
