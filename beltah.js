@@ -1059,13 +1059,11 @@ if (conf.ANTILINK === "yes") {
             
             //execution des commandes   
             if (verifCom) {
-                //await await zk.readMessages(ms.key);
-                const cd = evt.cm.find((keith) => keith.nomCom === (com));
-                if (cd) {
-                    try {
-
-            if ((conf.MODE).toLocaleLowerCase() != 'yes' && !superUser) {
-                return;
+        const cd = evt.cm.find(keith => keith.nomCom === com || keith.nomCom === com || keith.aliases && keith.aliases.includes(com));
+        if (cd) {
+          try {
+            if (conf.MODE.toLocaleLowerCase() != 'yes' && !superUser) {
+              return;
             }
 
                          /******************* PM_PERMT***************/
@@ -1263,63 +1261,90 @@ zk.ev.on('group-participants.update', async (group) => {
             };
             insertContact(contacts);
         });
-        //fin événement contact 
-        //événement connexion
-        zk.ev.on("connection.update", async (con) => {
-            const { lastDisconnect, connection } = con;
-            if (connection === "connecting") {
-                console.log("ℹ️ Beltah md connecting in your account...");
+ //fin événement contact 
+    //événement connexion
+    zk.ev.on("connection.update", async con => {
+      const {
+        lastDisconnect,
+        connection
+      } = con;
+      if (connection === "connecting") {
+        console.log("ℹ️ Beltah md connecting in your account...");
+      } else if (connection === 'open') {
+         console.log("✅ Beltah Md connected successfully✔");
+        console.log("--");
+        0;
+        await baileys_1.delay(200);
+        console.log("------");
+        0;
+        await baileys_1.delay(300);
+        console.log("------------------/-----");
+        console.log(" Beltah-md installing ${evt.cm.length} plugins😇\n\n");
+        //chargement des commandes 
+        console.log("chargement des commands ...\n");
+        fs.readdirSync(__dirname + "/commands").forEach(fichier => {
+          if (path.extname(fichier).toLowerCase() == ".js") {
+            try {
+              require(__dirname + "/commands/" + fichier);
+              console.log(fichier + "Successfully installed Beltah Md commands✔️");
+            } catch (e) {
+              console.log(`${fichier} n'a pas pu être chargé pour les raisons suivantes : ${e}`);
+            } /* require(__dirname + "/commands/" + fichier);
+              console.log(fichier + " installé ✔️")*/
+            0;
+            baileys_1.delay(300);
+          }
+        });
+        0;
+        baileys_1.delay(700);
+        var md;
+        if (conf.MODE.toLocaleLowerCase() === "yes") {
+          md = "public";
+        } else if (conf.MODE.toLocaleLowerCase() === "no") {
+          md = "private";
+        } else {
+          md = "undefined";
+        }
+        console.log("Beltah md successfully connected✅");
+        await activateCrons();
+const getGreeting = () => {
+        const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
+
+        if (currentHour >= 5 && currentHour < 12) {
+          return 'Good morning 🌄';
+        } else if (currentHour >= 12 && currentHour < 18) {
+          return 'Good afternoon ☀️';
+        } else if (currentHour >= 18 && currentHour < 22) {
+          return 'Good evening 🌆';
+        } else {
+              return 'Good night 😴';
             }
-            else if (connection === 'open') {
-                console.log("✅ Beltah Md connected successfully☺️");
-                console.log("--");
-                await (0, baileys_1.delay)(200);
-                console.log("------");
-                await (0, baileys_1.delay)(300);
-                console.log("------------------/-----");
-                console.log(" Beltah-md loading plugins😇\n\n");
-                //chargement des commandes 
-                console.log("chargement des plugins ...\n");
-                fs.readdirSync(__dirname + "/commands").forEach((fichier) => {
-                    if (path.extname(fichier).toLowerCase() == (".js")) {
-                        try {
-                            require(__dirname + "/commands/" + fichier);
-                            console.log(fichier + " Loaded successfully by Beltah✔️");
-                        }
-                        catch (e) {
-                            console.log(`${fichier} could not be loaded for the following reasons : ${e}`);
-                        } /* require(__dirname + "/commandes/" + fichier);
-                         console.log(fichier + " installé ✔️")*/
-                        (0, baileys_1.delay)(300);
-                    }
-                });
-                (0, baileys_1.delay)(700);
-                var md;
-                if ((conf.MODE).toLocaleLowerCase() === "yes") {
-                    md = "public";
-                }
-                else if ((conf.MODE).toLocaleLowerCase() === "no") {
-                    md = "private";
-                }
-                else {
-                    md = "undefined";
-                }
-                console.log("Beltah md successfully connected✅");
+        };
 
-                await activateCrons();
-                
-                if((conf.DP).toLowerCase() === 'yes') {     
-                let cmsg = `ʙᴇʟᴛᴀʜ xʙᴏᴛ ɪs ᴄᴏɴɴᴇᴄᴛᴇᴅ
 
-ᴍᴏᴅᴇ :${md}
-ᴘʀᴇғɪx : [ ${prefixe} ]
-ᴘʟᴜɢɪɴs :456
-ᴅᴇᴠᴇʟᴏᴘᴇʀ : ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ 👻
+        const getCurrentTimeInNairobi = () => {
+            return DateTime.now().setZone('Africa/Nairobi').toLocaleString(DateTime.TIME_SIMPLE);
+        };
 
-ᴡᴀᴛᴄʜ ᴀʟʟ ᴛᴜᴛᴏʀɪᴀʟs
-youtube.com/@Beltahtech2024`;
-                await zk.sendMessage( zk.user.id, { text: cmsg });
-                }
+        if (conf.DP.toLowerCase() === 'yes') {
+          await zk.sendMessage(zk.user.id, {
+            text: `*Hello👋, ${getGreeting()},*
+╭════⊷
+║ *『𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║   Developer : *Beltah Tech*
+║    Prefix : [  ${prefixe} ]
+║    Mode : ${md} mode
+║    Total Commands : ${evt.cm.length}
+╰═════════════════⊷
+
+╭───◇
+┃
+┃ *Thank you for choosing*                      
+┃  𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃
+> Regards ʙᴇʟᴛᴀʜ ᴍᴅ
+╰═════════════════⊷ `
+          });
+          }
             }
             else if (connection == "close") {
                 let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
