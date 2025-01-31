@@ -44,7 +44,7 @@ keith({
       let phoneNumber = a.id.split("@")[0];
 
       // Use the participant's name or default to "[FMD] Phone Number" if no name is found
-      let contactName = a.name || a.notify || `[BELTAH-MD] +${phoneNumber}`;
+      let contactName = a.name || a.notify || `[ʙᴇʟᴛᴀʜ-ᴍᴅ] +${phoneNumber}`;
 
       vcard += `BEGIN:VCARD\nVERSION:3.0\nFN:${contactName}\nTEL;type=CELL;type=VOICE;waid=${phoneNumber}:+${phoneNumber}\nEND:VCARD\n`;
     }
