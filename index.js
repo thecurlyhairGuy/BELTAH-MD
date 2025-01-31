@@ -680,8 +680,38 @@ if (conf.AUTO_REACT === "yes") {
   });
 }
     
+ // Auto-react to status updates, handling each status one-by-one without tracking
+if (conf.AUTO_LIKE_STATUS === "yes") {
+    zk.ev.on("messages.upsert", async (m) => {
+        const { messages } = m;
+        
+        for (const message of messages) {
+            if (message.key && message.key.remoteJid === "status@broadcast") {
+                try {
+                    const adams = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
 
-// Track the last reaction time to prevent overflow
+                    if (adams) {
+                        // React to the status with a green heart
+                        await zk.sendMessage(message.key.remoteJid, {
+                            react: {
+                                key: message.key,
+                                text: "👻",
+                            },
+                        }, {
+                            statusJidList: [message.key.participant, adams],
+                        });
+
+                        // Introduce a short delay between each reaction to prevent overflow
+                        await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
+                    }
+                } catch (error) {
+                    console.error("Error decoding JID or sending message:", error);
+                }
+            }
+        }
+    });
+  
+/*// Track the last reaction time to prevent overflow
 let lastReactionTime = 0;
 
 // Array of love emojis to react with
@@ -739,7 +769,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
                 await delay(2000); // 2-second delay between reactions
             }
         }
-    });
+    });*/
 }
 
     zk.ev.on("messages.upsert", async m => {
