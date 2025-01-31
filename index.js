@@ -1582,8 +1582,8 @@ const getGreeting = () => {
           await zk.sendMessage(zk.user.id, {
             text: `*Hello👋, ${getGreeting()},*
 ╭════⊷
-║ *『𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║   Developer : *Beltah Tech*
+║ *『${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║    Owner : ${conf.OWNER_NAME}
 ║    Prefix : [  ${prefixe} ]
 ║    Mode : ${md} mode
 ║    Total Commands : ${evt.cm.length}
@@ -1592,8 +1592,8 @@ const getGreeting = () => {
 ╭───◇
 ┃
 ┃ *Thank you for choosing*                      
-┃  𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃
-> Regards ʙᴇʟᴛᴀʜ ᴍᴅ
+┃  ${conf.BOT}
+> Regards Beltah Tech 
 ╰═════════════════⊷ `
           });
         }
