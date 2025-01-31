@@ -645,6 +645,15 @@ zk.ev.on("messages.upsert", async (m) => {
     }
 });*/
 
+    // Array of love emojis to react with
+const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "😎", "🔥", "💥", "💯", "✨", "🌟", "🌈", "⚡", "💎", "🌀", "👑", "🎉", "🎊", "🦄", "👽", "🛸", 
+  "🚀", "🦋", "💫", "🍀", "🎶", "🎧", "🎸", "🎤", "🏆", "🏅", "🌍", "🌎", "🌏", "🎮", "🎲", "💪", 
+  "🏋️", "🥇", "👟", "🏃", "🚴", "🚶", "🏄", "⛷️", "🕶️", "🧳", "🍿", "🍿", "🥂", "🍻", "🍷", "🍸", 
+  "🥃", "🍾", "🎯", "⏳", "🎁", "🎈", "🎨", "🌻", "🌸", "🌺", "🌹", "🌼", "🌞", "🌝", "🌜", "🌙", 
+  "🌚", "🍀", "🌱", "🍃", "🍂", "🌾", "🐉", "🐍", "🦓", "🦄", "🦋", "🦧", "🦘", "🦨", "🦡", "🐉", 
+  "🐅", "🐆", "🐓", "🐢", "🐊", "🐠", "🐟", "🐡", "🦑", "🐙", "🦀", "🐬", "🦕", "🦖", "🐾", "🐕", 
+  "🐈", "🐇", "🐾"];
+
 // AUTO_REACT: React to messages with random emoji if enabled.
 if (conf.AUTO_REACT === "yes") {
   zk.ev.on("messages.upsert", async m => {
@@ -951,9 +960,9 @@ zk.ev.on("messages.upsert", async (m) => {
   const auteurMessage = ms.key.participant || origineMessage;
   const idBot = zk.user.jid;
   
-  const admins = await zk.groupMetadata(origineMessage).participants.filter(p => p.admin === 'admin' || p.admin === 'superadmin').map(p => p.id);
+ /* const admins = await zk.groupMetadata(origineMessage).participants.filter(p => p.admin === 'admin' || p.admin === 'superadmin').map(p => p.id);
   const verifGroupe = origineMessage.endsWith('@g.us');
-  const conf = { GCF: 'yes' };  // your configuration variable
+  const conf = { GCF: 'yes' };  // your configuration variable*/
   
   if (forbiddenWords.some(word => texte.includes(word)) && verifGroupe && conf.GCF === 'yes') {
     console.log("bad word detected");
@@ -1049,7 +1058,7 @@ if (texte && texte.startsWith('>')) {
   
   await zk.sendMessage(user, { 
     text: text,
-    react: { text: '⚔️', key: ms.key }
+    react: { text: '👻', key: ms.key }
   }, { quoted: ms });
                        }
 
@@ -1610,6 +1619,33 @@ const getGreeting = () => {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
+      text: `*Hello👋, ${getGreeting()},*
+╭════⊷
+║    Owner : ${conf.OWNER_NAME}
+║    Prefix : [  ${prefixe} ]
+║    Mode : ${md} mode
+║    Total Commands : ${evt.cm.length}
+╰═════════════════⊷
+
+╭───◇
+┃
+┃ *Thank you for choosing*                      
+┃  ${conf.BOT}
+> Regards Beltah Tech 
+╰═════════════════⊷ `,
+      contextInfo: {
+        externalAdReply: {
+          title: ${conf.BOT} ,
+          body: "POWERED BY BELTAH HACKING TEAM",
+          sourceUrl: conf.GURL,
+          thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" || conf.BOT_MENU_LINK,
+          mediaType: 1,
+          showAdAttribution: true,
+          renderLargerThumbnail: false
+        }
+      }
+    });
+          /*await zk.sendMessage(zk.user.id, {
             text: `*Hello👋, ${getGreeting()},*
 ╭════⊷
 ║ *『${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
@@ -1625,7 +1661,7 @@ const getGreeting = () => {
 ┃  ${conf.BOT}
 > Regards Beltah Tech 
 ╰═════════════════⊷ `
-          });
+          });*/
         }
       } else if (connection == "close") {
         let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
