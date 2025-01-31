@@ -255,7 +255,7 @@ zk.ev.on("messages.upsert", async (m) => {
     repliedContacts.add(remoteJid);
   }
 });
-  /*  // Function to format notification message
+   // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
   let notification = `*👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 ANTIDELETE👻*\n\n`;
@@ -291,7 +291,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADM === "yes") {
+  if (conf.ADMGROUP === "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -406,7 +406,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADM === "yes") {
+  if (conf.ANTIDELETEDM === "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -481,9 +481,9 @@ zk.ev.on("messages.upsert", async m => {
       }
     }
   }
-});*/
+});
     
-// Function to download and return media buffer
+/*// Function to download and return media buffer
 async function downloadMedia(message) {
     const mediaType = Object.keys(message)[0].replace('Message', ''); // Determine the media type
     try {
@@ -643,7 +643,7 @@ zk.ev.on("messages.upsert", async (m) => {
             }
         }
     }
-});
+});*/
 
 // AUTO_REACT: React to messages with random emoji if enabled.
 if (conf.AUTO_REACT === "yes") {
