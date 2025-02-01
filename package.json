@@ -1,6 +1,6 @@
 
  {
-  "name": "ALPHA-MD",
+  "name": "BELTAH-MD",
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
@@ -15,12 +15,12 @@
   "keywords": [
     "bot",
     "Baileys",
-    "Alpha-Md",
+    "Beltah-Md",
     "whatsapp",
     "whatsapp-bot",
-    "keithkeizzah"
+    "Beltahtechinfo"
    ],
-  "author": "keithkeizzah",
+  "author": "Beltah_Tech_inc",
 "license": "ISC",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
