@@ -28,10 +28,10 @@ async function loading(dest, zk) {
     "⬜⬜⬛⬛⬛⬛⬜⬜60%",
     "⬜⬜⬜⬜⬛⬛⬛⬛80%",
     "⬛⬛⬜⬜⬜⬜⬛⬛100%",
-    "*BELTAH-MD LOADED SUCCESSFULLY*"
+    "*ʙᴇʟᴛᴀʜ-ᴍᴅ sᴘᴇᴇᴅ ᴛᴇsᴛ ᴏʀɪɢɪɴᴀᴛᴇᴅ ғʀᴏᴍ ᴛʜᴇ sᴀᴠᴇʀ*"
   ];
 
-  let { key } = await zk.sendMessage(dest, { text: 'Loading Please Wait' });
+  let { key } = await zk.sendMessage(dest, { text: 'BELTAH-MD speed test Loading!!! Please Wait' });
 
   for (let i = 0; i < lod.length; i++) {
     await zk.sendMessage(dest, { text: lod[i], edit: key });
@@ -81,7 +81,7 @@ keith({
     fileName: 'shizo',
     contextInfo: {
       externalAdReply: {
-        title: '𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃',
+        title: '𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧',
         body: "𝗜 𝗔𝗠 𝗔𝗟𝗜𝗩𝗘" ,
         thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
         sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Corrected variable name
@@ -110,7 +110,7 @@ keith({
 
   try {
     // Inform the user that the bot is restarting
-    await repondre("*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is Restarting from the server...*");
+    await repondre("> *𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is Restarting from the server...*");
 
     // Function to create a delay
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -152,7 +152,7 @@ keith({
     // Fetch config vars from Heroku API
     const configVars = await heroku.get(baseURI);
 
-    let str = '*╭───༺BELTAH-MD Heroku vars༻────╮*\n\n';
+    let str = '*╭───༺𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗔𝗟𝗟 𝗩𝗔𝗥༻────╮*\n\n';
     
     // Loop through the returned config vars and format them
     for (let key in configVars) {
@@ -269,15 +269,15 @@ keith(
     const pingResults = Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000 + 1000));
 
     // Create larger font for ping results (using special characters for a bigger look)
-    const formattedResults = pingResults.map(ping => `𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃::::::> ${ping} 𝐌/𝐒  `);
+    const formattedResults = pingResults.map(ping => `𝗣𝗼𝗻𝗴 : ${ping} 𝐌/𝐒  `);
 
     // Send the ping results with the updated text and format
     await zk.sendMessage(dest, {
-      text: `${formattedResults}`,
+      text: " 👻🌟 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧 🌟👻", 
       contextInfo: {
         externalAdReply: {
-          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 PING RESULTS " ,
-          body: "THIS BOT IS INCREDIBLE" ,
+          title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗣𝗘𝗘𝗗 𝗧𝗘𝗦𝗧" ,
+          body: `${formattedResults}` ,
           thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" , // Replace with your bot profile photo URL
           sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Your channel URL
           mediaType: 1,
@@ -303,7 +303,7 @@ keith({
   aliases: ['runtime', 'running'],
   desc: 'To check runtime',
   categorie: 'system', // Fixed the typo here (Categorie -> categorie)
-  reaction: '👻',
+  reaction: '💢',
   fromMe: true, // Removed quotes to make it a boolean
 }, async (dest, zk, commandeOptions) => {
   const { ms, arg, repondre } = commandeOptions;
@@ -313,11 +313,11 @@ keith({
 
   // Send uptime information to the user
   await zk.sendMessage(dest, {
-    text: `*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 UPTIME IS ${runtime(botUptime)}*`,
+    text: `*𝗕𝗲𝗹𝘁𝗮𝗵 𝗨𝗽𝘁𝗶𝗺𝗲 : ${runtime(botUptime)}*`,
     contextInfo: {
       externalAdReply: {
-        title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 UPTIME",
-        body: `Bot Uptime: ${runtime(botUptime)}`, // Format the uptime before sending
+        title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗬𝗦𝗧𝗘𝗠 𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦",
+        body: "𝗧𝗮𝗽 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗳𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹" , // Format the uptime before sending
         thumbnailUrl: conf.URL, // Replace with your bot profile photo URL
         sourceUrl: conf.GURL, // Your channel URL
         mediaType: 1,
@@ -367,7 +367,7 @@ keith({
         `https://api.heroku.com/apps/${herokuAppName}/builds`,
         {
           source_blob: {
-            url: "https://github.com/Beltahtechinfo/BELTAH-MD/tarball/main",
+            url: "https://github.com/Beltah254/BELTAH-MD/tarball/main",
           },
         },
         {
@@ -379,7 +379,7 @@ keith({
       );
 
       // Notify the user about the update and redeployment
-      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish! This will install the latest version of 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃.*");
+      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish!\n\n This will install the latest version of 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧.*");
       console.log("Build details:", response.data);
     } catch (error) {
       // Handle any errors during the redeployment process
