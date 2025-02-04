@@ -70,8 +70,8 @@ keith({
 
     // Prepare the message with song details
     const messagePayload = {
-      image: { url: videoThumbnail },
-      caption: `*BELTAH-MD SONG PLAYER*\n
+      image: "https://files.catbox.moe/ewy8h1.jpg" ,
+      caption: `*𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗢𝗡𝗚𝗦*\n
 ╭───────────────◆
 │⿻ *Title:* ${songTitle} 
 │⿻ *Quality:* High
@@ -83,15 +83,15 @@ keith({
 ⦿ *Direct YtLink:* ${videoUrl}
 
 ╭────────────────◆
-│ *_Powered by ©BELTAH-MD._*
+│ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗕𝗲𝗹𝘁𝗮𝗵 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗲𝗮𝗺
 ╰─────────────────◆`,
       document: { url: downloadUrl },
       mimetype: 'audio/mpeg',
       contextInfo: {
         externalAdReply: {
-          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-          body: "Powered by Beltah Hacking Team",
-          thumbnailUrl: videoThumbnail,
+          title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧",
+          body: "𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗕𝗲𝗹𝘁𝗮𝗵 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗲𝗮𝗺",
+          thumbnailUrl: "https://files.catbox.moe/ewy8h1.jpg" ,
           sourceUrl: conf.GURL,
           mediaType: 1,
           renderLargerThumbnail: true
