@@ -379,7 +379,7 @@ keith({
       );
 
       // Notify the user about the update and redeployment
-      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish!\n\n This will install the latest version of 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧.*");
+      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish!*\n\n *This will install the latest version of 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧.*");
       console.log("Build details:", response.data);
     } catch (error) {
       // Handle any errors during the redeployment process
