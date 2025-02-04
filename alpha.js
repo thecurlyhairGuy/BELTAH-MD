@@ -5,7 +5,7 @@ const pino = require("pino");
 const fs = require("fs-extra");
 const path = require("path");
 const conf = require("./set");
-const session = conf.session.replace(/ALPHA-MD;;;=>/g, "");
+const session = conf.session.replace(/BELTAH-MD;;;=>/g, "");
 require("dotenv").config({ path: "./config.env" });
 
 let auto_reply_message = "Hello, my owner is unavailable. Kindly leave a message.";
@@ -36,7 +36,7 @@ setTimeout(() => {
     const sockOptions = {
       version,
       logger: pino({ level: "silent" }),
-      browser: ['ALPHA-MD', "safari", "1.0.0"],
+      browser: ['BELTAH-MD', "safari", "1.0.0"],
       printQRInTerminal: true,
       fireInitQueries: false,
       shouldSyncHistoryMessage: true,
@@ -70,7 +70,7 @@ setTimeout(() => {
         const callerId = callData[0].from;
         await zk.rejectCall(callId, callerId);
         await zk.sendMessage(callerId, {
-          text: "❗📵I AM ALPHA MD | I REJECT THIS CALL BECAUSE MY OWNER IS BUSY. KINDLY SEND TEXT INSTEAD."
+          text: "❗📵SORRY BELTAH-MD DECLINES ALL CALLS  PLEASE SEND MESSAGE."
         });
       }
     });
@@ -96,13 +96,13 @@ setTimeout(() => {
 
         if (deletedMessage) {
           const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-          let notification = `*😈ALPHA ANTIDELETE👿*`;
-          notification += `*Time deleted🥀:* ${new Date().toLocaleString()}`;
-          notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}`;
+          let notification = `*『 👻 ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴅᴇᴛᴇᴄᴛᴇᴅ 👻 』*`;
+          notification += `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ:* ${new Date().toLocaleString()}`;
+          notification += `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ :* @${deletedBy.split('@')[0]}\n\n> ᴍᴇssᴀɢᴇ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
 
           if (deletedMessage.message.conversation) {
             await zk.sendMessage(remoteJid, {
-              text: notification + `*Message:* ${deletedMessage.message.conversation}`,
+              text: notification + `\n\n*ᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇ:* ${deletedMessage.message.conversation}`,
               mentions: [deletedMessage.key.participant]
             });
           } else if (deletedMessage.message.imageMessage || deletedMessage.message.videoMessage || deletedMessage.message.documentMessage || deletedMessage.message.audioMessage || deletedMessage.message.stickerMessage || deletedMessage.message.voiceMessage) {
