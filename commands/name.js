@@ -2,7 +2,7 @@ const { keith } = require("../Keizzah/keith");
 const {getAllSudoNumbers,isSudoTableNotEmpty} = require("../bdd/sudo")
 const conf = require("../set");
 
-keith({ nomCom: "dev", categorie: "General", reaction: "👻" }, async (dest, zk, commandeOptions) => {
+keith({ nomCom: "bmd", categorie: "General", reaction: "👻" }, async (dest, zk, commandeOptions) => {
     const { ms , mybotpic } = commandeOptions;
     
   const thsudo = await isSudoTableNotEmpty()
@@ -57,9 +57,9 @@ keith({ nomCom: "dev", categorie: "General", reaction: "👻" }, async (dest, zk
               },
           };
           return await zk.sendMessage(dest, buttonMessaged, {   quoted: ms, });
-  
-      }
-  )
+                  }
+              });
+
     /*const vcard =
         'BEGIN:VCARD\n' + // metadata of the contact card
         'VERSION:3.0\n' +
