@@ -145,17 +145,17 @@ keith({ nomCom: "bxd", aliases: ["liste", "helplist", "commandlist"], categorie:
 ┃🚦│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ┃🚦╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷\n
- Qoute : ${randomQuote}
+ > ${randomQuote}
 `;
     let commandsList = "BELTAH-MD COMMANDS";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*♦️ ${toFancyUppercaseFont(category)} `;
+        commandsList += `\n*♦️ ${toFancyUppercaseFont(category)} ♦️*`;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
-            commandsList += `\n🫧 ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
+            commandsList += `\n${commandIndex++}. ${toFancyLowercaseFont(command)}`;
         }
         commandsList += "";
     }
