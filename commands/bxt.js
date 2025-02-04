@@ -131,7 +131,9 @@ keith({ nomCom: "bxd", aliases: ["liste", "helplist", "commandlist"], categorie:
     const randomQuote = getRandomQuote();
 
     let responseMessage = `
- Qoute : ${randomQuote}
+    
+> ${greeting}, *${nomAuteurMessage || "User"}* 
+
 ╭━━━ 〔 ${settings.BOT} 〕━━━┈⊷
 ┃🚦╭──────────────
 ┃🚦│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
@@ -143,20 +145,19 @@ keith({ nomCom: "bxd", aliases: ["liste", "helplist", "commandlist"], categorie:
 ┃🚦│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ┃🚦╰──────────────
 ╰━━━━━━━━━━━━━━━┈⊷\n
-> ${greeting}, *${nomAuteurMessage || "User"}* 
+ Qoute : ${randomQuote}
 `;
-
-    let commandsList = "";
+    let commandsList = "BELTAH-MD COMMANDS";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│🫧╭───────────────`;
+        commandsList += `\n*♦️ ${toFancyUppercaseFont(category)} `;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
-            commandsList += `\n│🫧 ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
+            commandsList += `\n🫧 ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
         }
-        commandsList += "\n│🫧╰─────────────\n╰──────────────┈⊷\n";
+        commandsList += "";
     }
 
     commandsList += readMore + "\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n";
