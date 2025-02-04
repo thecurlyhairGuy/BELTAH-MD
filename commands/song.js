@@ -3,7 +3,6 @@ const axios = require('axios');
 const ytSearch = require('yt-search');
 const conf = require(__dirname + '/../set');
 
-// Define the command with aliases for play
 keith({
   nomCom: "msc",
   aliases: ["song", "playdoc", "audio", "mp3"],
@@ -63,54 +62,47 @@ keith({
     }
 
     const downloadUrl = downloadData.result.download_url;
-    const videoDetails = downloadData.result;
-// Prepare the message payload with external ad details
-         if (apiResult.code === 200 && apiResult.status === "success") {
-        const audioDlUrl = apiResult.data.audio.url;
-        const songTitle = apiResult.data.audio.title;
-        const videoThumbnail = apiResult.data.audio.thumb;
-        const videoChannel = apiResult.data.audio.channel;
-        const videoPublished = apiResult.data.audio.published;
-        const videoViews = apiResult.data.audio.views;
+    const songTitle = downloadData.result.title;
+    const videoThumbnail = firstVideo.thumbnail;
+    const videoChannel = downloadData.result.author;
+    const videoPublished = downloadData.result.uploadDate;
+    const videoViews = downloadData.result.viewCount;
 
-        // Prepare the message with song details
-        const messagePayload = {
-          image: { url: firstVideo.thumbnail },
-          caption: `*BELTAH-MD SONG PLAYER*\n
+    // Prepare the message with song details
+    const messagePayload = {
+      image: { url: videoThumbnail },
+      caption: `*BELTAH-MD SONG PLAYER*\n
 ╭───────────────◆
-│⿻ *Title:* ${songTitle.title} 
+│⿻ *Title:* ${songTitle} 
 │⿻ *Quality:* High
-│⿻ *Duration:* ${videos[0].timestamp}
-│⿻ *Viewers:* ${videoViews.views}
-│⿻ *Uploaded:* ${videoPublished.published}
-│⿻ *Artist:* ${videoChannel.channel}
+│⿻ *Duration:* ${firstVideo.timestamp}
+│⿻ *Viewers:* ${videoViews}
+│⿻ *Uploaded:* ${videoPublished}
+│⿻ *Artist:* ${videoChannel}
 ╰────────────────◆
-⦿ *Direct YtLink:* ${downloadUrl}
+⦿ *Direct YtLink:* ${videoUrl}
 
 ╭────────────────◆
 │ *_Powered by ©BELTAH-MD._*
 ╰─────────────────◆`,
-          document: { url: downloadUrl },
-        mimetype: 'audio/mpeg',
-          contextInfo: {
-            externalAdReply: {
-              title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-              body: "Powered by Beltah Hacking Team",
-              thumbnailUrl: firstVideo.thumbnail,
-              sourceUrl: conf.GURL,
-              mediaType: 1,
-              renderLargerThumbnail: true
-            }
-          }
-        };
-    
-      for (const messagePayload of messagePayloads) {
-      await zk.sendMessage(dest, messagePayload, { quoted: ms });
-    }
+      document: { url: downloadUrl },
+      mimetype: 'audio/mpeg',
+      contextInfo: {
+        externalAdReply: {
+          title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
+          body: "Powered by Beltah Hacking Team",
+          thumbnailUrl: videoThumbnail,
+          sourceUrl: conf.GURL,
+          mediaType: 1,
+          renderLargerThumbnail: true
+        }
+      }
+    };
+
+    await zk.sendMessage(dest, messagePayload, { quoted: ms });
 
   } catch (error) {
     console.error('Error during download process:', error);
     return repondre(`Download failed due to an error: ${error.message || error}`);
   }
 });
-    
