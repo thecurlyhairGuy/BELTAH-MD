@@ -53,27 +53,7 @@ const fetchGitHubStats = async () => {
     }
 };
 
-// Function to get a random quote
-const getRandomQuote = () => {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    return quotes[randomIndex];
-};
-
-keith({ nomCom: "bxd", aliases: ["liste", "helplist", "commandlist"], categorie: "SYSTEM" }, async (message, client, config) => {
-    const { ms, respond, prefix, nomAuteurMessage } = config;
-    const commands = require(__dirname + "/../keizzah/keith").cm;
-    const categorizedCommands = {};
-    const mode = settings.MODE.toLowerCase() !== "public" ? "Private" : "Public";
-
-    // Organize commands into categories
-    commands.forEach(command => {
-        const category = command.categorie.toUpperCase();
-        if (!categorizedCommands[category]) {
-            categorizedCommands[category] = [];
-        }
-        categorizedCommands[category].push(command.nomCom);
-    });
-const randomQuote = [
+const quotes = [
  "ᴅʀᴇᴀᴍ ʙɪɢ, ᴡᴏʀᴋ ʜᴀʀᴅ.",
  "sᴛᴀʏ ʜᴜᴍʙʟᴇ, ʜᴜsᴛʟᴇ ʜᴀʀᴅ.",
  "ʙᴇʟɪᴇᴠᴇ ɪɴ ʏᴏᴜʀsᴇʟғ.",
@@ -115,6 +95,26 @@ const randomQuote = [
  "ᴅᴏɴ’ᴛ ᴄᴏᴜɴᴛ ᴛʜᴇ ᴅᴀʏs, ᴍᴀᴋᴇ ᴛʜᴇ ᴅᴀʏs ᴄᴏᴜɴᴛ.",
  "sᴜᴄᴄᴇss ɪs ɴᴏᴛ ᴛʜᴇ ᴋᴇʏ ᴛᴏ ʜᴀᴘᴘɪɴᴇss. ʜᴀᴘᴘɪɴᴇss ɪs ᴛʜᴇ ᴋᴇʏ ᴛᴏ sᴜᴄᴄᴇss."
 ];
+// Function to get a random quote
+const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+};
+
+keith({ nomCom: "bxd", aliases: ["liste", "helplist", "commandlist"], categorie: "SYSTEM" }, async (message, client, config) => {
+    const { ms, respond, prefix, nomAuteurMessage } = config;
+    const commands = require(__dirname + "/../keizzah/keith").cm;
+    const categorizedCommands = {};
+    const mode = settings.MODE.toLowerCase() !== "public" ? "Private" : "Public";
+
+    // Organize commands into categories
+    commands.forEach(command => {
+        const category = command.categorie.toUpperCase();
+        if (!categorizedCommands[category]) {
+            categorizedCommands[category] = [];
+        }
+        categorizedCommands[category].push(command.nomCom);
+    });
 
     moment.tz.setDefault("Africa/Nairobi");
     const currentTime = moment();
@@ -131,36 +131,32 @@ const randomQuote = [
     const randomQuote = getRandomQuote();
 
     let responseMessage = `
- ${greeting}, *${nomAuteurMessage || "User"}*
- 
+ Qoute : ${randomQuote}
 ╭━━━ 〔 ${settings.BOT} 〕━━━┈⊷
-┃╭──────────────
-┃│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
-┃│▸ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
-┃│▸ *ᴛɪᴍᴇ:* ${formattedTime}
-┃│▸ *ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
-┃│▸ *ᴅᴀᴛᴇ:* ${formattedDate}
-┃│▸ *ᴍᴏᴅᴇ:* ${mode}
-┃│▸ *ᴛɪᴍᴇ ᴢᴏɴᴇ:* Africa/Nairobi
-┃│▸ *ᴛᴏᴛᴀʟ ᴜsᴇʀs:* ${formattedTotalUsers} users
-┃│▸ *ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
-┃╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-
+┃🚦╭──────────────
+┃🚦│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
+┃🚦│▸ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
+┃🚦│▸ *ᴛɪᴍᴇ:* ${formattedTime} 
+┃🚦│▸ *ᴅᴀᴛᴇ:* ${formattedDate}
+┃🚦│▸ *ᴍᴏᴅᴇ:* ${mode}
+┃🚦│▸ *ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
+┃🚦│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
+┃🚦╰──────────────
+╰━━━━━━━━━━━━━━━┈⊷\n
+> ${greeting}, *${nomAuteurMessage || "User"}* 
 `;
 
-    let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
+    let commandsList = "";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│◦│╭───────────────`;
+        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│🫧╭───────────────`;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
-            commandsList += `\n│◦│ ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
+            commandsList += `\n│🫧 ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
         }
-        commandsList += "\n│◦╰─────────────\n╰──────────────┈⊷\n";
+        commandsList += "\n│🫧╰─────────────\n╰──────────────┈⊷\n";
     }
 
     commandsList += readMore + "\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n";
@@ -172,8 +168,8 @@ const randomQuote = [
             contextInfo: {
                 mentionedJid: [senderName],
                 externalAdReply: {
-                    title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
-                    body: ${randomQuote},
+                    title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
+                    body: "𝗧𝗮𝗽 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗳𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹" ,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
                     sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                     mediaType: 1,
