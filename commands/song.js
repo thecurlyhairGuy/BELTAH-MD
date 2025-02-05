@@ -70,7 +70,6 @@ keith({
 
     // Prepare the message with song details
     const messagePayload = {
-      image: "https://files.catbox.moe/ewy8h1.jpg" ,
       caption: `\n*𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗢𝗡𝗚𝗦*\n
 ╭───────────────◆
 │⿻ *Title:* ${songTitle} 
