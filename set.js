@@ -7,30 +7,30 @@ const databasePath = path.join(__dirname, './database.db');
 const DATABASE_URL = process.env.DATABASE_URL === undefined
     ? databasePath
     : process.env.DATABASE_URL;
-module.exports = { session: process.env.SESSION_ID || 'BELTAH',
+module.exports = { session: process.env.SESSION_ID || 'BELTAH-MD',
     PREFIXE: process.env.PREFIX || "+",
-    GITHUB : process.env.GITHUB|| 'https://github.com/Beltahtechinfo/BELTAH-MD',
-    OWNER_NAME : process.env.OWNER_NAME || "𝐁𝐄𝐋𝐓𝐀𝐇",
-    NUMERO_OWNER : process.env.NUMERO_OWNER || "254748387615",  
+    GITHUB : process.env.GITHUB|| 'https://github.com/Beltah254/BELTAH-MD',
+    OWNER_NAME : process.env.OWNER_NAME || "Beltah254",
+    NUMERO_OWNER : process.env.NUMERO_OWNER || "254114141192",  
               
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "non",
     AUTO_DOWNLOAD_STATUS: process.env.AUTO_DOWNLOAD_STATUS || 'non',
     AUTO_REACT: process.env.AUTO_REACTION || "non",  
     URL: process.env.URL || "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",  
     AUTO_LIKE_STATUS: process.env.AUTO_LIKE_STATUS || 'non',              
-    CHATBOT: process.env.CHAT_BOT || "off",              
+    EMOJIS: process.env.EMOJIS || "👻,☺️,❤️,🦚",              
     AUTO_READ_MESSAGES: process.env.AUTO_READ_MESSAGES || "yes",
     AUTO_BLOCK: process.env.AUTO_BLOCK || 'no', 
     GCF: process.env.GROUP_CONTROL || 'no', 
-    GREET : process.env.GREET || "no", 
-    AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || 'viewed by alpha md',   
+    GREET : process.env.GREET || "no",            
+    AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || 'viewed by Beltah md',   
     AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || 'no',
     AUTOBIO: process.env.AUTOBIO || 'yes',       
     ANTICALL_MSG : process.env.ANTICALL_MESSAGE || '',             
-    GURL: process.env.GURL  || "https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F",
-    WEBSITE :process.env.GURL || "https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F",
+    GURL: process.env.GURL  || "https://whatsapp.com/channel/0029VAUSV0PFCCOSB5TX9C1F",
+    EVENTS :process.env.EVENTS || "yes",
     CAPTION : process.env.CAPTION || "BELTAH-MD",
-    BOT : process.env.BOT_NAME || 'BELTAH-MD',
+    BOT : process.env.BOT_NAME || 'BELTAH_MD',
     MODE: process.env.PUBLIC_MODE || "no",              
     TIMEZONE: process.env.TIMEZONE || "Africa/Nairobi", 
     PM_PERMIT: process.env.PM_PERMIT || 'no',
@@ -39,8 +39,7 @@ module.exports = { session: process.env.SESSION_ID || 'BELTAH',
     WARN_COUNT : process.env.WARN_COUNT || '3' ,
     ETAT : process.env.PRESENCE || '1',
     DP : process.env.STARTING_BOT_MESSAGE || "yes",
-    ANTIDELETEDM: process.env.ANTI_DELETE_DM || 'no',
-    ADMGROUP: process.env.ADM_GROUP || 'no',
+    ADM : process.env.ANTI_DELETE_MESSAGE || 'no',
     ANTICALL: process.env.ANTICALL || 'yes',              
     DATABASE_URL,
     DATABASE: DATABASE_URL === databasePath
@@ -68,4 +67,3 @@ fs.watchFile(fichier, () => {
     delete require.cache[fichier];
     require(fichier);
 });
-
