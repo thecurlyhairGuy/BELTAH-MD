@@ -17,7 +17,7 @@ const handleGroupParticipantsUpdate = async (zk) => {
       let participants = group.participants;
 
       if (group.action === 'add' && await recupevents(group.id, 'welcome') === 'on') {
-        let msg = '╭═══◇KEITH-TECH◇═══⊷\n';
+        let msg = '╭═══◇𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃◇═══⊷\n';
 
         for (let membre of participants) {
           msg += `║ Hello @${membre.split('@')[0]}\n`;
