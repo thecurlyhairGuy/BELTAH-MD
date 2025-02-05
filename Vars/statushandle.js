@@ -21,7 +21,7 @@ const handleStatus = async (zk, conf) => {
 
           await zk.sendMessage(user, {
             text: text,
-            react: { text: '⚔️', key: ms.key }
+            react: { text: '👻', key: ms.key }
           });
 
           lastTextTime = currentTime;
