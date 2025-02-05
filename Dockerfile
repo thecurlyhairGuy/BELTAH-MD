@@ -22,4 +22,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["node", "beltahtechinfo.js"]
+CMD ["node", "index.js"]
