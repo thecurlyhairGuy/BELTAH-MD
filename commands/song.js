@@ -88,7 +88,7 @@ keith({
             title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
             body: "𝗧𝗮𝗽 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗳𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹",
             mediaType: 1,
-            sourceUrl: Conf.GURL,
+            sourceUrl:"https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F",
             thumbnailUrl: firstVideo.thumbnail,
             renderLargerThumbnail: false,
             showAdAttribution: true,
