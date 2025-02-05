@@ -852,7 +852,7 @@ ${metadata.desc}`;
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
                 let cmsg = `Hello👋  *${conf.OWNER_NAME}*  😎 ,
-                 *${getGreeting()},      
+                 *${getGreeting()},*      
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
 ║    Prefix 🫧 : [ ${prefixe} ]
