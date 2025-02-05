@@ -82,15 +82,16 @@ keith({
 │ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗕𝗲𝗹𝘁𝗮𝗵 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗲𝗮𝗺
 ╰─────────────────◆`,
       document: { url: downloadUrl },
-      mimetype: 'audio/mpeg',
-      contextInfo: {
-        externalAdReply: {
-          title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧",
-          body: "𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗕𝗲𝗹𝘁𝗮𝗵 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗲𝗮𝗺",
-          thumbnailUrl: "https://files.catbox.moe/ewy8h1.jpg" ,
-          sourceUrl: conf.GURL,
-          mediaType: 1,
-          renderLargerThumbnail: true
+        mimetype: 'audio/mpeg',
+        contextInfo: {
+          externalAdReply: {
+            title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
+            body: "𝗧𝗮𝗽 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗳𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹",
+            mediaType: 1,
+            sourceUrl: Conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
         }
       }
     };
