@@ -4,7 +4,7 @@ const ytSearch = require('yt-search');
 const conf = require(__dirname + '/../set');
 
 keith({
-  nomCom: "msc",
+  nomCom: "music",
   aliases: ["song", "playdoc", "audio", "mp3"],
   categorie: "Search",
   reaction: "🗿"
@@ -71,14 +71,11 @@ keith({
     // Prepare the message with song details
     const messagePayload = {
       image: "https://files.catbox.moe/ewy8h1.jpg" ,
-      caption: `*𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗢𝗡𝗚𝗦*\n
+      caption: `\n*𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗢𝗡𝗚𝗦*\n
 ╭───────────────◆
 │⿻ *Title:* ${songTitle} 
 │⿻ *Quality:* High
 │⿻ *Duration:* ${firstVideo.timestamp}
-│⿻ *Viewers:* ${videoViews}
-│⿻ *Uploaded:* ${videoPublished}
-│⿻ *Artist:* ${videoChannel}
 ╰────────────────◆
 ⦿ *Direct YtLink:* ${videoUrl}
 
