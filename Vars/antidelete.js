@@ -5,11 +5,11 @@ const store = { chats: {} }; // Assuming a store object to store messages
 // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  let notification = `*😈ALPHA ANTIDELETE👿*\n\n`;
-  notification += `*Time deleted🥀:* ${new Date().toLocaleString()}\n`;
-  notification += `*Deleted by🌷:* @${deletedBy.split('@')[0]}\n\n*Powered by Keithkeizzah*\n\n`;
+   let notification = `*『 👻 ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴅᴇᴛᴇᴄᴛᴇᴅ 👻 』*\n\n`;
+  notification += `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ :* ${new Date().toLocaleString()}\n`;
+  notification += `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ :* @${deletedBy.split('@')[0]}\n\n> ᴍᴇssᴀɢᴇ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
   return notification;
-}
+ } 
 
 // Helper function to download media
 async function downloadMedia(message) {
@@ -75,7 +75,7 @@ const handleAntiDelete = async (zk, conf, m) => {
           if (deletedMessage.message.conversation) {
             // Text message
             await zk.sendMessage(remoteJid, {
-              text: notification + `*Message:* ${deletedMessage.message.conversation}`,
+               text: notification + `\n\n*ᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇ* \n ${deletedMessage.message.conversation}`,
               mentions: [deletedMessage.key.participant]
             });
           } else if (
