@@ -8,7 +8,7 @@ keith({
   nomCom: "owner",
   desc: "to generate owner vcard number",
   categorie: "General",
-  reaction: "⚔️"
+  reaction: "😬"
 }, async (dest, zk, commandeOptions) => {
   const { ms, mybotpic } = commandeOptions;
 
@@ -48,15 +48,14 @@ keith({
   nomCom: "dev",
   aliases: ["developer", "deve"],
   categorie: "General",
-  reaction: "⚔️"
+  reaction: "⚠️"
 }, async (dest, zk, commandeOptions) => {
   const { ms, mybotpic } = commandeOptions;
 
   // Define developer contacts with names
   const devContacts = [
-    { name: 'Keith', number: '254748387615' },
-    { name: 'Alpha', number: '254796299159' },
-    { name: 'Ghost', number: '254110190196' }
+    { name: 'Beltah Tech 254', number: '254114141192' },
+    { name: 'Audi Beltah', number: '254737681758' },
   ];
 
   // Inform about the developer contacts
@@ -77,55 +76,10 @@ keith({
   // Send message with VCard contacts
   zk.sendMessage(dest, {
     contacts: {
-      displayName: 'Developers',
+      displayName: 'BELTAH-MD DEVELOPERS',
       contacts: vcards.map(vcard => ({ vcard })),
     },
   }, { quoted: ms });
-});
-
-keith({
-  nomCom: "master",
-  categorie: "General",
-  desc: "to send developer contacts as a vcard",
-  reaction: "⚔️"
-}, async (dest, zk, commandeOptions) => {
-  const { ms, mybotpic } = commandeOptions;
-
-  // Define developer contacts with names
-  const devContacts = [
-    { name: 'Keith', number: '254748387615' },
-    { name: 'Alpha', number: '254796299159' },
-    { name: 'Ghost', number: '254110190196' }
-  ];
-
-  // Inform about the developer contacts
-  await zk.sendMessage(dest, {
-    text: "Below are the developer contacts:",
-  }, { quoted: ms });
-
-  // Function to send VCard
-  const sendVCard = async (contact) => {
-    const vcard = 
-      'BEGIN:VCARD\n' +
-      'VERSION:3.0\n' +
-      `FN:${contact.name}\n` +
-      'ORG:undefined;\n' +
-      `TEL;type=CELL;type=VOICE;waid=${contact.number}:${contact.number}\n` +
-      'END:VCARD';
-
-    await zk.sendMessage(dest, {
-      contacts: {
-        displayName: contact.name,
-        contacts: [{ vcard }]
-      }
-    }, { quoted: ms });
-  };
-
-  // Send each contact one by one
-  for (const contact of devContacts) {
-    await sendVCard(contact);
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Delay between messages
-  }
 });
 
 keith({
@@ -133,7 +87,7 @@ keith({
   aliases: ["members", "groupmembers"],
   desc: "to list members vcard contacts in a group",
   categorie: "General",
-  reaction: "⚔️"
+  reaction: "🥏"
 }, async (dest, zk, commandeOptions) => {
   const { ms, mybotpic, verifGroupe, repondre } = commandeOptions;
 
