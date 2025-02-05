@@ -3,12 +3,12 @@
   "name": "BELTAH-MD",
   "version": "2.0.0",
   "description": "",
-  "main": "beltahtcp.js",
+  "main": "beltahtechinfo.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "s": "node beltahtcp.js", 
-    "beltahinc": "pm2 start beltahtcp.js --attach --max-memory-restart 490M",
+    "s": "node beltahtechinfo.js", 
+    "beltahinc": "pm2 start beltahtechinfo.js --attach --max-memory-restart 490M",
     "c": "tsc"
     },
   "keywords": [
