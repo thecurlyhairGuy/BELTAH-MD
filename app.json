@@ -68,7 +68,7 @@
       "required": false 
     },
     "EMOJIS": {
-      "description": "you must give emoji for your bot, separated by a comma??!!",
+      "description": "Imput your favorite emojis to react on your friends status,, each emoji must be separated by a comma.!!",
       "value": "👻,❤️,☺️",
       "required": false 
     },
@@ -79,7 +79,7 @@
     },
     "GROUP_CONTROL": {
       "description": "urs if you want bot yo control group features such as antilink,antispam,antibad",
-      "value": "yes",
+      "value": "no",
       "required": false
     },
     "PUBLIC_MODE": {
@@ -109,7 +109,7 @@
     },
     "URL": {
       "description": "you must add your bot image url.Get your image url now and fill it here",
-      "value": "",
+      "value": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
       "required": true
     },
     "AUTO_READ_MESSAGES": {
@@ -118,8 +118,8 @@
       "required": false  
     },
     "NUMERO_OWNER": {
-      "description": "Your phone number (exclude '+' and area code, e.g., '254796299159')",
-      "value": "254796299159",
+      "description": "Your phone number (exclude '+' and area code, e.g., '254114141192')",
+      "value": "254114141192",
       "required": false
     },
     "WARN_COUNT": {
