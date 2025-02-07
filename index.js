@@ -788,9 +788,8 @@ ${metadata.desc}`;
             if (connection === "connecting") {
                 console.log("ℹ️ BELTAH MD is connecting to your account...");
             }
-            else if (connection === 'open') {
-                await zk.groupAcceptInvite("CtmozQc8RVv6bLiWK1ACkN");
-
+            else if (connection === 'open')
+            {
                 console.log("✅ connected successfully enjoy☺️");
                 console.log("--");
                 await (0, baileys_1.delay)(200);
@@ -853,11 +852,11 @@ ${metadata.desc}`;
                 let cmsg = `Hello *${conf.OWNER_NAME}*, *${getGreeting()},*      
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Prefix 🫧 : [ ${prefixe} ]
-║    Mode ⚙️:${md}
-║    Time 🕐: ${formattedTime}
-║    Day 📆: ${formattedDate} 
-║    Commands 🚦: ${evt.cm.length}︎
+║  🫧Prefix : [ ${prefixe} ]
+║  ⚙️Mode :${md}
+║  🕐Time : ${formattedTime}
+║  📆 Day : ${formattedDate} 
+║  📢 Commands : ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
