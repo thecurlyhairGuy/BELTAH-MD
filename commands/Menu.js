@@ -135,35 +135,29 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
     let responseMessage = `
  ${greeting}, *${nomAuteurMessage || "User"}*
  
-╭━━━ 〔 ${settings.BOT} 〕━━━┈⊷
-┃╭──────────────
-┃│▸ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
-┃│▸ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
-┃│▸ *ᴛɪᴍᴇ:* ${formattedTime}
-┃│▸ *ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
-┃│▸ *ᴅᴀᴛᴇ:* ${formattedDate}
-┃│▸ *ᴍᴏᴅᴇ:* ${mode}
-┃│▸ *ᴛɪᴍᴇ ᴢᴏɴᴇ:* Africa/Nairobi
-┃│▸ *ᴛᴏᴛᴀʟ ᴜsᴇʀs:* ${formattedTotalUsers} users
-┃│▸ *ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-┃│▸ *ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
-┃╰──────────────
-╰━━━━━━━━━━━━━━━┈⊷
-> *${randomQuote}*
-
-`;
+╭───❮  ${settings.BOT} ❯━━┈⊷
+│➥ *👤ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
+│➥ *🥏ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
+│➥ *🕒ᴛɪᴍᴇ:* ${formattedTime}
+│➥ *🛸ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
+│➥ *📆ᴅᴀᴛᴇ:* ${formattedDate}
+│➥ *🧑‍💻ᴍᴏᴅᴇ:* ${mode}
+│➥ *📼ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
+│➥ *⏳ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
+╰─────────────━┈⊷
+> *${randomQuote}*\n\n${readmore}`;
 
     let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*╭─────「 ${toFancyUppercaseFont(category)} 」──┈⊷*\n│◦│╭───────────────`;
+        commandsList += `\n*╭━❮ ${toFancyUppercaseFont(category)} ❯━╮*`;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
-            commandsList += `\n│◦│ ${commandIndex++}. ${toFancyLowercaseFont(command)}`;
+            commandsList += `\n┃✰ ${toFancyLowercaseFont(command)}`;
         }
-        commandsList += "\n│◦╰─────────────\n╰──────────────┈⊷\n";
+        commandsList += "\n╰─────────────━┈⊷";
     }
 
     commandsList += readMore + "\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n";
