@@ -162,7 +162,7 @@ mediamsg = msgRepondu.videoMessage
   var stick = await zk.downloadAndSaveMediaMessage(mediamsg)
 
      let stickerMess = new Sticker(stick, {
-            pack: 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃,
+            pack: 𝐁𝐄𝐋𝐓𝐀𝐇𝐌𝐃,
             
             type: StickerTypes.FULL,
             categories: ["🤩", "🎉"],
