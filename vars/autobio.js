@@ -3,7 +3,7 @@ const autobio = (zk, conf) => {
     setInterval(() => {
       const date = new Date();
       zk.updateProfileStatus(
-        `${conf.BOT} is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        `👻 ${conf.BOT} 👻 is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
   }
