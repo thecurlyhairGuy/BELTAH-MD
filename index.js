@@ -45,7 +45,7 @@ const autobio = require("./Vars/autobio");
 const handleStatus = require("./Vars/statushandle");
 const handleAutoReply = require("./Vars/greet");
 const handleAntiDelete = require("./Vars/antidelete");
-const handleEvalCommand = require('/Vars/eval');
+const handleEvalCommand = require('./Vars/eval');
 const handleAutoBlock = require('./Vars/autoblock');
 const handleAutoReact = require("./Vars/autoreact");
 const handleAutoRead = require("./Vars/autoread");
@@ -783,6 +783,7 @@ ${metadata.desc}`;
                 console.log("ℹ️BELTAH-MD is connecting to your account...");
             }
             else if (connection === 'open') {
+                
                  console.log("✅ connected successfully enjoy☺️");
                 console.log("--");
                 await (0, baileys_1.delay)(200);
