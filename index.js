@@ -842,7 +842,7 @@ ${metadata.desc}`;
         };
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
-                let cmsg = `Hello👋 *${conf.OWNER_NAME}*, *${getGreeting()}*  
+                let cmsg = `*${getGreeting()}* *${conf.OWNER_NAME}*  
                 
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
@@ -856,7 +856,6 @@ ${metadata.desc}`;
 ╭───◇
 > *Thank you for choosing*                      
 > *${conf.BOT}*
-║
 ╰═════════════════⊷`;
                 await zk.sendMessage(zk.user.id, {
   text: cmsg,
