@@ -60,7 +60,7 @@ const  {addGroupToBanList,isGroupBanned,removeGroupFromBanList} = require("./bdd
 const {isGroupOnlyAdmin,addGroupToOnlyAdminList,removeGroupFromOnlyAdminList} = require("./bdd/onlyAdmin");
 //const //{loadCmd}=require("/keizzah/mesfonctions")
 let { reagir } = require(__dirname + "/keizzah/app");
-var session = conf.session.replace(/ALPHA-MD;;;=>/g,"");
+var session = conf.session.replace(/BELTAH-MD;;;=>/g,"");
 const prefixe = conf.PREFIXE;
 const express = require("express");
 const app = express();
@@ -100,7 +100,7 @@ setTimeout(() => {
         const sockOptions = {
             version,
             logger: pino({ level: "silent" }),
-            browser: ['Alpha-Md', "safari", "1.0.0"],
+            browser: ['Beltah-Md', "safari", "1.0.0"],
             printQRInTerminal: true,
             fireInitQueries: false,
             shouldSyncHistoryMessage: true,
@@ -187,17 +187,16 @@ zk.ev.on('call', async (callData) => {
             var membreGroupe = verifGroupe ? ms.key.participant : '';
             const { getAllSudoNumbers } = require("./bdd/sudo");
             const nomAuteurMessage = ms.pushName;
-            const keith = '254748387615';
-            const Keithkeizzah = '254796299159';
-            const Ghost = "254110190196";
+            const Beltahtech= '254114141192';
+            const Audibeltah = '254737681758';
             const sudo = await getAllSudoNumbers();
             const superUserNumbers = [servBot, keith, Keithkeizzah, Ghost, conf.NUMERO_OWNER].map((s) => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
             const allAllowedNumbers = superUserNumbers.concat(sudo);
             const superUser = allAllowedNumbers.includes(auteurMessage);
             
-            var dev = [keith, Keithkeizzah,Ghost].map((t) => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
+            var dev = [Beltahtech, Audibeltah].map((t) => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
             function repondre(mes) { zk.sendMessage(origineMessage, { text: mes }, { quoted: ms }); }
-            console.log("\t [][]...{ALPHA-MD}...[][]");
+            console.log("\t [][]...{BELTAH-MD}...[][]");
             console.log("=========== New message ===========");
             if (verifGroupe) {
                 console.log("message from the group : " + nomGroupe);
@@ -498,7 +497,7 @@ function mybotpic() {
            // txt += `message supprimé \n @${auteurMessage.split("@")[0]} rétiré du groupe.`;
             const gifLink = "https://raw.githubusercontent.com/djalega8000/Zokou-MD/main/media/remover.gif";
             var sticker = new Sticker(gifLink, {
-                pack: 'ALPHA-MD',
+                pack: 'BELTAH-MD',
                 author: conf.OWNER_NAME,
                 type: StickerTypes.FULL,
                 categories: ['🤩', '🎉'],
@@ -633,14 +632,14 @@ zk.ev.on('group-participants.update', async (group) => {
     try {
         ppgroup = await zk.profilePictureUrl(group.id, 'image');
     } catch {
-        ppgroup = 'https://telegra.ph/file/c66d12099fb7a4f62d70a.jpg';
+        ppgroup = 'https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg';
     }
 
     try {
         const metadata = await zk.groupMetadata(group.id);
 
         if (group.action == 'add' && (await recupevents(group.id, "welcome") == 'on')) {
-            let msg = `╭═══◇KEITH-TECH◇═══⊷
+            let msg = `╭═══◇𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗◇═══⊷
 `;
              
             let membres = group.participants;
@@ -648,9 +647,8 @@ zk.ev.on('group-participants.update', async (group) => {
                 msg += `║ Hello @${membre.split("@")[0]}\n`;
             }
 
-            msg += `║ *You are welcomed here* _You MAY read the group description FOR more info and Avoid getting removed_
-            
-     
+            msg += `║ *You are welcomed here* You MAY read the group description FOR more info and Avoid getting removed
+             
  ╰═══◇◇═══⊷
             
  ◇ *GROUP DESCRIPTION*  ◇
@@ -783,10 +781,10 @@ ${metadata.desc}`;
         zk.ev.on("connection.update", async (con) => {
             const { lastDisconnect, connection } = con;
             if (connection === "connecting") {
-                console.log("ℹ️ Alpha is connecting to your account...");
+                console.log("ℹ️BELTAH-MD is connecting to your account...");
             }
             else if (connection === 'open') {
-                await zk.groupAcceptInvite("KOvNtZbE3JC32oGAe6BQpp");
+                await zk.groupAcceptInvite("CtmozQc8RVv6bLiWK1ACkN");
 
                 console.log("✅ connected successfully enjoy☺️");
                 console.log("--");
@@ -847,23 +845,20 @@ ${metadata.desc}`;
         };
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
-                let cmsg = `Hello👋  *${conf.OWNER_NAME}*  😎 ,
-                 *${getGreeting()},*
-                 *It's ${formattedDate} 🗓️*
-                 *the time is ${formattedTime}.🕛*      
+                let cmsg = `Hello *${conf.OWNER_NAME}*, *${getGreeting()}*     
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Prefix : [ ${prefixe} ]
-║    Mode :${md}
-║    Total Commands : ${evt.cm.length}︎
+║   Prefix : [ ${prefixe} ]
+║   Mode :${md}
+║   Time : ${formattedTime}
+║   Day : ${formattedDate} 
+║   Commands : ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
-┃ 
-┃
-┃ *Thank you for choosing*                      
-┃  *${conf.BOT}*
-┃
+> *Thank you for choosing*                      
+> *${conf.BOT}*
+║
 ╰═════════════════⊷`;
                 await zk.sendMessage(zk.user.id, {
   text: cmsg,
