@@ -46,7 +46,6 @@ const handleStatus = require("./Vars/statushandle");
 const handleAutoReply = require("./Vars/greet");
 const handleAntiDelete = require("./Vars/antidelete");
 const handleEvalCommand = require('./Vars/eval');
-const handleAutoBlock = require('./Vars/autoblock');
 const handleAutoReact = require("./Vars/autoreact");
 const handleAutoRead = require("./Vars/autoread");
 const handleAutoLikeStatus = require("./Vars/autolikestatus");
@@ -827,13 +826,13 @@ ${metadata.desc}`;
         const currentHour = DateTime.now().setZone(conf.TIMEZONE).hour;
 
         if (currentHour >= 5 && currentHour < 12) {
-          return 'Good morning fam';
+          return 'Good morning🌄';
         } else if (currentHour >= 12 && currentHour < 18) {
           return 'Good afternoon ☀️';
         } else if (currentHour >= 18 && currentHour < 22) {
-          return 'Good evening gee';
+          return 'Good evening🌇';
         } else {
-              return 'Good night mzee';
+              return 'Good night🌃';
             }
         };
 
@@ -843,14 +842,15 @@ ${metadata.desc}`;
         };
                 
                 if((conf.DP).toLowerCase() === 'yes') {     
-                let cmsg = `Hello *${conf.OWNER_NAME}*, *${getGreeting()}*     
+                let cmsg = `Hello👋 *${conf.OWNER_NAME}*, *${getGreeting()}*  
+                
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║   Prefix : [ ${prefixe} ]
-║   Mode :${md}
-║   Time : ${formattedTime}
-║   Day : ${formattedDate} 
-║   Commands : ${evt.cm.length}︎
+║  🥏Prefix : [ ${prefixe} ]
+║  🛸Mode :${md}
+║  🕒Time : ${formattedTime}
+║  📆Day : ${formattedDate} 
+║  📼Commands : ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
