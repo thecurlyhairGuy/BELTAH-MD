@@ -45,7 +45,6 @@ const autobio = require("./Vars/autobio");
 const handleStatus = require("./Vars/statushandle");
 const handleAutoReply = require("./Vars/greet");
 const handleAntiDelete = require("./Vars/antidelete");
-/*const handleAntiLink = require("./Vars/antilink");*/
 const handleEvalCommand = require('/Vars/eval');
 const handleAutoBlock = require('./Vars/autoblock');
 const handleAutoReact = require("./Vars/autoreact");
