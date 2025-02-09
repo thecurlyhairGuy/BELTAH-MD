@@ -145,9 +145,9 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
 │➥ *📼ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
 │➥ *⏳ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
 ╰─────────────━┈⊷
-> *${randomQuote}*\n\n${readmore}`;
+> *${randomQuote}*\n`;
 
-    let commandsList = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒*\n";
+    let commandsList = "";
     const sortedCategories = Object.keys(categorizedCommands).sort();
     let commandIndex = 1;
 
