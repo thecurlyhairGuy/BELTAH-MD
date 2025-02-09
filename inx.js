@@ -484,127 +484,8 @@ zk.ev.on("messages.upsert", async m => {
   }
 });
     
-
-// AUTO_REACT: React to messages with random emoji if enabled.
-if (conf.AUTO_REACT === "yes") {
-  zk.ev.on("messages.upsert", async m => {
-    const { messages } = m;
-
-    // Load emojis from the JSON file
-    const emojiFilePath = path.resolve(__dirname, 'database', 'emojis.json');
-    let emojis = [];
-    
-    try {
-      // Read the emojis from the file
-      const data = fs.readFileSync(emojiFilePath, 'utf8');
-      emojis = JSON.parse(data); // Parse the JSON data into an array
-    } catch (error) {
-      console.error('Error reading emojis file:', error);
-      return;
-    }
-
-    // Process each message
-    for (const message of messages) {
-      if (!message.key.fromMe) {
-        const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
         
-        // React to the message with a random emoji
-        await zk.sendMessage(message.key.remoteJid, {
-          react: {
-            text: randomEmoji,
-            key: message.key
-          }
-        });
-      }
-    }
-  });
-}
-    
- // Auto-react to status updates, handling each status one-by-one without tracking
-/*if (conf.AUTO_LIKE_STATUS === "yes") {
-    zk.ev.on("messages.upsert", async (m) => {
-        const { messages } = m;
-        
-        for (const message of messages) {
-            if (message.key && message.key.remoteJid === "status@broadcast") {
-                try {
-                    const adams = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
-
-                    if (adams) {
-                        // React to the status with a green heart
-                        await zk.sendMessage(message.key.remoteJid, {
-                            react: {
-                                key: message.key,
-                                text: "👻",
-                            },
-                        }, {
-                            statusJidList: [message.key.participant, adams],
-                        });
-
-                        // Introduce a short delay between each reaction to prevent overflow
-                        await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
-                    }
-                } catch (error) {
-                    console.error("Error decoding JID or sending message:", error);
-                }
-            }
-        }
-    });*/
-
-    // Auto-like status 
-  if (conf.AUTO_LIKE_STATUS === "yes") {
-    console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
-
-    let lastReactionTime = 0;
-
-    zk.ev.on("messages.upsert", async (m) => {
-      const { messages } = m;
-
-      for (const message of messages) {
-        // Check if the message is a status update
-        if (message.key && message.key.remoteJid === "status@broadcast") {
-          console.log("Detected status update from:", message.key.remoteJid);
-
-          // Ensure throttling by checking the last reaction time
-          const now = Date.now();
-          if (now - lastReactionTime < 5000) {  // 5-second interval
-            console.log("Throttling reactions to prevent overflow.");
-            continue;
-          }
-
-          // Check if bot user ID is available
-          const keith = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
-          if (!keith) {
-            console.log("Bot's user ID not available. Skipping reaction.");
-            continue;
-          }
-
-          // Fetch emojis from conf.EMOJIS
-          const emojis = conf.EMOJIS.split(',');
-
-          // Select a random love emoji
-          const randomLoveEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-
-          // React to the status with the selected love emoji
-          await zk.sendMessage(message.key.remoteJid, {
-            react: {
-              key: message.key,
-              text: randomLoveEmoji, // Reaction emoji
-            },
-          });
-
-          // Log successful reaction and update the last reaction time
-          lastReactionTime = Date.now();
-          console.log(`Successfully reacted to status update by ${message.key.remoteJid} with ${randomLoveEmoji}`);
-
-          // Delay to avoid rapid reactions
-          await delay(2000); // 2-second delay between reactions
-        }
-      }
-    });
-  }
-};
-/*// Track the last reaction time to prevent overflow
+// Track the last reaction time to prevent overflow
 let lastReactionTime = 0;
 
 // Array of love emojis to react with
@@ -614,7 +495,7 @@ const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "�
   "🥃", "🍾", "🎯", "⏳", "🎁", "🎈", "🎨", "🌻", "🌸", "🌺", "🌹", "🌼", "🌞", "🌝", "🌜", "🌙", 
   "🌚", "🍀", "🌱", "🍃", "🍂", "🌾", "🐉", "🐍", "🦓", "🦄", "🦋", "🦧", "🦘", "🦨", "🦡", "🐉", 
   "🐅", "🐆", "🐓", "🐢", "🐊", "🐠", "🐟", "🐡", "🦑", "🐙", "🦀", "🐬", "🦕", "🦖", "🐾", "🐕", 
-  "🐈", "🐇", "🐾"];
+  "🐈", "🐇", "🐾"]*/
 
 if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
@@ -662,7 +543,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
                 await delay(2000); // 2-second delay between reactions
             }
         }
-    });*/
+    });
 }
 
     zk.ev.on("messages.upsert", async m => {
