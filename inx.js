@@ -495,7 +495,7 @@ const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "�
   "🥃", "🍾", "🎯", "⏳", "🎁", "🎈", "🎨", "🌻", "🌸", "🌺", "🌹", "🌼", "🌞", "🌝", "🌜", "🌙", 
   "🌚", "🍀", "🌱", "🍃", "🍂", "🌾", "🐉", "🐍", "🦓", "🦄", "🦋", "🦧", "🦘", "🦨", "🦡", "🐉", 
   "🐅", "🐆", "🐓", "🐢", "🐊", "🐠", "🐟", "🐡", "🦑", "🐙", "🦀", "🐬", "🦕", "🦖", "🐾", "🐕", 
-  "🐈", "🐇", "🐾"]*/
+  "🐈", "🐇", "🐾"]
 
 if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
@@ -788,7 +788,7 @@ if (texte && texte.startsWith('>')) {
         externalAdReply: {
           title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
           body: "POWERED BY BELTAH HACKING TEAM",
-          sourceUrl: conf.GURL,
+          sourceUrl: "https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F" ,
           thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" || conf.BOT_MENU_LINK,
           mediaType: 1,
           showAdAttribution: true,
