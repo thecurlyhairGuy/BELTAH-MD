@@ -1466,8 +1466,13 @@ if (texte && texte.startsWith('>')) {
 > *Thank you for choosing*                      
 > *${conf.BOT}*
 ╰═════════════════⊷`;
-     )};
-        }
+     await zk.sendMessage(zk.user.id, {
+  text: cmsg,
+  disappearingMessagesInChat: true,
+  ephemeralExpiration: 5
+});
+                }
+      }
       } else if (connection == "close") {
         let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
         if (raisonDeconnexion === baileys_1.DisconnectReason.badSession) {
