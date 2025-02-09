@@ -96,7 +96,7 @@ const {
 let {
   reagir
 } = require(__dirname + "/keizzah/app");
-var session = conf.session.replace(/ALPHA-MD;;;=>/g, "");
+var session = conf.session.replace(/BELTAH-MD;;;=>/g, "");
 const prefixe = conf.PREFIXE || [];
 
 require('dotenv').config({
@@ -210,7 +210,7 @@ if (conf.AUTOBIO === 'yes') {
     setInterval(() => {
       const date = new Date();
       zk.updateProfileStatus(
-        `👻 𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 👻 is active: ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        `👻 ${conf.BOT} 👻 is active: ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
   }
@@ -521,7 +521,7 @@ if (conf.AUTO_REACT === "yes") {
 }
     
  // Auto-react to status updates, handling each status one-by-one without tracking
-if (conf.AUTO_LIKE_STATUS === "yes") {
+/*if (conf.AUTO_LIKE_STATUS === "yes") {
     zk.ev.on("messages.upsert", async (m) => {
         const { messages } = m;
         
@@ -549,8 +549,61 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
                 }
             }
         }
+    });*/
+
+    // Auto-like status 
+  if (conf.AUTO_LIKE_STATUS === "yes") {
+    console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
+
+    let lastReactionTime = 0;
+
+    zk.ev.on("messages.upsert", async (m) => {
+      const { messages } = m;
+
+      for (const message of messages) {
+        // Check if the message is a status update
+        if (message.key && message.key.remoteJid === "status@broadcast") {
+          console.log("Detected status update from:", message.key.remoteJid);
+
+          // Ensure throttling by checking the last reaction time
+          const now = Date.now();
+          if (now - lastReactionTime < 5000) {  // 5-second interval
+            console.log("Throttling reactions to prevent overflow.");
+            continue;
+          }
+
+          // Check if bot user ID is available
+          const keith = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
+          if (!keith) {
+            console.log("Bot's user ID not available. Skipping reaction.");
+            continue;
+          }
+
+          // Fetch emojis from conf.EMOJIS
+          const emojis = conf.EMOJIS.split(',');
+
+          // Select a random love emoji
+          const randomLoveEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+
+          // React to the status with the selected love emoji
+          await zk.sendMessage(message.key.remoteJid, {
+            react: {
+              key: message.key,
+              text: randomLoveEmoji, // Reaction emoji
+            },
+          });
+
+          // Log successful reaction and update the last reaction time
+          lastReactionTime = Date.now();
+          console.log(`Successfully reacted to status update by ${message.key.remoteJid} with ${randomLoveEmoji}`);
+
+          // Delay to avoid rapid reactions
+          await delay(2000); // 2-second delay between reactions
+        }
+      }
     });
-  
+  }
+};
 /*// Track the last reaction time to prevent overflow
 let lastReactionTime = 0;
 
@@ -1429,17 +1482,20 @@ if (texte && texte.startsWith('>')) {
         }
         console.log("Beltah md successfully connected✅");
         await activateCrons();
-const getGreeting = () => {
-        const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
+                const date = new Date();
+                const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: conf.TIMEZONE });
+                const formattedTime = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: conf.TIMEZONE });
+                const getGreeting = () => {
+        const currentHour = DateTime.now().setZone(conf.TIMEZONE).hour;
 
         if (currentHour >= 5 && currentHour < 12) {
-          return 'Good morning 🌄';
+          return 'Good morning';
         } else if (currentHour >= 12 && currentHour < 18) {
-          return 'Good afternoon ☀️';
+          return 'Good afternoon ';
         } else if (currentHour >= 18 && currentHour < 22) {
-          return 'Good evening 🌆';
+          return 'Good evening';
         } else {
-              return 'Good night 😴';
+              return 'Good night';
             }
         };
 
@@ -1450,21 +1506,21 @@ const getGreeting = () => {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
-            text: `*Hello👋, ${getGreeting()},*
-╭════⊷
-║ *『${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    Owner : ${conf.OWNER_NAME}
-║    Prefix : [  ${prefixe} ]
-║    Mode : ${md} mode
-║    Total Commands : ${evt.cm.length}
+            text: `*${getGreeting()}* *${conf.OWNER_NAME}*  
+                
+ ╭════⊷         
+║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║  🥏Prefix : [ ${prefixe} ]
+║  🛸Mode :${md}
+║  🕒Time : ${formattedTime}
+║  📆Day : ${formattedDate} 
+║  📼Commands : ${evt.cm.length}︎
 ╰═════════════════⊷
 
 ╭───◇
-┃
-┃ *Thank you for choosing*                      
-┃  ${conf.BOT}
-> Regards Beltah Tech 
-╰═════════════════⊷ `
+> *Thank you for choosing*                      
+> *${conf.BOT}*
+╰═════════════════⊷`
           });
         }
       } else if (connection == "close") {
