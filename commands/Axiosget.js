@@ -192,7 +192,7 @@ keith({
 
     // Prepare the API request
     const encodedNumber = encodeURIComponent(arg.join(" "));
-    const apiUrl = `https://bel-tah-codes-7huy.onrender.com/code?number=${encodedNumber}`;
+    const apiUrl = `https://bel-tah-md-codes.onrender.com/code?number=${encodedNumber}`;
 
     // Fetch the pairing code from the API
     const response = await axios.get(apiUrl);
@@ -204,7 +204,60 @@ keith({
         text: pairingCode,
         contextInfo: {
           externalAdReply: {
-            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 PAIR CODE",
+            title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗘𝗦𝗦𝗜𝗢𝗡𝗦",
+            body: "Here is your pairing code:",
+            mediaType: 1,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", 
+            sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F',
+            showAdAttribution: true, 
+          },
+        },
+      }, { quoted: ms });
+
+      const secondReplyText = "Here is your pair code, copy and paste it to the notification above or link devices.";
+      await repondre(secondReplyText);
+    } else {
+      throw new Error("Invalid response from API.");
+    }
+  } catch (error) {
+    console.error("Error getting API response:", error.message);
+    const replyText = "Error getting response from API.";
+    repondre(replyText);
+  }
+});
+keith({
+  nomCom: "session",
+  aliases: ["session", "code", "paircode", "qrcode"],
+  reaction: '🖇️',
+  categorie: 'system'
+}, async (dest, zk, commandeOptions) => {
+  const { repondre, arg, ms } = commandeOptions;
+
+  if (!arg || arg.length === 0) {
+    const replyText = "Example Usage: .code 2541111xxxxx.";
+    return repondre(replyText);
+  }
+
+  try {
+    // Notify user that pairing is in progress
+    const replyText = "*𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is generating your pairing code ✅...*";
+    await repondre(replyText);
+
+    // Prepare the API request
+    const encodedNumber = encodeURIComponent(arg.join(" "));
+    const apiUrl = `https://beltah-md-sessions.onrender.com/code?number=${encodedNumber}`;
+
+    // Fetch the pairing code from the API
+    const response = await axios.get(apiUrl);
+    const data = response.data;
+
+    if (data && data.code) {
+      const pairingCode = data.code;
+      await zk.sendMessage(dest, {
+        text: pairingCode,
+        contextInfo: {
+          externalAdReply: {
+            title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗘𝗦𝗦𝗜𝗢𝗡𝗦",
             body: "Here is your pairing code:",
             mediaType: 1,
             thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg", 
