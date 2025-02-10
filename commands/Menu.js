@@ -135,7 +135,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
     let responseMessage = `
  ${greeting}, *${nomAuteurMessage || "User"}*
  
-╭───❮  ${settings.BOT} ❯━━┈⊷
+╭━❮  ${settings.BOT}  ❯━╮ 
 ┃ *👤ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
 ┃ *🥏ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
 ┃ *🕒ᴛɪᴍᴇ:* ${formattedTime}
@@ -169,7 +169,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
             contextInfo: {
                 mentionedJid: [senderName],
                 externalAdReply: {
-                    title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
+                    title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
                     body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ" ,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
                     sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
