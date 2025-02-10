@@ -1,5 +1,5 @@
 {
-  "name": "👻𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃👻",
+  "name": "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧",
   "description": "BELTAH-MD is a multidevice WhatsApp bot built to make your WhatsApp enjoyable...",
   "keywords": [
     "bot",
@@ -65,7 +65,7 @@
     "BOT_NAME": {
       "description": "you must give a name for you bot uhh??!!",
       "value": "",
-      "required": false 
+      "required": true 
     },
     "EMOJIS": {
       "description": "Imput your favorite emojis to react on your friends status,, each emoji must be separated by a comma.!!",
@@ -104,8 +104,8 @@
     },
     "OWNER_NAME": {
       "description": "don't you have a name bro.Insert your name here!!",
-      "value": "Beltah Tech",
-      "required": false
+      "value": "",
+      "required": true
     },
     "URL": {
       "description": "you must add your bot image url.Get your image url now and fill it here",
