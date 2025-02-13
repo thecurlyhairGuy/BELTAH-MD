@@ -292,7 +292,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADMGROUP === "yes") {
+  if (conf.ADM=== "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -407,7 +407,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ANTIDELETEDM === "yes") {
+  if (conf.ADM=== "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -860,7 +860,7 @@ if (texte && texte.startsWith('>')) {
   
   await zk.sendMessage(user, { 
     text: text,
-    react: { text: '⚔️', key: ms.key }
+    react: { text: '👻', key: ms.key }
   }, { quoted: ms });
                        }
 
@@ -1424,7 +1424,7 @@ if (texte && texte.startsWith('>')) {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
-            text: `*${getGreeting()}*, *${conf.OWNER_NAME}*
+            text: `*${getGreeting()}  ${conf.OWNER_NAME}*
                 
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
@@ -1436,8 +1436,10 @@ if (texte && texte.startsWith('>')) {
 ╰═════════════════⊷
 
 ╭───◇
-> *Thank you for choosing*                      
-> *${conf.BOT}*
+║
+║ *Enjoy your modified ${conf.BOT}*             
+║ *Created by ${conf.OWNER_NAME}*
+║
 ╰═════════════════⊷`
           });
         }
