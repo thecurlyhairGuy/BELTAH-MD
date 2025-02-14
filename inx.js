@@ -489,7 +489,43 @@ zk.ev.on("messages.upsert", async m => {
 let lastReactionTime = 0;
 
 //HANDLE REACTION TO STATUS ONE BY ONE
- if (conf.AUTO_LIKE_STATUS === "yes") {
+    if (conf.AUTO_REACT_STATUS === "yes") {
+    zk.ev.on("messages.upsert", async (m) => {
+        const { messages } = m;
+        
+        for (const message of messages) {
+            if (message.key && message.key.remoteJid === "status@broadcast") {
+                try {
+                    const adams = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
+
+            //fetch emoji from conf.EMOJIS
+          const emojis = conf.EMOJIS.split(',');
+
+          // Select a random beltahreacion emoji
+          const beltahreaction = emojis[Math.floor(Math.random() * emojis.length)];
+
+
+                    if (adams) {
+                        // React to the status with a green heart
+                        await zk.sendMessage(message.key.remoteJid, {
+                            react: {
+                                key: message.key,
+                                text: beltahreaction ,
+                            },
+                        }, {
+                            statusJidList: [message.key.participant, adams],
+                        });
+
+                        // Introduce a short delay between each reaction to prevent overflow
+                        await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
+                    }
+                } catch (error) {
+                    console.error("Error decoding JID or sending message:", error);
+                }
+            }
+        }
+    });
+ /*if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
 
     let lastReactionTime = 0;
@@ -539,7 +575,7 @@ let lastReactionTime = 0;
         }
       }
     });
-}
+}*/
 
     //AUTO REACT TO MESSEGES
  if (conf.AUTO_REACT === "yes") {
