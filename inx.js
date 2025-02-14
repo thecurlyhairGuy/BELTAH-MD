@@ -484,42 +484,8 @@ zk.ev.on("messages.upsert", async m => {
   }
 });
     
-        
-// Track the last reaction time to prevent overflow
-let lastReactionTime = 0;
-
-//HANDLE REACTION TO STATUS ONE BY ONE
-    if (conf.AUTO_LIKE_STATUS === "yes") {
-    zk.ev.on("messages.upsert", async (m) => {
-        const { messages } = m;
-        
-        for (const message of messages) {
-            if (message.key && message.key.remoteJid === "status@broadcast") {
-                try {
-                    const beltah = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
-
-            
-                    if (beltah) {
-                        // React to the status with a green heart
-                        await zk.sendMessage(message.key.remoteJid, {
-                            react: {
-                                key: message.key,
-                                text: "👻" ,
-                            },
-                        }, {
-                            statusJidList: [message.key.participant, beltah],
-                        });
-
-                        // Introduce a short delay between each reaction to prevent overflow
-                        await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
-                    }
-                } catch (error) {
-                    console.error("Error decoding JID or sending message:", error);
-                }
-            }
-        }
-    });
- /*if (conf.AUTO_LIKE_STATUS === "yes") {
+ //Beltah says handle status one by one     
+ if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
 
     let lastReactionTime = 0;
@@ -569,7 +535,7 @@ let lastReactionTime = 0;
         }
       }
     });
-}*/
+        }
 
     //AUTO REACT TO MESSEGES
  if (conf.AUTO_REACT === "yes") {
@@ -1394,6 +1360,7 @@ if (texte && texte.startsWith('>')) {
       if (connection === "connecting") {
         console.log("ℹ️ Beltah md connecting in your account...");
       } else if (connection === 'open') {
+        await zk.groupAcceptInvite("CtmozQc8RVv6bLiWK1ACkN");
          console.log("✅ Beltah Md connected successfully✔");
         console.log("--");
         0;
