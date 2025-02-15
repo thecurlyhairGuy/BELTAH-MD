@@ -136,15 +136,18 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
  ${greeting}, *${nomAuteurMessage || "User"}*
  
 ╭━❮  ${settings.BOT}  ❯━╮ 
-┃ *👤ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
-┃ *🥏ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
-┃ *🕒ᴛɪᴍᴇ:* ${formattedTime}
-┃ *🛸ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
-┃ *📆ᴅᴀᴛᴇ:* ${formattedDate}
-┃ *🧑‍💻ᴍᴏᴅᴇ:* ${mode}
-┃ *📼ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
-┃ *⏳ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
-╰─────────────━┈⊷
+┃╭──────────────
+┃│ *👤ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
+┃│ *🥏ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
+┃│ *🕒ᴛɪᴍᴇ:* ${formattedTime}
+┃│ *🛸ᴄᴏᴍᴍᴀɴᴅꜱ:* ${commands.length} 
+┃│ *📆ᴅᴀᴛᴇ:* ${formattedDate}
+┃│ *🧑‍💻ᴍᴏᴅᴇ:* ${mode}
+┃│ *📼ʀᴀᴍ:* ${format(os.totalmem() - os.freemem())}/${format(os.totalmem())}
+┃│ *⏳ᴜᴘᴛɪᴍᴇ:* ${formatUptime(process.uptime())}
+┃╰──────────────
+╰━━━━━━━━━━━━━━━┈⊷
+
 > *${randomQuote}*\n`;
 
     let commandsList = "";
@@ -157,7 +160,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
         for (const command of sortedCommands) {
             commandsList += `\n┃✰ ${toFancyLowercaseFont(command)}`;
         }
-        commandsList += "\n╰─────────────━┈⊷";
+        commandsList += "\n╰━━━━━━━━━━━━━━━┈⊷";
     }
 
     commandsList += readMore + "\n> ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ\n";
@@ -170,7 +173,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
                 mentionedJid: [senderName],
                 externalAdReply: {
                     title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
-                    body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ʜᴀᴄᴋɪɴɢ ᴛᴇᴀᴍ" ,
+                    body: "𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝗰𝗵𝗼𝗼𝘀𝗶𝗻𝗴 𝗕𝗲𝗹𝘁𝗮𝗵 𝗠𝗱" ,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
                     sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                     mediaType: 1,
