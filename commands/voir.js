@@ -3,7 +3,7 @@ const {getContentType}=require("@whiskeysockets/baileys")
 
 
 
-keith({nomCom:"vv",categorie:"General",reaction:"🤩"},async(dest,zk,commandeOptions)=>{
+/*keith({nomCom:"vv",categorie:"General",reaction:"🤩"},async(dest,zk,commandeOptions)=>{
 
 const {ms,msgRepondu,repondre}=commandeOptions;
 
@@ -35,4 +35,4 @@ await zk.sendMessage(dest,{video:{url:video},caption:texte},{quoted:ms})
 
 
 
-})
+})*/
