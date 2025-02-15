@@ -66,7 +66,7 @@ keith({
     const videoDetails = downloadData.result;
 
     // Prepare the message payload with external ad details
-    const messagePayloads = [
+    const messagePayload = [
       {
         audio: { url: downloadUrl },
         mimetype: 'audio/mp4',
@@ -81,41 +81,10 @@ keith({
             showAdAttribution: true,
           },
         },
-      },
-      {
-        document: { url: downloadUrl },
-        mimetype: 'audio/mpeg',
-        contextInfo: {
-          externalAdReply: {
-            title: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃" ,
-            body: videoDetails.title,
-            mediaType: 1,
-            sourceUrl: conf.GURL,
-            thumbnailUrl: firstVideo.thumbnail,
-            renderLargerThumbnail: false,
-            showAdAttribution: true,
-          },
-        },
-      },
-      {
-        document: { url: downloadUrl },
-        mimetype: 'audio/mp4',
-        contextInfo: {
-          externalAdReply: {
-            title: videoDetails.title,
-            body: "𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃",
-            mediaType: 1,
-            sourceUrl: conf.GURL,
-            thumbnailUrl: firstVideo.thumbnail,
-            renderLargerThumbnail: false,
-            showAdAttribution: true,
-          },
-        },
       }
-    ];
+     ];
 
     // Send the download link to the user for each payload
-    for (const messagePayload of messagePayloads) {
       await zk.sendMessage(dest, messagePayload, { quoted: ms });
     }
 
