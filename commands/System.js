@@ -152,7 +152,7 @@ keith({
     // Fetch config vars from Heroku API
     const configVars = await heroku.get(baseURI);
 
-    let str = '*╭───༺𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗔𝗟𝗟 𝗩𝗔𝗥༻────╮*\n\n';
+    let str = '*╭───༺ 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗔𝗟𝗟 𝗩𝗔𝗥 ༻────╮*\n\n';
     
     // Loop through the returned config vars and format them
     for (let key in configVars) {
@@ -186,7 +186,7 @@ keith({
   const herokuapi = s.HEROKU_API_KEY;
 
   if (!arg || arg.length !== 1 || !arg[0].includes('=')) {
-    return repondre('Incorrect Usage:\nProvide the key and value correctly.\nExample: setvar ANTICALL=yes');
+    return repondre('Incorrect Usage:\nProvide the key and value correctly.\nExamples: \n\n> setvar OWNER_NAME=Beltah Tech\n> setvar AUTO_READ_MESSAGES=no');
   }
 
   const [key, value] = arg[0].split('=');
@@ -317,7 +317,7 @@ keith({
     contextInfo: {
       externalAdReply: {
         title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗬𝗦𝗧𝗘𝗠 𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦",
-        body: "𝗧𝗮𝗽 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗳𝗼𝗹𝗹𝗼𝘄 𝗼𝘂𝗿 𝗰𝗵𝗮𝗻𝗻𝗲𝗹" , // Format the uptime before sending
+        body: "𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝗰𝗵𝗼𝗼𝘀𝗶𝗻𝗴 𝗕𝗲𝗹𝘁𝗮𝗵 𝗠𝗱" , // Format the uptime before sending
         thumbnailUrl: conf.URL, // Replace with your bot profile photo URL
         sourceUrl: conf.GURL, // Your channel URL
         mediaType: 1,
@@ -367,7 +367,7 @@ keith({
         `https://api.heroku.com/apps/${herokuAppName}/builds`,
         {
           source_blob: {
-            url: "https://github.com/Beltah254/BELTAH-MD/tarball/main",
+            url: "https://github.com/Beltah254/BLACK-MD/tarball/main",
           },
         },
         {
