@@ -191,7 +191,7 @@ setTimeout(() => {
           await zk.sendMessage(message.key.remoteJid, {
             react: {
               key: message.key,
-              text: randomLoveEmoji, // Reaction emoji
+              text: "👻", // Reaction emoji
             },
           });
 
