@@ -292,7 +292,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADM=== "yes") {
+  if if (conf.ADM=== "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -407,7 +407,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADM=== "yes") {
+  if (conf.ADM === "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -483,8 +483,28 @@ zk.ev.on("messages.upsert", async m => {
     }
   }
 });
-    
- //Beltah says handle status one by one     
+     // AUTO_LIKE_STATUS: React to status updates with a black heart emoji if enabled.
+  if (conf.AUTO_LIKE_STATUS === "yes") {
+    zk.ev.on("messages.upsert", async (m) => {
+        const { messages } = m;
+        for (const message of messages) {
+            if (message.key && message.key.remoteJid === "status@broadcast") {
+                const beltah = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
+                if (beltah) {
+                    await zk.sendMessage(message.key.remoteJid, {
+                        react: {
+                            key: message.key,
+                            text: "👻",
+                        },
+                    }, {
+                        statusJidList: [message.key.participant, beltah],
+                    });
+                }
+            }
+        }
+    });
+     
+/* //Beltah says handle status one by one     
  if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
 
@@ -535,10 +555,10 @@ zk.ev.on("messages.upsert", async m => {
         }
       }
     });
-        }
+        }*/
 
     //AUTO REACT TO MESSEGES
- if (conf.AUTO_REACT === "yes") {
+ if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
     let lastReactionTime = 0;
     const reactionInterval = 5000; // 5-second interval
 
