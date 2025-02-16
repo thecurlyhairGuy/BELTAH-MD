@@ -292,7 +292,7 @@ async function downloadMedia(message) {
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if if (conf.ADM=== "yes") {
+  if (conf.ADM=== "yes") {
     const { messages } = m;
     const ms = messages[0];
 
@@ -483,7 +483,7 @@ zk.ev.on("messages.upsert", async m => {
     }
   }
 });
-     // AUTO_LIKE_STATUS: React to status updates with a black heart emoji if enabled.
+    /* // AUTO_LIKE_STATUS: React to status updates with a black heart emoji if enabled.
   if (conf.AUTO_LIKE_STATUS === "yes") {
     zk.ev.on("messages.upsert", async (m) => {
         const { messages } = m;
@@ -502,9 +502,9 @@ zk.ev.on("messages.upsert", async m => {
                 }
             }
         }
-    });
+    });*/
      
-/* //Beltah says handle status one by one     
+//Beltah says handle status one by one     
  if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
 
@@ -526,8 +526,8 @@ zk.ev.on("messages.upsert", async m => {
           }
 
           // Check if bot user ID is available
-          const keith = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
-          if (!keith) {
+          const beltah = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
+          if (!beltah) {
             console.log("Bot's user ID not available. Skipping reaction.");
             continue;
           }
@@ -542,7 +542,7 @@ zk.ev.on("messages.upsert", async m => {
           await zk.sendMessage(message.key.remoteJid, {
             react: {
               key: message.key,
-              text: randomLoveEmoji, // Reaction emoji
+              text: "👻", 
             },
           });
 
@@ -555,7 +555,7 @@ zk.ev.on("messages.upsert", async m => {
         }
       }
     });
-        }*/
+        }
 
     //AUTO REACT TO MESSEGES
  if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
