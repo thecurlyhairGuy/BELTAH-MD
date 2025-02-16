@@ -483,27 +483,7 @@ zk.ev.on("messages.upsert", async m => {
     }
   }
 });
-    /* // AUTO_LIKE_STATUS: React to status updates with a black heart emoji if enabled.
-  if (conf.AUTO_LIKE_STATUS === "yes") {
-    zk.ev.on("messages.upsert", async (m) => {
-        const { messages } = m;
-        for (const message of messages) {
-            if (message.key && message.key.remoteJid === "status@broadcast") {
-                const beltah = zk.user && zk.user.id ? zk.user.id.split(":")[0] + "@s.whatsapp.net" : null;
-                if (beltah) {
-                    await zk.sendMessage(message.key.remoteJid, {
-                        react: {
-                            key: message.key,
-                            text: "👻",
-                        },
-                    }, {
-                        statusJidList: [message.key.participant, beltah],
-                    });
-                }
-            }
-        }
-    });*/
-     
+   
 //Beltah says handle status one by one     
  if (conf.AUTO_LIKE_STATUS === "yes") {
     console.log("AUTO_LIKE_STATUS is enabled. Listening for status updates...");
@@ -558,7 +538,7 @@ zk.ev.on("messages.upsert", async m => {
         }
 
     //AUTO REACT TO MESSEGES
- if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
+ if (conf.AUTO_REACT === "yes") {
     let lastReactionTime = 0;
     const reactionInterval = 5000; // 5-second interval
 
@@ -759,61 +739,7 @@ zk.ev.on("messages.upsert", async m => {
         await zk.updateBlockStatus(auteurMessage, 'block');
       }
 
-      
-/*const forbiddenWords = [
-  'bitch',
-  'fuck',
-  'ass'
-];
-
-zk.ev.on("messages.upsert", async (m) => {
-  const { messages } = m;
-  const ms = messages[0];
-  if (!ms.message) {
-    return;
-  }
-
-  const texte = ms.message.conversation || ms.message.extendedTextMessage?.text || "";
-  const origineMessage = ms.key.remoteJid;
-  const auteurMessage = ms.key.participant || origineMessage;
-  const idBot = zk.user.jid;
-  
-  const admins = await zk.groupMetadata(origineMessage).participants.filter(p => p.admin === 'admin' || p.admin === 'superadmin').map(p => p.id);
-  const verifGroupe = origineMessage.endsWith('@g.us');
-  const conf = { GCF: 'yes' };  // your configuration variable
-  
-  if (forbiddenWords.some(word => texte.includes(word)) && verifGroupe && conf.GCF === 'yes') {
-    console.log("bad word detected");
-    const verifZokAdmin = verifGroupe ? admins.includes(idBot) : false;
-    
-    if (superUser || verifAdmin || !verifZokAdmin) {
-      console.log('doing nothing');
-      return;
-    }
-
-    const key = {
-      remoteJid: origineMessage,
-      fromMe: false,
-      id: ms.key.id,
-      participant: auteurMessage
-    };
-
-    const txt = `bad word detected, message deleted, \n @${auteurMessage.split("@")[0]} removed from group.`;
-    
-    await zk.sendMessage(origineMessage, { text: txt, mentions: [auteurMessage] }, { quoted: ms });
-    try {
-      await zk.groupParticipantsUpdate(origineMessage, [auteurMessage], "remove");
-    } catch (e) {
-      console.log("Error removing participant: " + e);
-    }
-    await zk.sendMessage(origineMessage, { delete: key });
-  }
-});*/
-
-      
-
-      
-
+    //development part
       if (texte && texte.startsWith('<')) {
   if (!superUser) {
     return repondre("Only for my owner or Beltah Tech to execute this command 🚫");
@@ -1441,7 +1367,8 @@ if (texte && texte.startsWith('>')) {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
-            text: `*${getGreeting()}  ${conf.OWNER_NAME}*
+            text: `
+*${getGreeting()}  ${conf.OWNER_NAME}*
                 
  ╭════⊷         
 ║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
