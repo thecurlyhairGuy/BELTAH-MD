@@ -45,6 +45,44 @@ keith({
 });
 
 keith({
+  nomCom: "beltah",
+  aliases: ["bel", "belta"],
+  categorie: "General",
+  reaction: "🇰🇪"
+}, async (dest, zk, commandeOptions) => {
+  const { ms, mybotpic } = commandeOptions;
+
+  // Define developer contacts with names
+  const devContacts = [
+    { name: 'Beltah Tech 254', number: '254114141192' },
+    { name: '', number: ''},
+  ];
+
+  // Inform about the developer contacts
+  await zk.sendMessage(dest, {
+    text: "I am *BELTAH-MD*, A multidevice user bot created by Beltah Tech. Contact my developer from the contact below.",
+  }, { quoted: ms });
+
+  // Prepare VCards for developer contacts
+  const vcards = devContacts.map(contact => (
+    'BEGIN:VCARD\n' +
+    'VERSION:3.0\n' +
+    `FN:${contact.name}\n` +
+    'ORG:undefined;\n' +
+    `TEL;type=CELL;type=VOICE;waid=${contact.number}:${contact.number}\n` +
+    'END:VCARD'
+  ));
+
+  // Send message with VCard contacts
+  zk.sendMessage(dest, {
+    contacts: {
+      displayName: 'BELTAH-MD DEVELOPERS',
+      contacts: vcards.map(vcard => ({ vcard })),
+    },
+  }, { quoted: ms });
+});
+
+keith({
   nomCom: "dev",
   aliases: ["developer", "deve"],
   categorie: "General",
