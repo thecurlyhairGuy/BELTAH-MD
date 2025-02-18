@@ -55,12 +55,12 @@ keith({
   // Define developer contacts with names
   const devContacts = [
     { name: 'Beltah Tech 254', number: '254114141192' },
-    { name: '', number: ''},
+    { name: 'Audi Beltah', number: '254738625827'},
   ];
 
   // Inform about the developer contacts
   await zk.sendMessage(dest, {
-    text: "I am *BELTAH-MD*, A multidevice user bot created by Beltah Tech. Contact my developer from the contact below.",
+    text: "I am *BELTAH-MD*, A multidevice user bot created by Beltah Tech. Reach out my developer from the contacts below.",
   }, { quoted: ms });
 
   // Prepare VCards for developer contacts
@@ -93,7 +93,7 @@ keith({
   // Define developer contacts with names
   const devContacts = [
     { name: 'Beltah Tech 254', number: '254114141192' },
-    { name: 'Audi Beltah', number: '254737681758' },
+    { name: 'Audi Beltah', number: '254738625827' },
   ];
 
   // Inform about the developer contacts
