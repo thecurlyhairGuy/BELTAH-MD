@@ -271,26 +271,16 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
     });
 }
 
-    /*//handle autobio
+    //handle autobio
 if (conf.AUTOBIO === 'yes') {
     setInterval(() => {
       const date = new Date();
       zk.updateProfileStatus(
-        `👻 ${conf.BOT} 👻 is active: ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+        `👻 ${conf.BOT} 👻 || 𝐃𝐚𝐭𝐞: ${date.toLocaleString('en-US' , { timeZone: 'Africa/Nairobi' })} || 𝐃𝐚𝐲: ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
-  }*/
-    if (conf.AUTOBIO === 'yes') {
-  setInterval(() => {
-    const date = new Date();
-    const formatteDate = date.toLocaleString('en-US'), { timeZone: 'Africa/Nairobi' }) ;
-    const dayOfWeek = date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' });
-
-    zk.updateProfileStatus(
-      `👻 ${conf.BOT} 👻 || 𝐃𝐚𝐭𝐞: ${formatteDate} || 𝐃𝐚𝐲: ${dayOfWeek}|| ${conf.AUTOBIO_MSG} ||`
-    );
-  }, 10 * 1000);
-    }
+  }
+    
  let repliedContacts = new Set();
 
 zk.ev.on("messages.upsert", async (m) => {
@@ -333,233 +323,82 @@ zk.ev.on("messages.upsert", async (m) => {
     repliedContacts.add(remoteJid);
   }
 });
-   // Function to format notification message
+    
+    // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  let notification = `*『 👻 ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴅᴇᴛᴇᴄᴛᴇᴅ 👻 』*\n\n`;
-  notification += `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ :* ${new Date().toLocaleString()}\n`;
-  notification += `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ :* @${deletedBy.split('@')[0]}\n\n> ᴍᴇssᴀɢᴇ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
-  return notification;
+  return `*『 👻 𝐀𝐧𝐭𝐢𝐝𝐞𝐥𝐞𝐭𝐞 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝 👻 』*\n\n` +
+    `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ:* ${new Date().toLocaleString()}\n` +
+    `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ:* @${deletedBy.split('@')[0]}\n\n> ᴅᴇʟᴇᴛᴇᴅ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
 }
-
-// Helper function to download media
-async function downloadMedia(message) {
-  try {
-    if (message.imageMessage) {
-      return await zk.downloadMediaMessage(message.imageMessage);
-    } else if (message.videoMessage) {
-      return await zk.downloadMediaMessage(message.videoMessage);
-    } else if (message.documentMessage) {
-      return await zk.downloadMediaMessage(message.documentMessage);
-    } else if (message.audioMessage) {
-      return await zk.downloadMediaMessage(message.audioMessage);
-    } else if (message.stickerMessage) {
-      return await zk.downloadMediaMessage(message.stickerMessage);
-    } else if (message.voiceMessage) {
-      return await zk.downloadMediaMessage(message.voiceMessage);
-    } else if (message.gifMessage) {
-      return await zk.downloadMediaMessage(message.gifMessage);
-    }
-  } catch (error) {
-    console.error("Error downloading media:", error);
-  }
+// Helper function to download media based on message type
+async function downloadMessageMedia(message) {
+  if (message.imageMessage) return await downloadMedia(message.imageMessage);
+  if (message.videoMessage) return await downloadMedia(message.videoMessage);
+  if (message.documentMessage) return await downloadMedia(message.documentMessage);
+  if (message.audioMessage) return await downloadMedia(message.audioMessage);
+  if (message.stickerMessage) return await downloadMedia(message.stickerMessage);
+  if (message.voiceMessage) return await downloadMedia(message.voiceMessage);
   return null;
 }
 
 // Event listener for all incoming messages
 zk.ev.on("messages.upsert", async m => {
   // Check if ANTIDELETE is enabled
-  if (conf.ADM=== "yes") {
-    const { messages } = m;
-    const ms = messages[0];
+  if (conf.ADM !== "yes") return;
+  const { messages } = m;
+  const ms = messages[0];
+  if (!ms.message) return;
 
-    // If the message has no content, ignore
-    if (!ms.message) {
-      return;
-    }
-
-    // Get the message key and remote JID (group or individual)
-    const messageKey = ms.key;
-    const remoteJid = messageKey.remoteJid;
-
-    // Store message for future undelete reference
-    if (!store.chats[remoteJid]) {
-      store.chats[remoteJid] = [];
-    }
-
-    // Save the received message to storage
-    store.chats[remoteJid].push(ms);
-
-    // Handle deleted messages (when protocolMessage is present and type is 0)
-    if (ms.message.protocolMessage && ms.message.protocolMessage.type === 0) {
-      const deletedKey = ms.message.protocolMessage.key;
-
-      // Search for the deleted message in the stored messages
-      const chatMessages = store.chats[remoteJid];
-      const deletedMessage = chatMessages.find(msg => msg.key.id === deletedKey.id);
-
-      if (deletedMessage) {
-        try {
-          // Create notification about the deleted message
-          const notification = createNotification(deletedMessage);
-
-          // Check the type of the deleted message (text or media)
-          if (deletedMessage.message.conversation) {
-            // Text message
-            await zk.relayMessage(remoteJid, deletedMessage, {
+  const messageKey = ms.key;
+  const remoteJid = messageKey.remoteJid;
+  // Store received messages for future undelete reference
+  if (!store.chats[remoteJid]) {
+    store.chats[remoteJid] = [];
+  }
+  store.chats[remoteJid].push(ms);
+  // Handle deleted messages
+  if (ms.message.protocolMessage && ms.message.protocolMessage.type === 0) {
+    const deletedKey = ms.message.protocolMessage.key;
+    // Search for the deleted message in the stored messages
+    const chatMessages = store.chats[remoteJid];
+    const deletedMessage = chatMessages.find(msg => msg.key.id === deletedKey.id);
+    
+    if (deletedMessage) {
+      try {
+        // Create notification about the deleted message
+        const notification = createNotification(deletedMessage);
+        // Check if the deleted message is a text message
+        if (deletedMessage.message.conversation) {
+          await zk.sendMessage(remoteJid, {
+            text: `${notification}\n\n*ᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇ:* ${deletedMessage.message.conversation}`,
+            mentions: [deletedMessage.key.participant]
+          });
+        }
+        
+        // Handle media messages (image, video, document, audio, sticker, voice)
+        else {
+          const mediaBuffer = await downloadMessageMedia(deletedMessage.message);
+          if (mediaBuffer) {
+            const mediaType = deletedMessage.message.imageMessage ? 'image' :
+                              deletedMessage.message.videoMessage ? 'video' :
+                              deletedMessage.message.documentMessage ? 'document' :
+                              deletedMessage.message.audioMessage ? 'audio' :
+                              deletedMessage.message.stickerMessage ? 'sticker' : 'audio';
+            await zk.sendMessage(remoteJid, {
+              [mediaType]: mediaBuffer,
               caption: notification,
               mentions: [deletedMessage.key.participant]
             });
-          } else if (
-            deletedMessage.message.imageMessage ||
-            deletedMessage.message.videoMessage ||
-            deletedMessage.message.documentMessage ||
-            deletedMessage.message.audioMessage ||
-            deletedMessage.message.stickerMessage ||
-            deletedMessage.message.voiceMessage ||
-            deletedMessage.message.gifMessage
-          ) {
-            // Media message (image, video, document, audio, sticker, voice, gif)
-            const mediaBuffer = await downloadMedia(deletedMessage.message);
-            if (mediaBuffer) {
-              let mediaType = 'audio'; // Default to 'audio' if no other match
-
-              // Determine the media type
-              if (deletedMessage.message.imageMessage) mediaType = 'image';
-              if (deletedMessage.message.videoMessage) mediaType = 'video';
-              if (deletedMessage.message.documentMessage) mediaType = 'document';
-              if (deletedMessage.message.stickerMessage) mediaType = 'sticker';
-              if (deletedMessage.message.voiceMessage) mediaType = 'audio'; // Voice messages are treated as audio
-              if (deletedMessage.message.gifMessage) mediaType = 'video'; // GIFs are treated as video
-
-              // Relay the media with notification and participant mention
-              await zk.relayMessage(remoteJid, deletedMessage, {
-                [mediaType]: mediaBuffer,
-                caption: notification,
-                mentions: [deletedMessage.key.participant]
-              });
-            }
           }
-        } catch (error) {
-          console.error('Error handling deleted message:', error);
         }
+      } catch (error) {
+        console.error('Error handling deleted message:', error);
       }
     }
   }
 });
 
-      // Function to format notification message
-function createNotification(deletedMessage) {
-  const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  let notification = `*『👻 ᴀɴᴛɪᴅᴇʟᴇᴛᴇ ᴅᴇᴛᴇᴄᴛᴇᴅ 👻』*\n\n`;
-  notification += `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ :* ${new Date().toLocaleString()}\n`;
-  notification += `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ :* @${deletedBy.split('@')[0]}\n\n> ᴍᴇssᴀɢᴇ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
-  return notification;
-}
-
-// Helper function to download media
-async function downloadMedia(message) {
-  try {
-    if (message.imageMessage) {
-      return await zk.downloadMediaMessage(message.imageMessage);
-    } else if (message.videoMessage) {
-      return await zk.downloadMediaMessage(message.videoMessage);
-    } else if (message.documentMessage) {
-      return await zk.downloadMediaMessage(message.documentMessage);
-    } else if (message.audioMessage) {
-      return await zk.downloadMediaMessage(message.audioMessage);
-    } else if (message.stickerMessage) {
-      return await zk.downloadMediaMessage(message.stickerMessage);
-    } else if (message.voiceMessage) {
-      return await zk.downloadMediaMessage(message.voiceMessage);
-    } else if (message.gifMessage) {
-      return await zk.downloadMediaMessage(message.gifMessage);
-    }
-  } catch (error) {
-    console.error("Error downloading media:", error);
-  }
-  return null;
-}
-
-// Event listener for all incoming messages
-zk.ev.on("messages.upsert", async m => {
-  // Check if ANTIDELETE is enabled
-  if (conf.ADM === "yes") {
-    const { messages } = m;
-    const ms = messages[0];
-
-    // If the message has no content, ignore
-    if (!ms.message) {
-      return;
-    }
-
-    // Get the message key and remote JID (group or individual)
-    const messageKey = ms.key;
-    const remoteJid = messageKey.remoteJid;
-
-    // Store message for future undelete reference
-    if (!store.chats[remoteJid]) {
-      store.chats[remoteJid] = [];
-    }
-
-    // Save the received message to storage
-    store.chats[remoteJid].push(ms);
-
-    // Handle deleted messages (when protocolMessage is present and type is 0)
-    if (ms.message.protocolMessage && ms.message.protocolMessage.type === 0) {
-      const deletedKey = ms.message.protocolMessage.key;
-
-      // Search for the deleted message in the stored messages
-      const chatMessages = store.chats[remoteJid];
-      const deletedMessage = chatMessages.find(msg => msg.key.id === deletedKey.id);
-      if (deletedMessage) {
-        try {
-          // Create notification about the deleted message
-          const notification = createNotification(deletedMessage);
-
-          // Check the type of the deleted message (text or media)
-          if (deletedMessage.message.conversation) {
-            // Text message
-            await zk.sendMessage(remoteJid, {
-              text: notification + `\n\n*ᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇ :* ${deletedMessage.message.conversation}`,
-              mentions: [deletedMessage.key.participant]
-            });
-          } else if (
-            deletedMessage.message.imageMessage ||
-            deletedMessage.message.videoMessage ||
-            deletedMessage.message.documentMessage ||
-            deletedMessage.message.audioMessage ||
-            deletedMessage.message.stickerMessage ||
-            deletedMessage.message.voiceMessage ||
-            deletedMessage.message.gifMessage
-          ) {
-            // Media message (image, video, document, audio, sticker, voice, gif)
-            const mediaBuffer = await downloadMedia(deletedMessage.message);
-            if (mediaBuffer) {
-              let mediaType = 'audio'; // Default to 'audio' if no other match
-
-              if (deletedMessage.message.imageMessage) mediaType = 'image';
-              if (deletedMessage.message.videoMessage) mediaType = 'video';
-              if (deletedMessage.message.documentMessage) mediaType = 'document';
-              if (deletedMessage.message.stickerMessage) mediaType = 'sticker';
-              if (deletedMessage.message.voiceMessage) mediaType = 'audio'; // Voice messages can be treated as audio
-              if (deletedMessage.message.gifMessage) mediaType = 'video'; // GIFs are generally video type
-
-              // Send the media with notification and participant mention
-              await zk.sendMessage(remoteJid, {
-                [mediaType]: mediaBuffer,
-                caption: notification,
-                mentions: [deletedMessage.key.participant]
-              });
-            }
-          }
-        } catch (error) {
-          console.error('Error handling deleted message:', error);
-        }
-      }
-    }
-  }
-});
    
     //AUTO REACT TO MESSEGES
  if (conf.AUTO_REACT === "yes") {
