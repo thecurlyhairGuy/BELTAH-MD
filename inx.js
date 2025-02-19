@@ -271,7 +271,7 @@ if (conf.AUTO_LIKE_STATUS === "yes") {
     });
 }
 
-    //handle autobio
+    /*//handle autobio
 if (conf.AUTOBIO === 'yes') {
     setInterval(() => {
       const date = new Date();
@@ -279,7 +279,18 @@ if (conf.AUTOBIO === 'yes') {
         `👻 ${conf.BOT} 👻 is active: ${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
       );
     }, 10 * 1000);
-  }
+  }*/
+    if (conf.AUTOBIO === 'yes') {
+  setInterval(() => {
+    const date = new Date();
+    const formatteDate = date.toLocaleString('en-US'), { timeZone: 'Africa/Nairobi' }) ;
+    const dayOfWeek = date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' });
+
+    zk.updateProfileStatus(
+      `👻 ${conf.BOT} 👻 || 𝐃𝐚𝐭𝐞: ${formatteDate} || 𝐃𝐚𝐲: ${dayOfWeek}|| ${conf.AUTOBIO_MSG} ||`
+    );
+  }, 10 * 1000);
+    }
  let repliedContacts = new Set();
 
 zk.ev.on("messages.upsert", async (m) => {
