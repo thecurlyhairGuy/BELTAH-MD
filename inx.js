@@ -594,13 +594,105 @@ zk.ev.on("messages.upsert", async m => {
           }
         });
       }
-      
-      if (! superUser && origineMessage === auteurMessage && conf.AUTO_BLOCK === 'yes') {
-        zk.sendMessage(auteurMessage, {
-          'text': "🚫am blocking you because you have violated Beltah policies🚫!"
-        });
-        await zk.updateBlockStatus(auteurMessage, 'block');
+      //Handle response by bot
+      if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
+  try {
+    const currentTime = Date.now();
+    if (currentTime - lastTextTime < messageDelay) {
+      console.log('Message skipped: Too many messages in a short time.');
+      return;
+    }
+
+    // Fetch chatbot response using axios
+    const response = await axios.get('https://bk9.fun/ai/blackbox', {
+      params: {
+        q: texte
       }
+    });
+
+    const keith = response.data;
+
+    if (keith && keith.status && keith.BK9) {
+      await zk.sendMessage(origineMessage, {
+        text: keith.BK9
+      });
+      lastTextTime = Date.now(); // Update the last message time
+    } else {
+      throw new Error('Sorry!! I am out of word...');
+    }
+  } catch (error) {
+    console.error('Please update my API to continue chatting with me:', error);
+  }
+}
+            
+//Handle voice chat with bot
+
+
+            if (! superUser && origineMessage == auteurMessage && conf.VOICE_CHATBOT_INBOX === 'yes') {
+  try {
+    const currentTime = Date.now();
+    if (currentTime - lastTextTime < messageDelay) {
+      console.log('Message skipped: Too many messages in a short time.');
+      return;
+    }
+
+    const response = await axios.get('https://api.davidcyriltech.my.id/ai/gpt4', {
+      params: {
+        text: texte
+      }
+    });
+
+    const keith = response.data;
+
+    if (keith && keith.success && keith.message) {
+      // Generate audio URL for the response message
+      const audioUrl = googleTTS.getAudioUrl(keith.message, {
+        lang: 'en', // You can modify this to support any language dynamically
+        slow: false,
+        host: 'https://translate.google.com'
+      });
+
+      // Send audio message response with PTT (push-to-talk) enabled
+      await zk.sendMessage(origineMessage, { audio: { url: audioUrl }, mimetype: 'audio/mp4', ptt: true });
+      
+      lastTextTime = Date.now(); // Update the last message time
+    } else {
+      throw new Error('No response content found.');
+    }
+  } catch (error) {
+    console.error('Error fetching chatbot response:', error);
+  }
+    }
+      
+    
+      //Handle auto block 
+      const badWords = ['stupid', 'kuma', 'malaya', 'umbwa', 'fuck', 'dick', 'pussy', 'idiot', 'fool', 'dumb', 'jerk']; // Add more bad words as needed
+
+if (badWords.some(word => texte.includes(word)) && !superUser && origineMessage === auteurMessage && conf.AUTO_BLOCK === 'yes') {
+  console.log(`Bad word detected in message: ${texte}`);
+
+  try {
+    await zk.sendMessage(auteurMessage, {
+      text: "🚫 I am blocking you because you have violated Beltah policies 🚫!"
+    });
+    await zk.updateBlockStatus(auteurMessage, 'block');
+    console.log(`User ${auteurMessage} blocked successfully.`);
+  } catch (error) {
+    console.error(`Error blocking user ${auteurMessage}:`, error);
+  }
+} else {
+  if (!badWords.some(word => texte.includes(word))) {
+    console.log('No bad words detected.');
+  }
+  if (superUser) {
+    console.log('Sender is a super user, not blocking.');
+  }
+  if (origineMessage !== auteurMessage) {
+    console.log('Origin message is not from the author, not blocking.');
+  }
+  if (conf.AUTO_BLOCK !== 'yes') {
+    console.log('Auto-block is not enabled.');
+  }
 
     //development part
       if (texte && texte.startsWith('<')) {
