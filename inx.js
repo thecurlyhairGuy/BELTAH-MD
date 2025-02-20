@@ -206,6 +206,37 @@ zk.ev.on('call', async (callData) => {
   }
 });
 
+    //Handle response by bot
+      if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
+  try {
+    const currentTime = Date.now();
+    if (currentTime - lastTextTime < messageDelay) {
+      console.log('Message skipped: Too many messages in a short time.');
+      return;
+    }
+
+    // Fetch chatbot response using axios
+    const response = await axios.get('https://bk9.fun/ai/blackbox', {
+      params: {
+        q: texte
+      }
+    });
+
+    const keith = response.data;
+
+    if (keith && keith.status && keith.BK9) {
+      await zk.sendMessage(origineMessage, {
+        text: keith.BK9
+      });
+      lastTextTime = Date.now(); // Update the last message time
+    } else {
+      throw new Error('Sorry!! I am out of word...');
+    }
+  } catch (error) {
+    console.error('Please update my API to continue chatting with me:', error);
+  }
+      }
+    
     //Handle status reaction 
     const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "😎", "🔥", "💥", "💯", "✨", "🌟", "🌈", "⚡", "💎", "🌀", "👑", "🎉", "🎊", "🦄", "👽", "🛸", 
   "🚀", "🦋", "💫", "🍀", "🎶", "🎧", "🎸", "🎤", "🏆", "🏅", "🌍", "🌎", "🌏", "🎮", "🎲", "💪", 
