@@ -32,7 +32,7 @@ keith({
   nomCom: "play",
   aliases: ["song", "playdoc", "audio", "mp3"],
   categorie: "download",
-  reaction: "🎥"
+  reaction: "🎧"
 }, async (dest, zk, commandOptions) => {
   const { arg, ms, repondre } = commandOptions;
 
@@ -261,7 +261,7 @@ keith({
 keith({
   'nomCom': 'tourl',       // Command to trigger the function
   'categorie': "download", // Command category
-  'reaction': '👨🏿‍💻'    // Reaction to use on command
+  'reaction': '🤖'    // Reaction to use on command
 }, async (groupId, client, context) => {
   const { msgRepondu, repondre } = context;
 
@@ -316,7 +316,7 @@ else if (msgRepondu.documentMessage) {
 keith({
   nomCom: "toaudio",
   aliases: ["convertaudio", "audioconvert"],
-  reaction: '🤖',
+  reaction: '👻',
   categorie: "download"
 }, async (dest, zk, commandeOptions) => {
   const { repondre, msgRepondu, auteurMessage, arg } = commandeOptions;
