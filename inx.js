@@ -206,7 +206,7 @@ zk.ev.on('call', async (callData) => {
   }
 });
 
-    //Handle response by bot
+    /*//Handle response by bot
       if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
   try {
     const currentTime = Date.now();
@@ -235,7 +235,7 @@ zk.ev.on('call', async (callData) => {
   } catch (error) {
     console.error('Please update my API to continue chatting with me:', error);
   }
-      }
+      }*/
     
     //Handle status reaction 
     const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "😎", "🔥", "💥", "💯", "✨", "🌟", "🌈", "⚡", "💎", "🌀", "👑", "🎉", "🎊", "🦄", "👽", "🛸", 
@@ -625,7 +625,76 @@ zk.ev.on("messages.upsert", async m => {
           }
         });
       }
-     
+
+      if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
+  try {
+    const currentTime = Date.now();
+    if (currentTime - lastTextTime < messageDelay) {
+      console.log('Message skipped: Too many messages in a short time.');
+      return;
+    }
+
+    // Fetch chatbot response using axios
+    const response = await axios.get('https://bk9.fun/ai/blackbox', {
+      params: {
+        q: texte
+      }
+    });
+
+    const keith = response.data;
+
+    if (keith && keith.status && keith.BK9) {
+      await zk.sendMessage(origineMessage, {
+        text: keith.BK9
+      });
+      lastTextTime = Date.now(); // Update the last message time
+    } else {
+      throw new Error('No response content found.');
+    }
+  } catch (error) {
+    console.error('Error fetching chatbot response:', error);
+  }
+}
+            
+
+
+
+            if (! superUser && origineMessage == auteurMessage && conf.VOICE_CHATBOT_INBOX === 'yes') {
+  try {
+    const currentTime = Date.now();
+    if (currentTime - lastTextTime < messageDelay) {
+      console.log('Message skipped: Too many messages in a short time.');
+      return;
+    }
+
+    const response = await axios.get('https://api.davidcyriltech.my.id/ai/gpt4', {
+      params: {
+        text: texte
+      }
+    });
+
+    const keith = response.data;
+
+    if (keith && keith.success && keith.message) {
+      // Generate audio URL for the response message
+      const audioUrl = googleTTS.getAudioUrl(keith.message, {
+        lang: 'en', // You can modify this to support any language dynamically
+        slow: false,
+        host: 'https://translate.google.com'
+      });
+
+      // Send audio message response with PTT (push-to-talk) enabled
+      await zk.sendMessage(origineMessage, { audio: { url: audioUrl }, mimetype: 'audio/mp4', ptt: true });
+      
+      lastTextTime = Date.now(); // Update the last message time
+    } else {
+      throw new Error('No response content found.');
+    }
+  } catch (error) {
+    console.error('Error fetching chatbot response:', error);
+  }
+        }
+      
       /*//Handle response by bot
       if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
   try {
