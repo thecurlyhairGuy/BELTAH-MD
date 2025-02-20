@@ -8,11 +8,12 @@ const DATABASE_URL = process.env.DATABASE_URL === undefined
     ? databasePath
     : process.env.DATABASE_URL;
 module.exports = { session: process.env.SESSION_ID || 'BELTAH-MD',
-    PREFIXE: process.env.PREFIX || "+",
+    PREFIXE: process.env.PREFIX || [],
     GITHUB : process.env.GITHUB|| 'https://github.com/Beltah254/BELTAH-MD',
     OWNER_NAME : process.env.OWNER_NAME || "Beltah254",
     NUMERO_OWNER : process.env.NUMERO_OWNER || "254114141192",  
-              
+    CHATBOT_INBOX : process.env.CHATBOT || "yes" , 
+    VOICE_CHATBOT_INBOX : process.env.TALKING_BOT || "yes", 
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "non",
     AUTO_DOWNLOAD_STATUS: process.env.AUTO_DOWNLOAD_STATUS || 'non',
     AUTO_REACT: process.env.AUTO_REACTION || "non",  
