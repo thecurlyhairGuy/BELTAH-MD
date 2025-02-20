@@ -594,7 +594,8 @@ zk.ev.on("messages.upsert", async m => {
           }
         });
       }
-      //Handle response by bot
+     
+      /*//Handle response by bot
       if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
   try {
     const currentTime = Date.now();
@@ -692,7 +693,7 @@ if (badWords.some(word => texte.includes(word)) && !superUser && origineMessage 
   }
   if (conf.AUTO_BLOCK !== 'yes') {
     console.log('Auto-block is not enabled.');
-  }
+  }*/
 
     //development part
       if (texte && texte.startsWith('<')) {
