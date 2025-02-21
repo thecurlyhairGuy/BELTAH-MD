@@ -1,6 +1,7 @@
 const { keith } = require("../keizzah/keith");
 const axios = require('axios');
-const ytSearch = require('yt-search'const conf = require(__dirname + '/../set');
+const ytSearch = require('yt-search');
+const conf = require(__dirname + '/../set');
 const { Catbox } = require("node-catbox");
 const fs = require('fs-extra');
 const { downloadAndSaveMediaMessage } = require('@whiskeysockets/baileys');
@@ -25,8 +26,6 @@ async function uploadToCatbox(filePath) {
   }
 }
 // Define the command with aliases for play
-
- 
 keith({
   nomCom: "play",
   aliases: ["song", "playdoc", "audio", "mp3"],
@@ -65,14 +64,13 @@ keith({
       }
     };
 
-    // List of APIs to try, including the new APIs
+    // List of APIs to try
     const apis = [
       `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
       `https://www.dark-yasiya-api.site/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
       `https://api.giftedtech.web.id/api/download/dlmp3?url=${encodeURIComponent(videoUrl)}&apikey=gifted-md`,
-      `https://api.dreaded.site/api/ytdl/audio?url=${encodeURIComponent(videoUrl)}`,
-      `https://api.alyachan.dev/api/yta?url=${encodeURIComponent(videoUrl)}&apikey=Gata-Dios`,  // New API added
-      `https://apis.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(videoUrl)}`  // New API added
+      `https://api.dreaded.site/api/ytdl/audio?url=${encodeURIComponent(videoUrl)}`
     ];
 
     let downloadData;
@@ -89,33 +87,65 @@ keith({
     const downloadUrl = downloadData.result.download_url;
     const videoDetails = downloadData.result;
 
-    // Prepare the message payload with audio details
-    const messagePayload = {
-      audio: { url: downloadUrl },
-      mimetype: 'audio/mp4',
-      contextInfo: {
-        externalAdReply: {
-          title: conf.BOT,
-          body: videoDetails.title,
-          mediaType: 1,
-          sourceUrl: conf.GURL,
-          thumbnailUrl: firstVideo.thumbnail,
-          renderLargerThumbnail: false,
-          showAdAttribution: true,
+    // Prepare the message payload with external ad details
+    const messagePayloads = [
+      {
+        audio: { url: downloadUrl },
+        mimetype: 'audio/mp4',
+        contextInfo: {
+          externalAdReply: {
+            title: videoDetails.title,
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
         },
       },
-    };
+      {
+        document: { url: downloadUrl },
+        mimetype: 'audio/mpeg',
+        contextInfo: {
+          externalAdReply: {
+            title: videoDetails.title,
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      },
+      {
+        document: { url: downloadUrl },
+        mimetype: 'audio/mp4',
+        contextInfo: {
+          externalAdReply: {
+            title: videoDetails.title,
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      }
+    ];
 
-    // Send the download link to the user
-    await zk.sendMessage(dest, messagePayload, { quoted: ms });
+    // Send the download link to the user for each payload
+    for (const messagePayload of messagePayloads) {
+      await zk.sendMessage(dest, messagePayload, { quoted: ms });
+    }
 
   } catch (error) {
     console.error('Error during download process:', error);
     return repondre(`Download failed due to an error: ${error.message || error}`);
   }
 });
-
-
 
 // Define the command with aliases for video
 keith({
@@ -159,7 +189,7 @@ keith({
     // List of APIs to try
     const apis = [
       `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
-      `https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
       `https://www.dark-yasiya-api.site/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
       `https://api.giftedtech.web.id/api/download/dlmp4?url=${encodeURIComponent(videoUrl)}&apikey=gifted-md`,
       `https://api.dreaded.site/api/ytdl/video?url=${encodeURIComponent(videoUrl)}`
@@ -186,7 +216,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: conf.BOT,
+            title: videoDetails.title,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -201,7 +231,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: conf.BOT,
+            title: videoDetails.title,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -235,7 +265,7 @@ keith({
 
   // If no message (image/video/audio) is mentioned, prompt user
   if (!msgRepondu) {
-    return repondre("Please mention an image, video, or audio for *BELTAH-MD* to convert.");
+    return repondre("Please mention an image, video, or audio.");
   }
 
   let mediaPath;
