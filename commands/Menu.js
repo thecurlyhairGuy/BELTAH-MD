@@ -135,7 +135,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
     let responseMessage = `
  ${greeting}, *${nomAuteurMessage || "User"}*
  
-╭━❮  ${settings.BOT}  ❯━╮ 
+╭━━━━❮  ${settings.BOT}  ❯━━━━╮ 
 ┃✰╭──────────────
 ┃✰│ *ʙᴏᴛ ᴏᴡɴᴇʀ:* ${settings.OWNER_NAME}
 ┃✰│ *ᴘʀᴇғɪx:* *[ ${settings.PREFIXE} ]*
