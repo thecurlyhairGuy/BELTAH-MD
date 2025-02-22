@@ -429,9 +429,20 @@ zk.ev.on("messages.upsert", async m => {
     }
   }
 });
-
+    
+// BELTAH MD DID EVERYTHING ,,,DO NOT COPY ...
+if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
+const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '🛰️', '🥔', '🎡', '🎸', '🎼', '🔉', '📿', '🪇', '📹', '🎞️', '🪔', '📔', '🏷️', '💰', '📥', '🗳️', '📭', '🖌️', '📏', '', '🪛', '🔨', '⛓️‍💥', '📌', '🗝️', '🔍', '🥁', '🔊', '🥾', '👢', '🩰', '👡', '🙂', '🎊', '🎉', '🎁', '⛑️', '👋']
+         const emokis = emojis[Math.floor(Math.random() * (emojis.length))]
+         zk.sendMessage(origineMessage, {
+             react: {
+                 text: emokis,
+                 key: ms.key
+             }
+         })
+  }
    
-    //AUTO REACT TO MESSEGES
+   /* //AUTO REACT TO MESSEGES
  if (conf.AUTO_REACT === "yes") {
     let lastReactionTime = 0;
     const reactionInterval = 5000; // 5-second interval
@@ -471,7 +482,7 @@ zk.ev.on("messages.upsert", async m => {
         }
       }
     });
-    }
+    }*/
 
     zk.ev.on("messages.upsert", async m => {
       const {
@@ -1426,20 +1437,20 @@ if (texte && texte.startsWith('>')) {
             text: `
 *${getGreeting()}  ${conf.OWNER_NAME}*
                 
- ╭════⊷         
-║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║  🥏Prefix : [ ${prefixe} ]
-║  🛸Mode :${md}
-║  🕒Time : ${formattedTime}
-║  📆Day : ${formattedDate} 
-║  📼Commands : ${evt.cm.length}︎
+╭━❮ *${conf.BOT}* ❯━╮     
+┃✰╭───────────
+┃✰┃ Prefix : [ ${prefixe} ]
+┃✰┃ Mode :${md}
+┃✰┃ Time : ${formattedTime}
+┃✰┃ Day : ${formattedDate} 
+┃✰┃ Commands : ${evt.cm.length}
+┃✰╰────────────︎
 ╰═════════════════⊷
 
 ╭───◇
-║
-║ *Enjoy your modified ${conf.BOT}*             
-║ *Created by ${conf.OWNER_NAME}*
-║
+┃ *Enjoy your modified ${conf.BOT}*             
+┃ *Created by ${conf.OWNER_NAME}*
+┃
 ╰═════════════════⊷`
           });
         }
