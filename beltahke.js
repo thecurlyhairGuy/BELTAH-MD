@@ -429,18 +429,7 @@ zk.ev.on("messages.upsert", async m => {
     }
   }
 });
-    
-// BELTAH MD DID EVERYTHING ,,,DO NOT COPY ...
-if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
-const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '🛰️', '🥔', '🎡', '🎸', '🎼', '🔉', '📿', '🪇', '📹', '🎞️', '🪔', '📔', '🏷️', '💰', '📥', '🗳️', '📭', '🖌️', '📏', '', '🪛', '🔨', '⛓️‍💥', '📌', '🗝️', '🔍', '🥁', '🔊', '🥾', '👢', '🩰', '👡', '🙂', '🎊', '🎉', '🎁', '⛑️', '👋']
-         const emokis = emojis[Math.floor(Math.random() * (emojis.length))]
-         zk.sendMessage(origineMessage, {
-             react: {
-                 text: emokis,
-                 key: ms.key
-             }
-         })
-  }
+  
    
    /* //AUTO REACT TO MESSEGES
  if (conf.AUTO_REACT === "yes") {
@@ -636,7 +625,17 @@ const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '�
           }
         });
       }
-
+//BELTAH MD DID EVERYTHING ,,,DO NOT COPY ...
+if (!superUser && origineMessage  === auteurMessage && conf.AUTO_REACT === "yes") {
+const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '🛰️', '🥔', '🎡', '🎸', '🎼', '🔉', '📿', '🪇', '📹', '🎞️', '🪔', '📔', '🏷️', '💰', '📥', '🗳️', '📭', '🖌️', '📏', '', '🪛', '🔨', '⛓️‍💥', '📌', '🗝️', '🔍', '🥁', '🔊', '🥾', '👢', '🩰', '👡', '🙂', '🎊', '🎉', '🎁', '⛑️', '👋']
+         const beltahs = emojis[Math.floor(Math.random() * (emojis.length))]
+         zk.sendMessage(origineMessage, {
+             react: {
+                 text: beltahs,
+                 key: ms.key
+             }
+         })
+                                }
       if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
   try {
     const currentTime = Date.now();
