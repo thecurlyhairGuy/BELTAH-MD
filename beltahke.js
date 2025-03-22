@@ -326,7 +326,7 @@ zk.ev.on("messages.upsert", async (m) => {
   const senderNumber = remoteJid.split('@')[0];
 
   // Default auto-reply message
-  let auto_reply_message = `Hello @${senderNumber}, my owner is unavailable right now. Kindly leave a message.`;
+  let auto_reply_message = `Hello @${senderNumber}, ${conf.OWNER_NAME} is unavailable right now. Kindly leave a message.`;
 
   // Check if the message exists and is a command to set a new auto-reply message
   if (messageText.startsWith('>') && ms.key.fromMe) {
@@ -358,7 +358,7 @@ zk.ev.on("messages.upsert", async (m) => {
     // Function to format notification message
 function createNotification(deletedMessage) {
   const deletedBy = deletedMessage.key.participant || deletedMessage.key.remoteJid;
-  return `*『 👻 𝐀𝐧𝐭𝐢𝐝𝐞𝐥𝐞𝐭𝐞 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝 👻 』*\n\n` +
+  return `*『 👻 ${conf.BOT} ᴀɴᴛɪᴅᴇʟᴇᴛᴇ 👻 』*\n\n` +
     `*ᴅᴇʟᴇᴛɪᴏɴ ᴛɪᴍᴇ:* ${new Date().toLocaleString()}\n` +
     `*ᴅᴇʟᴇᴛᴇᴅ ʙʏ:* @${deletedBy.split('@')[0]}\n\n> ᴅᴇʟᴇᴛᴇᴅ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ʀᴇᴛʀɪᴇᴠᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ-ᴍᴅ`;
 }
