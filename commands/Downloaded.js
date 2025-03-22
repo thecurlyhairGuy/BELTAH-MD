@@ -70,7 +70,8 @@ keith({
       `https://apis.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
       `https://www.dark-yasiya-api.site/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
       `https://api.giftedtech.web.id/api/download/dlmp3?url=${encodeURIComponent(videoUrl)}&apikey=gifted-md`,
-      `https://api.dreaded.site/api/ytdl/audio?url=${encodeURIComponent(videoUrl)}`
+      `https://api.dreaded.site/api/ytdl/audio?url=${encodeURIComponent(videoUrl)}`, 
+    `https://apis-keith.vercel.app/download/dlmp3?url=${encodeURIComponent(videoUrl)}`
     ];
 
     let downloadData;
@@ -92,50 +93,29 @@ keith({
       {
         audio: { url: downloadUrl },
         mimetype: 'audio/mp4',
-        contextInfo: {
-          externalAdReply: {
-            title: conf.BOT,
-            body: videoDetails.title,
-            mediaType: 1,
-            sourceUrl: conf.GURL,
-            thumbnailUrl: firstVideo.thumbnail,
-            renderLargerThumbnail: false,
-            showAdAttribution: true,
-          },
-        },
       },
       {
         document: { url: downloadUrl },
         mimetype: 'audio/mpeg',
-        contextInfo: {
-          externalAdReply: {
-            title: conf.BOT,
-            body: videoDetails.title,
-            mediaType: 1,
-            sourceUrl: conf.GURL,
-            thumbnailUrl: firstVideo.thumbnail,
-            renderLargerThumbnail: false,
-            showAdAttribution: true,
-          },
-        },
-      },
-      {
-        document: { url: downloadUrl },
-        mimetype: 'audio/mp4',
-        contextInfo: {
-          externalAdReply: {
-            title: conf.BOT,
-            body: videoDetails.title,
-            mediaType: 1,
-            sourceUrl: conf.GURL,
-            thumbnailUrl: firstVideo.thumbnail,
-            renderLargerThumbnail: false,
-            showAdAttribution: true,
-          },
-        },
       }
     ];
 
+//Try info message 
+    await zk.sendMessage(dest, {
+        caption: ` *BELTAH-MD SONG DOWNLOADER*/n > Powered by Beltah Tech 254`, 
+      contextInfo: {
+          externalAdReply: {
+            title: conf.BOT,
+            body: "THANK YOU FOR TRUSTING BELTAH-MD",
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      }, { quoted: ms });
+    
     // Send the download link to the user for each payload
     for (const messagePayload of messagePayloads) {
       await zk.sendMessage(dest, messagePayload, { quoted: ms });
