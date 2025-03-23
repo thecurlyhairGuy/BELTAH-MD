@@ -56,14 +56,14 @@ function runtime(seconds) {
 // Function to show loading animation
 async function loading(dest, zk) {
   const lod = [
-    "💜", 
+    "👍", 
     "👻", 
-    "💖", 
-    "🖤",
-    "💙",
-    "❤️", 
+    "🤗", 
+    "😌",
+    "🔥",
+    "😢", 
     "✨", 
-    "🔞",, 
+    "🔞",
     "🗿", 
    "*ʙᴇʟᴛᴀʜ-ᴍᴅ sᴘᴇᴇᴅ ᴛᴇsᴛ ᴏʀɪɢɪɴᴀᴛᴇᴅ ғʀᴏᴍ ᴛʜᴇ sᴀᴠᴇʀ*"
   ];
@@ -147,7 +147,7 @@ keith({
 
   try {
     // Inform the user that the bot is restarting
-    await repondre("> *𝐁𝐄𝐋𝐓𝐀𝐇 𝐌𝐃 is Restarting from the server...*");
+    await repondre("> *BELTAH-MD is Restarting from the server...*");
 
     // Function to create a delay
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -189,7 +189,7 @@ keith({
     // Fetch config vars from Heroku API
     const configVars = await heroku.get(baseURI);
 
-    let str = '*╭───༺ 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗔𝗟𝗟 𝗩𝗔𝗥 ༻────╮*\n\n';
+    let str = '*╭───༺𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗  𝗔𝗟𝗟 𝗩𝗔𝗥༻────╮*\n\n';
     
     // Loop through the returned config vars and format them
     for (let key in configVars) {
