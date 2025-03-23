@@ -50,7 +50,7 @@ function runtime(seconds) {
   const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = Math.floor(seconds % 60);
 
-  return `${hours}hrs ${minutes}mins ${secondsLeft}sec`;
+  return `0days ${hours}hours ${minutes}minutes ${secondsLeft}seconds`;
 }
 
 // Function to show loading animation
@@ -306,7 +306,7 @@ keith(
     const pingResults = Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000 + 1000));
 
     // Create larger font for ping results (using special characters for a bigger look)
-    const formattedResults = pingResults.map(ping => `𝗣𝗼𝗻𝗴 : ${ping} 𝐌/𝐒  `);
+    const formattedResults = pingResults.map(ping => `ᴘᴏɴɢ : ${ping} ᴍɪʟʟɪsᴇᴄᴏɴᴅs\n\n> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`);
 
     // Send the ping results with the updated text and format
     await zk.sendMessage(dest, {
@@ -340,7 +340,7 @@ keith({
   aliases: ['runtime', 'running'],
   desc: 'To check runtime',
   categorie: 'system', // Fixed the typo here (Categorie -> categorie)
-  reaction: '💢',
+  reaction: '⚠️',
   fromMe: true, // Removed quotes to make it a boolean
 }, async (dest, zk, commandeOptions) => {
   const { ms, arg, repondre } = commandeOptions;
@@ -350,11 +350,11 @@ keith({
 
   // Send uptime information to the user
   await zk.sendMessage(dest, {
-    text: `*𝗕𝗲𝗹𝘁𝗮𝗵 𝗨𝗽𝘁𝗶𝗺𝗲 : ${runtime(botUptime)}*`,
+    text: `*ʙᴇʟᴛᴀʜ-ᴍᴅ ʀᴜɴɴɪɴɢ ɴᴏɴ-sᴛᴏᴘ ғᴏʀ : 👻 ${runtime(botUptime)} 👻*\n\n "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`,
     contextInfo: {
       externalAdReply: {
-        title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗬𝗦𝗧𝗘𝗠 𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦",
-        body: "𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝗰𝗵𝗼𝗼𝘀𝗶𝗻𝗴 𝗕𝗲𝗹𝘁𝗮𝗵 𝗠𝗱" , // Format the uptime before sending
+        title: "📡ʙᴇʟᴛᴀʜ-ᴍᴅ ᴜᴘᴛɪᴍᴇ📡",
+        body: "ʙᴏᴛ ʀᴜɴɴɪɴɢ 24/7 ɴᴏɴ-sᴛᴏᴘ" , // Format the uptime before sending
         thumbnailUrl: conf.URL, // Replace with your bot profile photo URL
         sourceUrl: conf.GURL, // Your channel URL
         mediaType: 1,
