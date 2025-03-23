@@ -50,7 +50,7 @@ function runtime(seconds) {
   const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = Math.floor(seconds % 60);
 
-  return `0days ${hours}hours ${minutes}minutes ${secondsLeft}seconds`;
+  return `╭───────────────━⊷\n║*ᴅᴀʏs* : 0\n║*ʜᴏᴜʀs* : ${hours}\n║*ᴍɪɴᴜᴛᴇs* : ${minutes}\n║*sᴇᴄᴏɴᴅs* : ${secondsLeft}\n╰───────────────━⊷`;
 }
 
 // Function to show loading animation
@@ -350,7 +350,7 @@ keith({
 
   // Send uptime information to the user
   await zk.sendMessage(dest, {
-    text: `*🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ʀᴜɴᴛɪᴍᴇ 🛸*\n\n*ʀᴜɴɴɪɴɢ ғᴏʀ : ${runtime(botUptime)}*\n> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ*`,
+    text: `╭───────────────━⊷\n║ *🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ʀᴜɴᴛɪᴍᴇ 🛸*\n╰───────────────━⊷\n\n${runtime(botUptime)}\n> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ*`,
     contextInfo: {
       externalAdReply: {
         title: "📡ʙᴇʟᴛᴀʜ-ᴍᴅ ᴜᴘᴛɪᴍᴇ📡",
