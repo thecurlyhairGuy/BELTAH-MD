@@ -6,7 +6,8 @@ const axios = require("axios");
 const speed = require("performance-now");
 const { exec } = require("child_process");
 const conf = require(__dirname + "/../set");
-// Function for delay simulation
+
+/*// Function for delay simulation
 function delay(ms) {
   console.log(`⏱️ delay for ${ms}ms`);
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -37,7 +38,31 @@ async function loading(dest, zk) {
     await zk.sendMessage(dest, { text: lod[i], edit: key });
     await delay(500); // Adjust the speed of the animation here
   }
+}*/
+// Function to create a delay
+function delay(ms) {
+  console.log(`⏱️ Delay for ${ms}ms`);
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
+// Format the uptime into a human-readable string
+function runtime(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secondsLeft = Math.floor(seconds % 60);
+
+  return `${hours}hrs ${minutes}mins ${secondsLeft}sec`;
+}
+
+// Function to show loading animation
+async function loading(dest, zk) {
+  const loadingSymbols = ["💜", "👻", "💖", "🖤", "💙", "💚", "*ʙᴇʟᴛᴀʜ-ᴍᴅ sᴘᴇᴇᴅ ᴛᴇsᴛ ᴏʀɪɢɪɴᴀᴛᴇᴅ ғʀᴏᴍ ᴛʜᴇ sᴀᴠᴇʀ*"];
+  let { key } = await zk.sendMessage(dest, { text: '*🇰🇪Enjoy...with BELTAH MD.....*' });
+
+  // Run the loading animation without blocking the main code
+  for (let i = 0; i < loadingSymbols.length; i++) {
+    await zk.sendMessage(dest, { text: loadingSymbols[i], edit: key });
+    await delay(500); // Adjust the speed of the animation
+  }
 
 keith({
   nomCom: "test",
@@ -275,6 +300,11 @@ keith(
     await zk.sendMessage(dest, {
       text: " 👻🌟 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧 🌟👻", 
       contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363266249040649@newsletter',
+        newsletterName: 'BELTAH TECH UPDATES',
+      },
         externalAdReply: {
           title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗣𝗘𝗘𝗗 𝗧𝗘𝗦𝗧" ,
           body: `${formattedResults}` ,
