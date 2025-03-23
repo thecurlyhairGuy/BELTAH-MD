@@ -55,14 +55,22 @@ function runtime(seconds) {
 
 // Function to show loading animation
 async function loading(dest, zk) {
-  const loadingSymbols = ["💜", "👻", "💖", "🖤", "💙", "💚", "*ʙᴇʟᴛᴀʜ-ᴍᴅ sᴘᴇᴇᴅ ᴛᴇsᴛ ᴏʀɪɢɪɴᴀᴛᴇᴅ ғʀᴏᴍ ᴛʜᴇ sᴀᴠᴇʀ*"];
+  const lod = [
+    "💜", 
+    "👻", 
+    "💖", 
+    "🖤",
+    "💙",
+    "❤️", 
+  ];
   let { key } = await zk.sendMessage(dest, { text: '*🇰🇪Enjoy...with BELTAH MD.....*' });
 
   // Run the loading animation without blocking the main code
-  for (let i = 0; i < loadingSymbols.length; i++) {
-    await zk.sendMessage(dest, { text: loadingSymbols[i], edit: key });
-    await delay(500); // Adjust the speed of the animation
+  for (let i = 0; i < lod.length; i++) {
+    await zk.sendMessage(dest, { text: lod[i], edit: key });
+    await delay(500); // Adjust the speed of the animation here
   }
+ } 
 
 keith({
   nomCom: "test",
@@ -300,11 +308,6 @@ keith(
     await zk.sendMessage(dest, {
       text: " 👻🌟 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧 🌟👻", 
       contextInfo: {
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-        newsletterJid: '120363266249040649@newsletter',
-        newsletterName: 'BELTAH TECH UPDATES',
-      },
         externalAdReply: {
           title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗣𝗘𝗘𝗗 𝗧𝗘𝗦𝗧" ,
           body: `${formattedResults}` ,
