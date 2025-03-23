@@ -306,7 +306,7 @@ keith(
     const pingResults = Array.from({ length: 1 }, () => Math.floor(Math.random() * 10000 + 1000));
 
     // Create larger font for ping results (using special characters for a bigger look)
-    const formattedResults = pingResults.map(ping => `ᴘᴏɴɢ : ${ping} ᴍɪʟʟɪsᴇᴄᴏɴᴅs\n\n> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`);
+    const formattedResults = pingResults.map(ping => `*📡 ᴘᴏɴɢ 📡*\n\n*${ping}...ᴍɪʟʟɪsᴇᴄᴏɴᴅs*\n> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ*`);
 
     // Send the ping results with the updated text and format
     await zk.sendMessage(dest, {
@@ -350,7 +350,7 @@ keith({
 
   // Send uptime information to the user
   await zk.sendMessage(dest, {
-    text: `*ʙᴇʟᴛᴀʜ-ᴍᴅ ʀᴜɴɴɪɴɢ ɴᴏɴ-sᴛᴏᴘ ғᴏʀ : 👻 ${runtime(botUptime)} 👻*\n\n "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`,
+    text: `*🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ʀᴜɴᴛɪᴍᴇ 🛸*\n\n*ʀᴜɴɴɪɴɢ ғᴏʀ : ${runtime(botUptime)}*\n> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ*`,
     contextInfo: {
       externalAdReply: {
         title: "📡ʙᴇʟᴛᴀʜ-ᴍᴅ ᴜᴘᴛɪᴍᴇ📡",
