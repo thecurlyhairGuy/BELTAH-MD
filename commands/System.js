@@ -310,11 +310,11 @@ keith(
 
     // Send the ping results with the updated text and format
     await zk.sendMessage(dest, {
-      text: " 👻🌟 𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧 🌟👻", 
+      text:`${formattedResults}`, 
       contextInfo: {
         externalAdReply: {
-          title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗣𝗘𝗘𝗗 𝗧𝗘𝗦𝗧" ,
-          body: `${formattedResults}` ,
+          title: "ʙᴇʟᴛᴀʜ-ᴍᴅ sᴘᴇᴇᴅ ᴛᴇsᴛ" ,
+          body:" 👻ᴏʀɪɢɪɴᴀᴛᴇᴅ ғʀᴏᴍ ᴛʜᴇ sᴀᴠᴇʀ👻",
           thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" , // Replace with your bot profile photo URL
           sourceUrl:  'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' , // Your channel URL
           mediaType: 1,
