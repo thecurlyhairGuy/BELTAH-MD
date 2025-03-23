@@ -50,7 +50,7 @@ function runtime(seconds) {
   const minutes = Math.floor((seconds % 3600) / 60);
   const secondsLeft = Math.floor(seconds % 60);
 
-  return `╭───────────────━⊷\n║*ᴅᴀʏs* : 0\n║*ʜᴏᴜʀs* : ${hours}\n║*ᴍɪɴᴜᴛᴇs* : ${minutes}\n║*sᴇᴄᴏɴᴅs* : ${secondsLeft}\n╰───────────────━⊷`;
+  return `*╭───────────────━⊷*\n*║0 ᴅᴀʏs*\n*║${hours} ʜᴏᴜʀs*\n*║${minutes} ᴍɪɴᴜᴛᴇs*\n*║${secondsLeft} sᴇᴄᴏɴᴅs* :\n*╰───────────────━⊷*`;
 }
 
 // Function to show loading animation
