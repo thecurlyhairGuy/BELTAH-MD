@@ -66,7 +66,7 @@ keith({
 
     // List of APIs to try
         const apis = [
-      `https://apis.davidcyriltech.my.id/youtube/mp3?url=${encodeURIComponent(videoUrl)} `,
+      `https://api.bwmxmd.online/api/download/ytmp4?apikey=ibraah-help&url=${encodeURIComponent(videoUrl)} `,
       `https://api.ryzendesu.vip/api/downloader/ytmp3?url=${encodeURIComponent(videoUrl)}`
     ];
 
@@ -91,12 +91,19 @@ keith({
           await zk.sendMessage(dest, zk, {
             image: { url: songData.thumbnail },
             caption: `
-     ╭═════════════════⊷
-     ║ *Title*: *${songData.title}*
-     ║ *Artist*: *${songData.artist}*
-     ║ *Url*: *${songData.videoUrl}*
-     ╰═════════════════⊷
-      *Powered by ${conf.BOT}*`
+╭───────────────━⊷
+║ 🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸
+╰───────────────━⊷
+
+╭───────────────━⊷
+║ᴛɪᴛᴛʟᴇ : *${songData.title}*
+║ᴠɪᴇᴡs : *${songData.artist}*
+╰───────────────━⊷
+ғᴏʟʟᴏᴡ ᴜᴘ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ
+╭───────────────━⊷
+║ *${songData.videoUrl}*
+╰───────────────━⊷
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`
           }, { quoted: m });
     /*const downloadUrl = downloadData.result.download_url;
     const videoDetails = downloadData.result;*/
