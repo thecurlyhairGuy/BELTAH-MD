@@ -28,59 +28,127 @@ async function uploadToCatbox(filePath) {
 // Define the command with aliases for play
 keith({
   nomCom: "play",
-  categorie: "Search",
-  reaction: "🎶"
-}, async (dest, zk, commandeOptions) => {
-  const { ms, repondre, arg, auteurMessage } = commandeOptions;
+  aliases: ["song", "playdoc", "audio", "mp3"],
+  categorie: "download",
+  reaction: "🎥"
+}, async (dest, zk, commandOptions) => {
+  const { arg, ms, repondre } = commandOptions;
 
+  // Check if a query is provided
   if (!arg[0]) {
-    repondre("Please provide a song name or keyword.");
-    return;
+    return repondre("Please provide a video name.");
   }
+
+  const query = arg.join(" ");
 
   try {
-    const songName = arg.join(" ");
-    const search = await yts(songName);
-    const videos = search.videos;
+    // Perform a YouTube search based on the query
+    const searchResults = await ytSearch(query);
 
-    if (!videos || videos.length === 0) {
-      repondre('No songs found for the given name.');
-      return;
+    // Check if any videos were found
+    if (!searchResults || !searchResults.videos.length) {
+      return repondre('No video found for the specified query.');
     }
 
-    const selectedVideo = videos[0];
-    const videoUrl = selectedVideo.url;
+    const firstVideo = searchResults.videos[0];
+    const videoUrl = firstVideo.url;
 
-    let downloadUrl;
-    let title = selectedVideo.title;
-
-    try {
-      const apiUrl = `https://api.bwmxmd.online/api/download/ytmp3?apikey=ibraah-help&url=${encodeURIComponent(videoUrl)}`;
-      const apiResponse = await axios.get(apiUrl);
-
-      if (apiResponse.data && apiResponse.data.success) {
-        downloadUrl = apiResponse.data.result.download_url;
-      } else {
-        throw new Error("Failed to fetch download URL from the new API.");
+    // Function to get download data from APIs
+    const getDownloadData = async (url) => {
+      try {
+        const response = await axios.get(url);
+        return response.data;
+      } catch (error) {
+        console.error('Error fetching data from API:', error);
+        return { success: false };
       }
-    } catch (error) {
-      console.error("Error fetching from the new API:", error);
-      repondre("Songs API is currently unavailable. Please try again later.");
-      return;
+    };
+
+    // List of APIs to try
+    const apis = [
+      `https://api.bwmxmd.online/api/download/ytmp4?apikey=ibraah-help&url=${encodeURIComponent(videoUrl)`, 
+      `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
+      `https://www.dark-yasiya-api.site/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.giftedtech.web.id/api/download/dlmp3?url=${encodeURIComponent(videoUrl)}&apikey=gifted-md`,
+      `https://api.dreaded.site/api/ytdl/audio?url=${encodeURIComponent(videoUrl)}`
+    ];
+
+    let downloadData;
+    for (const api of apis) {
+      downloadData = await getDownloadData(api);
+      if (downloadData && downloadData.success) break;
     }
 
-    await zk.sendMessage(dest,  {
-      audio: { url: downloadUrl },
-      mimetype: 'audio/mpeg',
-      fileName: title
-    }, { quoted: ms });
+    // Check if a valid download URL was found
+    if (!downloadData || !downloadData.success) {
+      return repondre('Failed to retrieve download URL from all sources. Please try again later.');
+    }
 
-    repondre(`Playing audio: ${title}`);
+    const downloadUrl = downloadData.result.download_url;
+    const videoDetails = downloadData.result;
+
+    // Prepare the message payload with external ad details
+    const messagePayloads = [
+      {
+        audio: { url: downloadUrl },
+        mimetype: 'audio/mp4',
+        Caption : "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ", 
+        contextInfo: {
+          externalAdReply: {
+            title: "🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸",
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      },
+      {
+        document: { url: downloadUrl },
+        mimetype: 'audio/mpeg',
+        contextInfo: {
+          externalAdReply: {
+            title: "🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸",
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      },
+      {
+        document: { url: downloadUrl },
+        mimetype: 'audio/mp4',
+        contextInfo: {
+          externalAdReply: {
+            title: "🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸",
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
+      }
+    ];
+
+    // Send the download link to the user for each payload
+    for (const messagePayload of messagePayloads) {
+      await zk.sendMessage(dest, messagePayload, { quoted: ms });
+    }
+
   } catch (error) {
-    console.error('Error:', error);
-    repondre('An error occurred while searching or fetching the song.');
+    console.error('Error during download process:', error);
+    return repondre(`Download failed due to an error: ${error.message || error}`);
   }
 });
+
 // Define the command with aliases for video
 keith({
   nomCom: "video",
@@ -122,9 +190,10 @@ keith({
 
     // List of APIs to try
     const apis = [
-      `https://api.bwmxmd.online/api/download/ytmp3?apikey=ibraah-help&url=${encodeURIComponent(videoUrl)`, 
-      `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
-      `https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.bwmxmd.online/api/download/ytmp4?apikey=ibraah-help&url=${encodeURIComponent(videoUrl)}`,
+      `https://api.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://www.dark-yasiya-api.site/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
+      `https://api.giftedtech.web.id/api/download/dlmp4?url=${encodeURIComponent(videoUrl)}&apikey=gifted-md`,
       `https://api.dreaded.site/api/ytdl/video?url=${encodeURIComponent(videoUrl)}`
     ];
 
@@ -149,7 +218,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: conf.BOT,
+            title: videoDetails.title,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -164,7 +233,7 @@ keith({
         mimetype: 'video/mp4',
         contextInfo: {
           externalAdReply: {
-            title: conf.BOT,
+            title: videoDetails.title,
             body: videoDetails.title,
             mediaType: 1,
             sourceUrl: conf.GURL,
@@ -190,7 +259,7 @@ keith({
 
 // Command to upload image, video, or audio file
 keith({
-  'nomCom': 'tourl',       // Command to trigger the function
+  'nomCom': 'url',       // Command to trigger the function
   'categorie': "download", // Command category
   'reaction': '👨🏿‍💻'    // Reaction to use on command
 }, async (groupId, client, context) => {
