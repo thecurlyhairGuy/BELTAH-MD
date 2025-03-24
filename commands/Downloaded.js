@@ -66,6 +66,7 @@ keith({
 
     // List of APIs to try
     const apis = [
+      `https://api.bwmxmd.online/api/download/ytmp3?url=${encodeURIComponent(videoUrl)}&apikey=ibraah-help`, 
       `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
       `https://apis.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
       `https://www.dark-yasiya-api.site/download/ytmp3?url=${encodeURIComponent(videoUrl)}`,
@@ -102,7 +103,7 @@ keith({
 
 //Try info message 
     await zk.sendMessage(dest, {
-        caption: ` *BELTAH-MD SONG DOWNLOADER*/n > Powered by Beltah Tech 254`, 
+        caption: ` *BELTAH-MD SONG DOWNLOADER*/n> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ`, 
       contextInfo: {
           externalAdReply: {
             title: conf.BOT,
@@ -168,6 +169,7 @@ keith({
 
     // List of APIs to try
     const apis = [
+      `https://api.bwmxmd.online/api/download/ytmp3?url=${encodeURIComponent(videoUrl)}&apikey=ibraah-help`, 
       `https://api-rin-tohsaka.vercel.app/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
       `https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
       `https://www.dark-yasiya-api.site/download/ytmp4?url=${encodeURIComponent(videoUrl)}`,
