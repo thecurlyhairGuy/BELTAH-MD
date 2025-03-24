@@ -94,10 +94,32 @@ keith({
       {
         audio: { url: downloadUrl },
         mimetype: 'audio/mp4',
+        contextInfo: {
+          externalAdReply: {
+            title: conf.BOT,
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
       },
       {
         document: { url: downloadUrl },
         mimetype: 'audio/mpeg',
+        contextInfo: {
+          externalAdReply: {
+            title: conf.BOT,
+            body: videoDetails.title,
+            mediaType: 1,
+            sourceUrl: conf.GURL,
+            thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+          },
+        },
       }
     ];
 
