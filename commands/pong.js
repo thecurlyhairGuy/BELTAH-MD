@@ -32,7 +32,7 @@ async function loading(dest, zk) {
       message: {
         contactMessage: {
           displayName: author,
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${author}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${author}\nitem1.TEL;waid=${zk.split('@')[0]}:${zk.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
         },
       },
     };
@@ -70,7 +70,7 @@ keith(
                 isForwarded: true
         },
       },
-    }) quoted:customContactMessage;
+   quoted:customContactMessage });
 
     console.log("Ping results sent successfully with new loading animation and formatted results!");
 
