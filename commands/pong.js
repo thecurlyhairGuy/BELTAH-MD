@@ -70,7 +70,7 @@ keith(
                 isForwarded: true
         },
       },
-    });
+    }) quoted:customContactMessage;
 
     console.log("Ping results sent successfully with new loading animation and formatted results!");
 
