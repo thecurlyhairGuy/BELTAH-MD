@@ -6,7 +6,7 @@ const { Catbox } = require("node-catbox");
 const fs = require('fs-extra');
 const { downloadAndSaveMediaMessage } = require('@whiskeysockets/baileys');
 
-king({
+keith({
   nomCom: "mp3",
   categorie: "Search",
   reaction: "🎶"
