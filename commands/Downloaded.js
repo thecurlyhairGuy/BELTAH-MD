@@ -93,7 +93,6 @@ keith({
       {
         audio: { url: downloadUrl },
         mimetype: 'audio/mp4',
-        Caption : "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ", 
         contextInfo: {
           externalAdReply: {
             title: "🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸",
