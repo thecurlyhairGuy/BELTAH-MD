@@ -155,7 +155,7 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
     let commandIndex = 1;
 
     for (const category of sortedCategories) {
-        commandsList += `\n*╭━❮ ${toFancyUppercaseFont(category)} ❯━╮*`;
+        commandsList += `\n*╭━━❮ ${toFancyUppercaseFont(category)} ❯━━╮*`;
         const sortedCommands = categorizedCommands[category].sort();
         for (const command of sortedCommands) {
             commandsList += `\n┃✰ ${toFancyLowercaseFont(command)}`;
@@ -172,8 +172,8 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
             contextInfo: {
                 mentionedJid: [senderName],
                 externalAdReply: {
-                    title: ${settings.BOT} ,
-                    body: ${formatUptime(process.uptime())} ,
+                    title: "𝗕𝗘𝗟𝗧𝗔𝗛 𝗠𝗨𝗟𝗧𝗜 𝗗𝗘𝗩𝗜𝗖𝗘" ,
+                    body: "𝗜𝘁 𝗶𝘀 𝗻𝗼𝘁 𝘆𝗲𝘁 𝘂𝗻𝘁𝗶𝗹 𝗶𝘁 𝗶𝘀 𝗱𝗼𝗻𝗲🗿" ,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
                     sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                     mediaType: 1,
