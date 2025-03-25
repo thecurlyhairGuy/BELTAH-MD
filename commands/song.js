@@ -68,29 +68,36 @@ keith({
     const videoPublished = downloadData.result.uploadDate;
     const videoViews = downloadData.result.viewCount;
 
-    const beltah = {
-    ` *𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗦𝗢𝗡𝗚𝗦*\n
-╭───────────────◆
-│⿻ *Title:* ${songTitle} 
-│⿻ *Quality:* High
-│⿻ *Duration:* ${firstVideo.timestamp}
-╰────────────────◆
-⦿ *Direct YtLink:* ${videoUrl}
-
-╭────────────────◆
-│ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗯𝘆 𝗕𝗲𝗹𝘁𝗮𝗵 𝗛𝗮𝗰𝗸𝗶𝗻𝗴 𝗧𝗲𝗮𝗺
-╰─────────────────◆`
-};
     // Prepare the message with song details
     const messagePayload = {
+      caption: `╭───────────────━⊷
+ ║ 🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸 
+╰───────────────━⊷
+╭───────────────◆
+│⿻ *ᴛɪᴛʟᴇ:* ${songTitle} 
+│⿻ *ǫᴜᴀʟɪᴛʏ:* ʜɪɢʜ
+│⿻ *ᴅᴜʀᴀᴛɪᴏɴ:* ${firstVideo.timestamp}
+╰────────────────◆
+⦿ *ᴅɪʀᴇᴄᴛ ʏᴛʟɪɴᴋ:* ${videoUrl} 
+
+╭───────────────━⊷
+║ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʙᴇʟᴛᴀʜ ᴛᴇᴄʜ ᴛᴇᴀᴍ 
+╰───────────────━⊷`,
       document: { url: downloadUrl },
-        mimetype: 'audio/mpeg'
+        mimetype: 'audio/mpeg',
+        contextInfo: {
+          externalAdReply: {
+            title: " 🛸 ʙᴇʟᴛᴀʜ-ᴍᴅ ᴀᴜᴅɪᴏ ᴘʟᴀʏᴇʀ 🛸" ,
+            body: songTitle ,
+            mediaType: 1,
+            sourceUrl:"https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F",
+            thumbnailUrl: firstVideo.thumbnail,
+            renderLargerThumbnail: false,
+            showAdAttribution: true,
+        }
       }
     };
 
-    await zk.sendMessage(dest, beltah, { quoted: ms });
-
-try
     await zk.sendMessage(dest, messagePayload, { quoted: ms });
 
   } catch (error) {
