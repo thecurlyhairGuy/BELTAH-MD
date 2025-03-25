@@ -172,8 +172,8 @@ keith({ nomCom: "menu", aliases: ["liste", "helplist", "commandlist"], categorie
             contextInfo: {
                 mentionedJid: [senderName],
                 externalAdReply: {
-                    title: "𝗕𝗘𝗟𝗧𝗔𝗛-𝗠𝗗 𝗕𝗢𝗧" ,
-                    body: "𝗧𝗵𝗮𝗻𝗸 𝘆𝗼𝘂 𝗳𝗼𝗿 𝗰𝗵𝗼𝗼𝘀𝗶𝗻𝗴 𝗕𝗲𝗹𝘁𝗮𝗵 𝗠𝗱" ,
+                    title: ${settings.BOT} ,
+                    body: ${formatUptime(process.uptime())} ,
                     thumbnailUrl: "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg" ,
                     sourceUrl:'https://whatsapp.com/channel/0029VaRHDBKKmCPKp9B2uH2F' ,
                     mediaType: 1,
