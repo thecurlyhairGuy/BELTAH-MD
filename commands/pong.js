@@ -31,8 +31,8 @@ async function loading(dest, zk) {
       key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' },
       message: {
         contactMessage: {
-          displayName: author,
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${author}\nitem1.TEL;waid=${zk.split('@')[0]}:${zk.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+          displayName:" BELTAH254",
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:"BELTAH254"\nitem1.TEL;waid=${zk.split('@')[0]}:${zk.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
         },
       },
     };
@@ -70,7 +70,7 @@ keith(
                 isForwarded: true
         },
       },
-   quoted:customContactMessage });
+      {quoted:customContactMessage }});
 
     console.log("Ping results sent successfully with new loading animation and formatted results!");
 
