@@ -1348,232 +1348,169 @@ if (texte && texte.startsWith('>')) {
       return;
     }
 
-    //événement contact
-    zk.ev.on("contacts.upsert", async contacts => {
-      const insertContact = newContact => {
-        for (const contact of newContact) {
-          if (store.contacts[contact.id]) {
-            Object.assign(store.contacts[contact.id], contact);
-          } else {
-            store.contacts[contact.id] = contact;
-          }
-        }
-        return;
-      };
-      insertContact(contacts);
-    });
-    //fin événement contact 
-    //événement connexion
-    zk.ev.on("connection.update", async con => {
-      const {
-        lastDisconnect,
-        connection
-      } = con;
-      if (connection === "connecting") {
-        console.log("ℹ️ Beltah md connecting in your account...");
-      } else if (connection === 'open') 
-                {
-      await zk.groupAcceptInvite("F9eGks0Pnw7JJrozICzBo4");
-                  await zk.newsletterFollow("120363249464136503@newsletter");
-        
-         console.log("✅ Successfully followed Beltah md channel");
-        console.log("--");
-        0;
-        await baileys_1.delay(200);
-        console.log("------");
-        0;
-        await baileys_1.delay(300);
-        console.log("------------------/-----");
-        console.log(" Beltah-md installing all orders😇\n\n");
-        //chargement des commandes 
-        console.log("chargement des commands ...\n");
-        fs.readdirSync(__dirname + "/commands").forEach(fichier => {
-          if (path.extname(fichier).toLowerCase() == ".js") {
-            try {
-              require(__dirname + "/commands/" + fichier);
-              console.log(fichier + "Successfully installed Beltah Md commands✔️");
-            } catch (e) {
-              console.log(`${fichier} n'a pas pu être chargé pour les raisons suivantes : ${e}`);
-            } /* require(__dirname + "/commands/" + fichier);
-              console.log(fichier + " installé ✔️")*/
-            0;
-            baileys_1.delay(300);
-          }
+    //contact
+  zk.ev.on("contacts.upsert", async (contacts) => {
+            const insertContact = (newContact) => {
+                for (const contact of newContact) {
+                    if (store.contacts[contact.id]) {
+                        Object.assign(store.contacts[contact.id], contact);
+                    }
+                    else {
+                        store.contacts[contact.id] = contact;
+                    }
+                }
+                return;
+            };
+            insertContact(contacts);
         });
-        0;
-        baileys_1.delay(700);
-        var md;
-        if (conf.MODE.toLocaleLowerCase() === "yes") {
-          md = "public";
-        } else if (conf.MODE.toLocaleLowerCase() === "no") {
-          md = "private";
-        } else {
-          md = "undefined";
-        }
-        console.log("Beltah md successfully connected✅");
-        await activateCrons();
-                const date = new Date();
-                const formattedDate = date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: conf.TIMEZONE });
-                const formattedTime = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', timeZone: conf.TIMEZONE });
-                const getGreeting = () => {
-        const currentHour = DateTime.now().setZone(conf.TIMEZONE).hour;
-
-        if (currentHour >= 5 && currentHour < 12) {
-          return 'Good morning, How are you☺️';
-        } else if (currentHour >= 12 && currentHour < 18) {
-          return 'Good afternoon,How is your day going?🙂';
-        } else if (currentHour >= 18 && currentHour < 22) {
-          return 'Good evening, Time to relax☺️';
-        } else {
-              return 'Good night,Sweet dreams 😴';
+        zk.ev.on("connection.update", async (con) => {
+            const { lastDisconnect, connection } = con;
+            if (connection === "connecting") {
+                console.log("ℹ️ Connecting...");
             }
-        };
-
-
-        const getCurrentTimeInNairobi = () => {
-            return DateTime.now().setZone('Africa/Nairobi').toLocaleString(DateTime.TIME_SIMPLE);
-        };
-
-        if (conf.DP.toLowerCase() === 'yes') {
-          await zk.sendMessage(zk.user.id, {
-            text: `               
-╭━❮ *${conf.BOT}* ❯━╮     
-┃✰╭───────────
-┃✰┃ Owner : *${conf.OWNER_NAME}*
-┃✰┃ Prefix : [ ${prefixe} ]
-┃✰┃ Mode :${md}
-┃✰┃ Time : ${formattedTime}
-┃✰┃ Day : ${formattedDate} 
-┃✰┃ Commands : ${evt.cm.length}
-┃✰╰────────────︎
+            else if (connection === 'open') {
+               await zk.groupAcceptInvite("F9eGks0Pnw7JJrozICzBo4");
+               await zk.newsletterFollow("120363266249040649@newsletter");
+ 
+                console.log("✅ Connection successful! ☺️");
+                console.log("--");
+                await (0, baileys_1.delay)(200);
+                console.log("------");
+                await (0, baileys_1.delay)(300);
+                console.log("------------------/-----");
+                console.log("The bot is online 🕸\n\n");
+                console.log("Loading commands...\n");
+                fs.readdirSync(__dirname + "/commands").forEach((fichier) => {
+                    if (path.extname(fichier).toLowerCase() == (".js")) {
+                        try {
+                            require(__dirname + "/commands/" + fichier);
+                            console.log(fichier + " installed ✔️");
+                        }
+                        catch (e) {
+                            console.log(`${fichier} could not be loaded due to the following reasons: ${e}`);
+                        }
+                        (0, baileys_1.delay)(300);
+                    }
+                });
+                (0, baileys_1.delay)(700);
+                var md;
+                if ((conf.MODE).toLocaleLowerCase() === "yes") {
+                    md = "public";
+                }
+                else if ((conf.MODE).toLocaleLowerCase() === "no") {
+                    md = "private";
+                }
+                else {
+                    md = "undefined";
+                }
+                console.log("Command loading completed ✅");
+                
+                if ((conf.DP).toLowerCase() === 'yes') {
+                    let cmsg = `╭════⊷
+║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
+║    ᴏᴡɴᴇʀ: ${conf.OWNER_NAME}
+║    ᴘʀᴇꜰɪx : [ ${prefixe} ]
+║    ᴍᴏᴅᴇ :${md}︎
 ╰═════════════════⊷
-> *${getGreeting()}*
 
 ╭───◇
-┃ *Enjoy your modified ${conf.BOT}*             
-┃ *Created by ${conf.OWNER_NAME}*
-╰═════════════════⊷`
-          });
-        }
-      } else if (connection == "close") {
-        let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
-        if (raisonDeconnexion === baileys_1.DisconnectReason.badSession) {
-          console.log('Wrong session Id format, rescan again...');
-        } else if (raisonDeconnexion === baileys_1.DisconnectReason.connectionClosed) {
-          console.log('!!! connexion fermée, reconnexion en cours ...');
-          main();
-        } else if (raisonDeconnexion === baileys_1.DisconnectReason.connectionLost) {
-          console.log('connection error😞 ,,Beltah trying to reconnect... ');
-          main();
-        } else if (raisonDeconnexion === baileys_1.DisconnectReason?.connectionReplaced) {
-          console.log('connexion réplacée ,,, une sesssion est déjà ouverte veuillez la fermer svp !!!');
-        } else if (raisonDeconnexion === baileys_1.DisconnectReason.loggedOut) {
-          console.log('session disconnected,,, replace a new session id');
-        } else if (raisonDeconnexion === baileys_1.DisconnectReason.restartRequired) {
-          console.log('redémarrage en cours ▶️');
-          main();
-        } else {
-          console.log("redemarrage sur le coup de l'erreur  ", raisonDeconnexion);
-          //repondre("* Redémarrage du bot en cour ...*");
-
-          const {
-            exec
-          } = require("child_process");
-          exec("pm2 restart all");
-        }
-        // sleep(50000)
-        console.log("hum " + connection);
-        main(); //console.log(session)
-      }
-    });
-    //fin événement connexion
-    //événement authentification 
-    zk.ev.on("creds.update", saveCreds);
-    //fin événement authentification 
-    //
-    /** ************* */
-    //fonctions utiles
-    zk.downloadAndSaveMediaMessage = async (message, filename = '', attachExtension = true) => {
-      let quoted = message.msg ? message.msg : message;
-      let mime = (message.msg || message).mimetype || '';
-      let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
-      0;
-      const stream = await baileys_1.downloadContentFromMessage(quoted, messageType);
-      let buffer = Buffer.from([]);
-      for await (const chunk of stream) {
-        buffer = Buffer.concat([buffer, chunk]);
-      }
-      let type = await FileType.fromBuffer(buffer);
-      let trueFileName = './' + filename + '.' + type.ext;
-      // save to file
-      await fs.writeFileSync(trueFileName, buffer);
-      return trueFileName;
-    };
-    zk.awaitForMessage = async (options = {}) => {
-      return new Promise((resolve, reject) => {
-        if (typeof options !== 'object') {
-          reject(new Error('Options must be an object'));
-        }
-        if (typeof options.sender !== 'string') {
-          reject(new Error('Sender must be a string'));
-        }
-        if (typeof options.chatJid !== 'string') {
-          reject(new Error('ChatJid must be a string'));
-        }
-        if (options.timeout && typeof options.timeout !== 'number') {
-          reject(new Error('Timeout must be a number'));
-        }
-        if (options.filter && typeof options.filter !== 'function') {
-          reject(new Error('Filter must be a function'));
-        }
-        const timeout = options?.timeout || undefined;
-        const filter = options?.filter || (() => true);
-        let interval = undefined;
-
-        /**
-         * 
-         * @param {{messages: Baileys.proto.IWebMessageInfo[], type: Baileys.MessageUpsertType}} data 
-         */
-        let listener = data => {
-          let {
-            type,
-            messages
-          } = data;
-          if (type == "notify") {
-            for (let message of messages) {
-              const fromMe = message.key.fromMe;
-              const chatId = message.key.remoteJid;
-              const isGroup = chatId.endsWith('@g.us');
-              const isStatus = chatId == 'status@broadcast';
-              const sender = fromMe ? zk.user.id.replace(/:.*@/g, '@') : isGroup || isStatus ? message.key.participant.replace(/:.*@/g, '@') : chatId;
-              if (sender == options.sender && chatId == options.chatJid && filter(message)) {
-                zk.ev.off('messages.upsert', listener);
-                clearTimeout(interval);
-                resolve(message);
-              }
+┃
+┃ bot is active enjoy
+┃
+╰═════════════════⊷`;
+                    await zk.sendMessage(zk.user.id, { text: cmsg });
+                }
             }
-          }
+            else if (connection == "close") {
+                let raisonDeconnexion = new boom_1.Boom(lastDisconnect?.error)?.output.statusCode;
+                if (raisonDeconnexion === baileys_1.DisconnectReason.badSession) {
+                    console.log('Invalid session ID, please rescan the QR code...');
+                }
+                else if (raisonDeconnexion === baileys_1.DisconnectReason.connectionClosed) {
+                    console.log('!!! Connection closed, reconnecting...');
+                    main();
+                }
+                else if (raisonDeconnexion === baileys_1.DisconnectReason.connectionLost) {
+                    console.log('Connection to the server lost 😞, reconnecting...');
+                    main();
+                }
+                else if (raisonDeconnexion === baileys_1.DisconnectReason?.connectionReplaced) {
+                    console.log('Connection replaced, a session is already open, please close it!!!');
+                }
+                else if (raisonDeconnexion === baileys_1.DisconnectReason.loggedOut) {
+                    console.log('You are logged out, please rescan the QR code');
+                }
+                else if (raisonDeconnexion === baileys_1.DisconnectReason.restartRequired) {
+                    console.log('Restarting... ▶️');
+                    main();
+                }
+                else {
+                    console.log('Restarting due to error: ', raisonDeconnexion);
+                    const { exec } = require("child_process");
+                    exec("pm2 restart all");
+                }
+                main();
+            }
+        });
+        zk.ev.on("creds.update", saveCreds);
+        zk.downloadAndSaveMediaMessage = async (message, filename = '', attachExtension = true) => {
+            let quoted = message.msg ? message.msg : message;
+            let mime = (message.msg || message).mimetype || '';
+            let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0];
+            const stream = await (0, baileys_1.downloadContentFromMessage)(quoted, messageType);
+            let buffer = Buffer.from([]);
+            for await (const chunk of stream) {
+                buffer = Buffer.concat([buffer, chunk]);
+            }
+            let type = await FileType.fromBuffer(buffer);
+            let trueFileName = './' + filename + '.' + type.ext;
+            await fs.writeFileSync(trueFileName, buffer);
+            return trueFileName;
         };
-        zk.ev.on('messages.upsert', listener);
-        if (timeout) {
-          interval = setTimeout(() => {
-            zk.ev.off('messages.upsert', listener);
-            reject(new Error('Timeout'));
-          }, timeout);
+        zk.awaitForMessage = async (options = {}) => {
+            return new Promise((resolve, reject) => {
+                if (typeof options !== 'object') reject(new Error('Options must be an object'));
+                if (typeof options.sender !== 'string') reject(new Error('Sender must be a string'));
+                if (typeof options.chatJid !== 'string') reject(new Error('ChatJid must be a string'));
+                if (options.timeout && typeof options.timeout !== 'number') reject(new Error('Timeout must be a number'));
+                if (options.filter && typeof options.filter !== 'function') reject(new Error('Filter must be a function'));
+                const timeout = options?.timeout || undefined;
+                const filter = options?.filter || (() => true);
+                let interval = undefined
+                let listener = (data) => {
+                    let { type, messages } = data;
+                    if (type == "notify") {
+                        for (let message of messages) {
+                            const fromMe = message.key.fromMe;
+                            const chatId = message.key.remoteJid;
+                            const isGroup = chatId.endsWith('@g.us');
+                            const isStatus = chatId == 'status@broadcast';
+                            const sender = fromMe ? zk.user.id.replace(/:.*@/g, '@') : (isGroup || isStatus) ? message.key.participant.replace(/:.*@/g, '@') : chatId;
+                            if (sender == options.sender && chatId == options.chatJid && filter(message)) {
+                                zk.ev.off('messages.upsert', listener);
+                                clearTimeout(interval);
+                                resolve(message);
+                            }
+                        }
+                    }
+                }
+                zk.ev.on('messages.upsert', listener);
+                if (timeout) {
+                    interval = setTimeout(() => {
+                        zk.ev.off('messages.upsert', listener);
+                        reject(new Error('Timeout'));
+                    }, timeout);
+                }
+            });
         }
-      });
-    };
-
-    // fin fonctions utiles
-    /** ************* */
-    return zk;
-  }
-  let fichier = require.resolve(__filename);
-  fs.watchFile(fichier, () => {
-    fs.unwatchFile(fichier);
-    console.log(`mise à jour ${__filename}`);
-    delete require.cache[fichier];
-    require(fichier);
-  });
-  main();
+        return zk;
+    }
+    let fichier = require.resolve(__filename);
+    fs.watchFile(fichier, () => {
+        fs.unwatchFile(fichier);
+        console.log(`Updated ${__filename}`);
+        delete require.cache[fichier];
+        require(fichier);
+    });
+    main();
 }, 5000);
