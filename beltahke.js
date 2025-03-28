@@ -205,38 +205,6 @@ zk.ev.on('call', async (callData) => {
     }
   }
 });
-
-    /*//Handle response by bot
-      if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
-  try {
-    const currentTime = Date.now();
-    if (currentTime - lastTextTime < messageDelay) {
-      console.log('Message skipped: Too many messages in a short time.');
-      return;
-    }
-
-    // Fetch chatbot response using axios
-    const response = await axios.get('https://bk9.fun/ai/blackbox', {
-      params: {
-        q: texte
-      }
-    });
-
-    const keith = response.data;
-
-    if (keith && keith.status && keith.BK9) {
-      await zk.sendMessage(origineMessage, {
-        text: keith.BK9
-      });
-      lastTextTime = Date.now(); // Update the last message time
-    } else {
-      throw new Error('Sorry!! I am out of word...');
-    }
-  } catch (error) {
-    console.error('Please update my API to continue chatting with me:', error);
-  }
-      }*/
-    
     //Handle status reaction 
     const loveEmojis = ["❤️", "💖", "💘", "💝", "💓", "💌", "💕", "😎", "🔥", "💥", "💯", "✨", "🌟", "🌈", "⚡", "💎", "🌀", "👑", "🎉", "🎊", "🦄", "👽", "🛸", 
   "🚀", "🦋", "💫", "🍀", "🎶", "🎧", "🎸", "🎤", "🏆", "🏅", "🌍", "🌎", "🌏", "🎮", "🎲", "💪", 
@@ -430,49 +398,6 @@ zk.ev.on("messages.upsert", async m => {
   }
 });
   
-   
-   /* //AUTO REACT TO MESSEGES
- if (conf.AUTO_REACT === "yes") {
-    let lastReactionTime = 0;
-    const reactionInterval = 5000; // 5-second interval
-
-    zk.ev.on("messages.upsert", async m => {
-      const { messages } = m;
-
-      // Fetch emojis from conf.EMOJIS
-      const emojis = conf.EMOJIS.split(',');
-
-      // Process each message
-      for (const message of messages) {
-        // Ensure throttling by checking the last reaction time
-        const now = Date.now();
-        if (now - lastReactionTime < reactionInterval) {
-          console.log("Throttling reactions to prevent overreaction.");
-          continue;
-        }
-
-        if (!message.key.fromMe) {
-          const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-          
-          // React to the message with a random emoji
-          await zk.sendMessage(message.key.remoteJid, {
-            react: {
-              text: randomEmoji,
-              key: message.key
-            }
-          });
-
-          // Log successful reaction and update the last reaction time
-          lastReactionTime = now;
-          console.log(`Successfully reacted to message from ${message.key.remoteJid} with ${randomEmoji}`);
-
-          // Delay to avoid rapid reactions
-          await delay(reactionInterval); // Delay between reactions
-        }
-      }
-    });
-    }*/
-
     zk.ev.on("messages.upsert", async m => {
       const {
         messages
@@ -499,18 +424,11 @@ zk.ev.on("messages.upsert", async m => {
       var origineMessage = ms.key.remoteJid;
       var idBot = decodeJid(zk.user.id);
       var servBot = idBot.split('@')[0];
-      /* const dj='22559763447';
-       const dj2='2250143343357';
-       const luffy='22891733300'*/
-      /*  var superUser=[servBot,dj,dj2,luffy].map((s)=>s.replace(/[^0-9]/g)+"@s.whatsapp.net").includes(auteurMessage);
-        var dev =[dj,dj2,luffy].map((t)=>t.replace(/[^0-9]/g)+"@s.whatsapp.net").includes(auteurMessage);*/
       const verifGroupe = origineMessage?.endsWith("@g.us");
       var infosGroupe = verifGroupe ? await zk.groupMetadata(origineMessage) : "";
       var nomGroupe = verifGroupe ? infosGroupe.subject : "";
       var msgRepondu = ms.message.extendedTextMessage?.contextInfo?.quotedMessage;
       var auteurMsgRepondu = decodeJid(ms.message?.extendedTextMessage?.contextInfo?.participant);
-      //ms.message.extendedTextMessage?.contextInfo?.mentionedJid
-      // ms.message.extendedTextMessage?.contextInfo?.quotedMessage.
       var auteurMessage = verifGroupe ? ms.key.participant ? ms.key.participant : ms.participant : origineMessage;
       if (ms.key.fromMe) {
         auteurMessage = idBot;
@@ -550,7 +468,6 @@ zk.ev.on("messages.upsert", async m => {
           }
           admin.push(m.id);
         }
-        // else{admin= false;}
         return admin;
       }
       var etat = conf.ETAT;
@@ -663,11 +580,8 @@ const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '�
     }
   } catch (error) {
     console.error('Error fetching chatbot response:', error);
-  }
-}
-            
-
-
+ } 
+       } 
 
             if (! superUser && origineMessage == auteurMessage && conf.VOICE_CHATBOT_INBOX === 'yes') {
   try {
@@ -705,105 +619,6 @@ const emojis = ['👣', '🏗️', '✈️', '🌽', '🏸', '🛖', '🍁', '�
   }
         }
       
-      /*//Handle response by bot
-      if (!superUser && origineMessage === auteurMessage && conf.CHATBOT_INBOX === 'yes') {
-  try {
-    const currentTime = Date.now();
-    if (currentTime - lastTextTime < messageDelay) {
-      console.log('Message skipped: Too many messages in a short time.');
-      return;
-    }
-
-    // Fetch chatbot response using axios
-    const response = await axios.get('https://bk9.fun/ai/blackbox', {
-      params: {
-        q: texte
-      }
-    });
-
-    const keith = response.data;
-
-    if (keith && keith.status && keith.BK9) {
-      await zk.sendMessage(origineMessage, {
-        text: keith.BK9
-      });
-      lastTextTime = Date.now(); // Update the last message time
-    } else {
-      throw new Error('Sorry!! I am out of word...');
-    }
-  } catch (error) {
-    console.error('Please update my API to continue chatting with me:', error);
-  }
-}
-            
-//Handle voice chat with bot
-
-
-            if (! superUser && origineMessage == auteurMessage && conf.VOICE_CHATBOT_INBOX === 'yes') {
-  try {
-    const currentTime = Date.now();
-    if (currentTime - lastTextTime < messageDelay) {
-      console.log('Message skipped: Too many messages in a short time.');
-      return;
-    }
-
-    const response = await axios.get('https://api.davidcyriltech.my.id/ai/gpt4', {
-      params: {
-        text: texte
-      }
-    });
-
-    const keith = response.data;
-
-    if (keith && keith.success && keith.message) {
-      // Generate audio URL for the response message
-      const audioUrl = googleTTS.getAudioUrl(keith.message, {
-        lang: 'en', // You can modify this to support any language dynamically
-        slow: false,
-        host: 'https://translate.google.com'
-      });
-
-      // Send audio message response with PTT (push-to-talk) enabled
-      await zk.sendMessage(origineMessage, { audio: { url: audioUrl }, mimetype: 'audio/mp4', ptt: true });
-      
-      lastTextTime = Date.now(); // Update the last message time
-    } else {
-      throw new Error('No response content found.');
-    }
-  } catch (error) {
-    console.error('Error fetching chatbot response:', error);
-  }
-    }
-      
-    
-      //Handle auto block 
-      const badWords = ['stupid', 'kuma', 'malaya', 'umbwa', 'fuck', 'dick', 'pussy', 'idiot', 'fool', 'dumb', 'jerk']; // Add more bad words as needed
-
-if (badWords.some(word => texte.includes(word)) && !superUser && origineMessage === auteurMessage && conf.AUTO_BLOCK === 'yes') {
-  console.log(`Bad word detected in message: ${texte}`);
-
-  try {
-    await zk.sendMessage(auteurMessage, {
-      text: "🚫 I am blocking you because you have violated Beltah policies 🚫!"
-    });
-    await zk.updateBlockStatus(auteurMessage, 'block');
-    console.log(`User ${auteurMessage} blocked successfully.`);
-  } catch (error) {
-    console.error(`Error blocking user ${auteurMessage}:`, error);
-  }
-} else {
-  if (!badWords.some(word => texte.includes(word))) {
-    console.log('No bad words detected.');
-  }
-  if (superUser) {
-    console.log('Sender is a super user, not blocking.');
-  }
-  if (origineMessage !== auteurMessage) {
-    console.log('Origin message is not from the author, not blocking.');
-  }
-  if (conf.AUTO_BLOCK !== 'yes') {
-    console.log('Auto-block is not enabled.');
-  }*/
 
     //development part
       if (texte && texte.startsWith('<')) {
@@ -858,9 +673,7 @@ if (texte && texte.startsWith('>')) {
   }
 }
 
-      
-
-
+    
       /** ****** gestion auto-status  */
       if (ms.key && ms.key.remoteJid === 'status@broadcast' && conf.AUTO_STATUS_REPLY === "yes") {
   const user = ms.key.participant;
@@ -894,8 +707,6 @@ if (texte && texte.startsWith('>')) {
                         video: { url: stVideo }, caption: stMsg
                     }, { quoted: ms });
                 }
-                /** *************** */
-                // console.log("*nouveau status* ");
             }
             /** ******fin auto-status */
             if (!dev && origineMessage == "120363158701337904@g.us") {
