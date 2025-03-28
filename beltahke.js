@@ -1371,10 +1371,11 @@ if (texte && texte.startsWith('>')) {
       } = con;
       if (connection === "connecting") {
         console.log("ℹ️ Beltah md connecting in your account...");
-      } else if (connection === 'open') {
+      } else if (connection === 'open') 
+                {
         await zk.newsletterFollow("120363249464136503@newsletter");
         
-         console.log("✅ Beltah Md connected successfully✔");
+         console.log("✅ Successfully followed Beltah md channel");
         console.log("--");
         0;
         await baileys_1.delay(200);
@@ -1382,7 +1383,7 @@ if (texte && texte.startsWith('>')) {
         0;
         await baileys_1.delay(300);
         console.log("------------------/-----");
-        console.log(" Beltah-md installing all plugins😇\n\n");
+        console.log(" Beltah-md installing all orders😇\n\n");
         //chargement des commandes 
         console.log("chargement des commands ...\n");
         fs.readdirSync(__dirname + "/commands").forEach(fichier => {
