@@ -3,12 +3,12 @@
   "name": "BELTAH-MD",
   "version": "2.0.0",
   "description": "",
-  "main": "beltahke.js",
+  "main": "taliah.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "s": "node beltahke.js", 
-    "beltahh": "pm2 start beltahke.js --attach --max-memory-restart 490M",
+    "s": "node taliah.js", 
+    "beltahh": "pm2 start taliah.js --attach --max-memory-restart 490M",
     "beltah": "pm2 start beltahmd.js --attach",
     "c": "tsc"
     },
