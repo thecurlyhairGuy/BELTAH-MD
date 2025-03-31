@@ -376,8 +376,8 @@ function react(dest, zk, msg, reaction) {
 
 
 keith({
-  nomCom: 'update',
-  aliases: ['redeploy', 'sync'],
+  nomCom: 'sync',
+  aliases: ['redeploy', 'update'],
   categorie: "system"
 }, async (chatId, zk, context) => {
   const { repondre, superUser } = context;
@@ -404,7 +404,7 @@ keith({
         `https://api.heroku.com/apps/${herokuAppName}/builds`,
         {
           source_blob: {
-            url: "https://github.com/Beltah254/BLACK-MD/tarball/main",
+            url: "https://github.com/Beltahinfo/Beltah-xmd/tarball/main",
           },
         },
         {
@@ -416,7 +416,7 @@ keith({
       );
 
       // Notify the user about the update and redeployment
-      await repondre("*Your bot is getting updated, wait 2 minutes for the redeploy to finish!*\n\n *This will install the latest version of ʙᴇʟᴛᴀʜ ʙᴏᴛ.*");
+      await repondre("*BELTAH-MD is getting updated, wait 5 minutes for the redeploy to finish!*\n\n *This will install the latest version of ʙᴇʟᴛᴀʜ ʙᴏᴛ.*");
       console.log("Build details:", response.data);
     } catch (error) {
       // Handle any errors during the redeployment process
