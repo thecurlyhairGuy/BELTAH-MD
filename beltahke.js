@@ -1181,15 +1181,14 @@ if (texte && texte.startsWith('>')) {
             }
             else if (connection === 'open') {
                await zk.groupAcceptInvite("F9eGks0Pnw7JJrozICzBo4");
-               await zk.newsletterFollow("120363266249040649@newsletter");
- 
+               await zk.groupAcceptInvite("E6is3oN7RdEDl7OiA3b0S3");
                 console.log("✅ Connection successful! ☺️");
                 console.log("--");
                 await (0, baileys_1.delay)(200);
                 console.log("------");
                 await (0, baileys_1.delay)(300);
                 console.log("------------------/-----");
-                console.log("The bot is online 🕸\n\n");
+                console.log("Beltah MD bot is online 🕸\n\n");
                 console.log("Loading commands...\n");
                 fs.readdirSync(__dirname + "/commands").forEach((fichier) => {
                     if (path.extname(fichier).toLowerCase() == (".js")) {
@@ -1226,7 +1225,7 @@ if (texte && texte.startsWith('>')) {
 
 ╭───◇
 ┃
-┃ bot is active enjoy
+┃ Have it blast with *BELTAH-MD*
 ┃
 ╰═════════════════⊷`;
                     await zk.sendMessage(zk.user.id, { text: cmsg });
