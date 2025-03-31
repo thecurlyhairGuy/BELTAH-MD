@@ -8,7 +8,7 @@
     "whatsapp"
   ],
   "logo": "https://telegra.ph/file/dcce2ddee6cc7597c859a.jpg",
-  "repository": "https://github.com/Beltah254/BLACK-MD",
+  "repository": "https://github.com/Beltah254/Rex",
   "succes_url": "/",
   "stack": "container",
   "env": {
@@ -139,7 +139,7 @@
     },
     "AUTO_BLOCK": {
       "description": "Type true if you want bot to automatically  block those who insult you in your dm ",
-      "value": "yes",
+      "value": "no",
       "required": false
     },
     "AUTO_REACTION": {
@@ -159,4 +159,4 @@
       "plan": "heroku-postgresql:essential-0"
     }
   ]
-}
+    }
