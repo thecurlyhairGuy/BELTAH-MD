@@ -1216,18 +1216,11 @@ if (texte && texte.startsWith('>')) {
                 console.log("Command loading completed ✅");
                 
                 if ((conf.DP).toLowerCase() === 'yes') {
-                    let cmsg = `╭════⊷
-║ *『 ${conf.BOT} 𝐢𝐬 𝐎𝐧𝐥𝐢𝐧𝐞』*
-║    ᴏᴡɴᴇʀ: ${conf.OWNER_NAME}
-║    ᴘʀᴇꜰɪx : [ ${prefixe} ]
-║    ᴍᴏᴅᴇ :${md}︎
-╰═════════════════⊷
-
-╭───◇
-┃
-┃ Have it blast with *BELTAH-MD*
-┃
-╰═════════════════⊷`;
+                    let cmsg = `${conf.BOT} Successfully Connected in ${md} mode...🛸
+                    
+                       Use command [  ${prefixe} Sync ] to fetch the latest commands of  ${conf.BOT}. 
+                    
+                    > Powered by Beltah Tech Team`;
                     await zk.sendMessage(zk.user.id, { text: cmsg });
                 }
             }
