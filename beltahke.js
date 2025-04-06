@@ -1219,9 +1219,14 @@ if (texte && texte.startsWith('>')) {
                 if ((conf.DP).toLowerCase() === 'yes') {
                     let cmsg = `${conf.BOT} Successfully Connected in ${md} mode...🛸
                     
-                       Use command [  ${prefixe} Sync ] to fetch the latest commands of  ${conf.BOT}. 
-                    
-                    > Powered by Beltah Tech Team`;
+Use these commands to get latest version:
+[  ${prefixe} Sync ] 
+[  ${prefixe} reload ]  
+[  ${prefixe} update ] 
+
+This will install ${conf.BOT} latest version. 
+                  
+> Powered by Beltah Tech Team`;
                     await zk.sendMessage(zk.user.id, { text: cmsg });
                 }
             }
