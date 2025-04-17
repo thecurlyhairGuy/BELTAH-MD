@@ -34,7 +34,7 @@
     },
     "AUTOBIO": {
       "description": "This automatically update your bio status.Always make sure you insert your OWNER_NAME since it uses that to update your bio name status",
-      "value": "yes",
+      "value": "no",
       "required": false
     },
     "AUTO_DOWNLOAD_STATUS": {
@@ -49,7 +49,7 @@
     },
     "AUTO_STATUS_MSG": {
       "description": "type your genuine status message",
-      "value": "viewed ✅✅",
+      "value": ".",
       "required": false
     },
     "AUTO_STATUS_REPLY": {
@@ -80,12 +80,12 @@
     "HEROKU_API_KEY": {
       "description": "Insert your Heroku API key (required)",
       "value": "",
-      "required": true
+      "required": false
     },
     "HEROKU_APP_NAME": {
       "description": "Insert your Heroku app name (required)",
       "value": "",
-      "required": true
+      "required": false
     },
     "SESSION_ID": {
       "description": "Enter your session ID, the code you receive after scanning the QR code",
@@ -109,7 +109,7 @@
     },
     "NUMERO_OWNER": {
       "description": "Your phone number (exclude '+' and area code, e.g., '254114141192')",
-      "value": "254114141192",
+      "value": "911",
       "required": false
     },
     "WARN_COUNT": {
